@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1143</width>
+    <height>831</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,8 +30,52 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="1" column="0">
-     <widget class="QTabWidget" name="tabWidget">
+    <item row="0" column="1">
+     <widget class="QLabel" name="currentSpaceLabel">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bahnschrift SemiLight</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Ingredients and Effects</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="margin">
+       <number>10</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>30</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QTabWidget" name="mainTabWidget">
       <property name="minimumSize">
        <size>
         <width>64</width>
@@ -53,15 +97,21 @@
         <height>32</height>
        </size>
       </property>
-      <widget class="QWidget" name="tab_IngEff" native="true">
+      <widget class="QWidget" name="tab_IngEff">
        <attribute name="title">
         <string/>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QTabWidget" name="tabWidget_2">
+        <item row="0" column="0" rowspan="4">
+         <widget class="QTabWidget" name="tableWidget_EffAndIngred">
+          <property name="maximumSize">
+           <size>
+            <width>497</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_Effects">
            <attribute name="title">
@@ -84,7 +134,7 @@
              <number>0</number>
             </property>
             <item row="0" column="0">
-             <widget class="QTableWidget" name="tableWidget">
+             <widget class="QTableWidget" name="tableWidget_effects">
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -95,7 +145,7 @@
               </column>
               <column>
                <property name="text">
-                <string>Ingredients</string>
+                <string>ID</string>
                </property>
               </column>
               <column>
@@ -163,7 +213,7 @@
              <number>0</number>
             </property>
             <item row="0" column="0">
-             <widget class="QTableWidget" name="tableWidget_2">
+             <widget class="QTableWidget" name="tableWidget_Ingredients">
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -172,69 +222,79 @@
                 <string>Name</string>
                </property>
               </column>
-              <column>
-               <property name="text">
-                <string>Primary Effect</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Secondary Effect</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Tertiary Effect</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Quaternary Effect</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Value</string>
-               </property>
-              </column>
              </widget>
             </item>
            </layout>
           </widget>
          </widget>
         </item>
+        <item row="0" column="1" rowspan="4">
+         <widget class="QFrame" name="frame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0" colspan="2">
+            <widget class="QLabel" name="lable_IngredientPicture">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QLabel" name="label_IngredientName">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_AlchemyTable" native="true">
+      <widget class="QWidget" name="tab_AlchemyTable">
        <attribute name="title">
         <string/>
        </attribute>
       </widget>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="currentSpaceLabel">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Bahnschrift SemiLight</family>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::AutoText</enum>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
      </widget>
     </item>
    </layout>
