@@ -22,6 +22,7 @@ class GUIClass(QMainWindow, GUI.Ui_MainWindow):
             self.currentSpaceLabel.setText("Alchemy Lab")
 
     def loadTables(self):
+        # Effects
         cur = self.con.cursor()
         result = cur.execute("SELECT * FROM Effects").fetchall()
         self.tableWidget_effects.setRowCount(len(result))
@@ -29,5 +30,14 @@ class GUIClass(QMainWindow, GUI.Ui_MainWindow):
         for i, elem in enumerate(result):
             for j, val in enumerate(elem):
                 self.tableWidget_effects.setItem(i, j, QTableWidgetItem(str(val)))
-        
-        result = cur.execute("SELECT * FROM Ingredients")
+
+        # Ingredients
+        stringa = ""
+        ings = cur.execute("SELECT Name FROM Ingredients").fetchall()
+        for i in ings:
+            ingrName = i[0]
+            stringa += ingrName + ": "
+            for eff in cur.execute(f'SELECT Effect FROM HasEffect WHERE Ingredient=="{ingrName}"'):
+                stringa += eff[0] + ", "
+            print(stringa)
+            stringa = ""
