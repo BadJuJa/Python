@@ -19,4 +19,4 @@ def search_result(request):
         return render(request, 'simFindah/search_result.html', context)
 
 def search_view(request, *args, **kwargs):
-    return render(request, 'simFindah/index2.html', {})
+    return render(request, 'simFindah/index.html', {})
