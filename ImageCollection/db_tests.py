@@ -1,18 +1,10 @@
-import os.path
-import sqlite3
+import glob
 
-con = sqlite3.connect("data.db")
-cur = con.cursor()
-#collections = cur.execute(
-#    '''
-#    select * from collections
-#    '''
-#).fetchall()
+imdir = r'C:\Users\Guren\Downloads\потом разберусь\Images'
+im_formats = ['png', 'jpg', 'jpeg']
 
-#print(collections)
-#print(os.path.exists(""))
-mypath = r"C:\Users\Guren\Downloads\Telegram"
-import os
-with os.scandir(mypath) as i:
-    for entry in i:
-        print(entry)
+files = []
+[files.extend(glob.glob(imdir + '\**\*.' + e, recursive=True)) for e in im_formats]
+for _path in files[:10]:
+    print(_path[:_path.rfind('\\')])
+#print(files[0])

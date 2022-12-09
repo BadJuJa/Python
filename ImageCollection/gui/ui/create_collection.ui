@@ -70,11 +70,7 @@
      <widget class="QFrame" name="horizontalFrame">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLineEdit" name="lineEdit_path">
-         <property name="focusPolicy">
-          <enum>Qt::TabFocus</enum>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="lineEdit_path"/>
        </item>
        <item>
         <widget class="QPushButton" name="button_open_folder">
@@ -87,18 +83,10 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_description">
-      <property name="focusPolicy">
-       <enum>Qt::TabFocus</enum>
-      </property>
-     </widget>
+     <widget class="QLineEdit" name="lineEdit_description"/>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_name">
-      <property name="focusPolicy">
-       <enum>Qt::TabFocus</enum>
-      </property>
-     </widget>
+     <widget class="QLineEdit" name="lineEdit_name"/>
     </item>
    </layout>
   </widget>
