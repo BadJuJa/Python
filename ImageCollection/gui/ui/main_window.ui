@@ -10,6 +10,18 @@
     <height>900</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1440</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1440</width>
+    <height>900</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -126,7 +138,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="button_move_to_collection">
+        <widget class="QPushButton" name="button_to_art">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -135,7 +147,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>200</width>
+           <width>100</width>
            <height>50</height>
           </size>
          </property>
@@ -146,12 +158,12 @@
           </size>
          </property>
          <property name="text">
-          <string>Move to collection</string>
+          <string>To Art</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="button_remove_from_collection">
+        <widget class="QPushButton" name="button_to_erotics">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -160,7 +172,32 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>200</width>
+           <width>100</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>To Erotics</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="button_to_porn">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
            <height>50</height>
           </size>
          </property>
@@ -174,7 +211,7 @@
           <enum>Qt::RightToLeft</enum>
          </property>
          <property name="text">
-          <string>Remove from collection</string>
+          <string>To Porn</string>
          </property>
         </widget>
        </item>
@@ -212,7 +249,7 @@
         <number>3</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="label_current_collection_0">
          <property name="maximumSize">
           <size>
            <width>250</width>
@@ -242,7 +279,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_ci_collection">
+        <widget class="QLabel" name="label_current_collection_1">
          <property name="font">
           <font>
            <pointsize>20</pointsize>
@@ -291,7 +328,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label_ci_image">
+       <widget class="QLabel" name="label_current_image_image">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -331,7 +368,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_ci_name">
+       <widget class="QLabel" name="label_current_image_name">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -425,7 +462,7 @@
        <number>3</number>
       </property>
       <item row="0" column="2">
-       <widget class="QPushButton" name="button_mark_image">
+       <widget class="QPushButton" name="button_rename_image">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -434,25 +471,12 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
+          <width>149</width>
           <height>50</height>
          </size>
         </property>
         <property name="text">
-         <string>mark</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="button_refresh_list">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Refresh</string>
+         <string>Rename</string>
         </property>
        </widget>
       </item>
@@ -471,7 +495,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QListView" name="listView_image_list">
+    <widget class="QListWidget" name="listWidget_image_list">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -512,6 +536,7 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_Folder"/>
+    <addaction name="actionRefresh_List"/>
     <addaction name="actionSettings"/>
     <addaction name="actionExit"/>
    </widget>
@@ -519,16 +544,14 @@
     <property name="title">
      <string>Collections</string>
     </property>
-    <widget class="QMenu" name="menuYour_collections">
-     <property name="title">
-      <string>Your collections</string>
-     </property>
-    </widget>
     <addaction name="actionAll_Images"/>
-    <addaction name="actionUnsorted"/>
-    <addaction name="menuYour_collections"/>
     <addaction name="separator"/>
-    <addaction name="actionNew_Collection"/>
+    <addaction name="actionUnsorted"/>
+    <addaction name="actionPorn"/>
+    <addaction name="actionErotics"/>
+    <addaction name="actionArt"/>
+    <addaction name="separator"/>
+    <addaction name="actionRecycle_bin"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCollections"/>
@@ -571,6 +594,31 @@
   <action name="actioncol">
    <property name="text">
     <string>col</string>
+   </property>
+  </action>
+  <action name="actionPorn">
+   <property name="text">
+    <string>Porn</string>
+   </property>
+  </action>
+  <action name="actionErotics">
+   <property name="text">
+    <string>Erotics</string>
+   </property>
+  </action>
+  <action name="actionArt">
+   <property name="text">
+    <string>Art</string>
+   </property>
+  </action>
+  <action name="actionRecycle_bin">
+   <property name="text">
+    <string>Recycle bin</string>
+   </property>
+  </action>
+  <action name="actionRefresh_List">
+   <property name="text">
+    <string>Refresh List</string>
    </property>
   </action>
  </widget>
