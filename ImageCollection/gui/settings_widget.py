@@ -1,19 +1,9 @@
-import sys
 import os
-import fnmatch
-from pathlib import Path
-import time
 
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import QUrl, QDirIterator
-from PyQt5.QtMultimedia import QMediaPlaylist, QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import (QMainWindow, QApplication, QTableWidgetItem,
-                             QListWidgetItem, QPushButton, QWidget, QHBoxLayout,
-                             QFileDialog, QMessageBox, QAction)
-
-from gui.base.settings_base import Ui_Settings
+from PyQt5.QtWidgets import (QWidget)
 
 import common_defs as cd
+from gui.base.settings_base import Ui_Settings
 
 
 class SettingsWidget(QWidget, Ui_Settings):
@@ -35,9 +25,10 @@ class SettingsWidget(QWidget, Ui_Settings):
         line_edit.setText(cd.open_folder(self))
 
     def save(self):
-        self.prepare_art_path()
-        self.prepare_ero_path()
-        self.prepare_porn_path()
+        self.prepare_path(self.lineEdit_art, 'art_path')
+        self.prepare_path(self.lineEdit_erotic, 'ero_path')
+        self.prepare_path(self.lineEdit_porn, 'porn_path')
+        self.prepare_path(self.lineEdit_trash, 'bin_path')
 
         self.settings.rewrite_settings(self.paths)
         self.close()
@@ -46,45 +37,33 @@ class SettingsWidget(QWidget, Ui_Settings):
         self.lineEdit_art.setText(self.paths['art_path'])
         self.lineEdit_erotic.setText(self.paths['ero_path'])
         self.lineEdit_porn.setText(self.paths['porn_path'])
+        self.lineEdit_trash.setText(self.paths['bin_path'])
 
-    def prepare_art_path(self):
-        _art = self.lineEdit_art.text().strip()
-        if _art != self.paths['art_path']:
-            if not os.path.isdir(_art):
-                os.makedirs(_art)
-                self.paths['art_path'] = _art
+    def prepare_path(self, line_edit, paths_key):
+        lE = line_edit.text().strip()
+        if lE != self.paths[paths_key]:
+            if not os.path.isdir(lE):
+                os.makedirs(lE)
+            self.paths[paths_key] = lE
         else:
-            if _art == '':
-                new_art_path = os.path.join(os.path.abspath('.'), 'Images', 'art')
-                if not os.path.exists(new_art_path):
-                    os.makedirs(new_art_path)
-                self.paths['art_path'] = new_art_path
+            if lE == '':
+                new_folder_path = os.path.join(os.path.abspath('.'), 'Images', self.get_folder_name(paths_key))
+                if not os.path.exists(new_folder_path):
+                    os.makedirs(new_folder_path)
+                self.paths[paths_key] = new_folder_path
 
-    def prepare_ero_path(self):
-        _ero = self.lineEdit_erotic.text().strip()
-        if _ero != self.paths['ero_path']:
-            if not os.path.isdir(_ero):
-                os.makedirs(_ero)
-            self.paths['ero_path'] = _ero
-        else:
-            if _ero == '':
-                new_ero_path = os.path.join(os.path.abspath('.'), 'Images', 'erotic')
-                if not os.path.exists(new_ero_path):
-                    os.makedirs(new_ero_path)
-                self.paths['ero_path'] = new_ero_path
-
-    def prepare_porn_path(self):
-        _porn = self.lineEdit_porn.text().strip()
-        if _porn != self.paths['porn_path']:
-            if not os.path.isdir(_porn):
-                os.makedirs(_porn)
-            self.paths['porn_path'] = _porn
-        else:
-            if _porn == '':
-                new_porn_path = os.path.join(os.path.abspath('.'), 'Images', 'porn')
-                if not os.path.exists(new_porn_path):
-                    os.makedirs(new_porn_path)
-                self.paths['porn_path'] = new_porn_path
+    def get_folder_name(self, paths_key):
+        name = ""
+        match paths_key:
+            case "art_path":
+                name = "art"
+            case "ero_path":
+                name = "erotic"
+            case "porn_path":
+                name = "porn"
+            case "bin_path":
+                name = "recycle_bin"
+        return name
 
     def closeEvent(self, event):
         self.save()

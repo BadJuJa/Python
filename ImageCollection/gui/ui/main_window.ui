@@ -433,10 +433,10 @@
     <widget class="QFrame" name="gridFrame">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>810</y>
+       <x>0</x>
+       <y>800</y>
        <width>320</width>
-       <height>71</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -461,7 +461,7 @@
       <property name="spacing">
        <number>3</number>
       </property>
-      <item row="0" column="2">
+      <item row="1" column="2">
        <widget class="QPushButton" name="button_rename_image">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -480,7 +480,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QPushButton" name="button_delete_image">
         <property name="minimumSize">
          <size>
@@ -501,7 +501,7 @@
        <x>5</x>
        <y>5</y>
        <width>320</width>
-       <height>811</height>
+       <height>781</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -515,6 +515,22 @@
      </property>
      <property name="lineWidth">
       <number>2</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_items_in_list">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>790</y>
+       <width>311</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -546,7 +562,6 @@
     </property>
     <addaction name="actionAll_Images"/>
     <addaction name="separator"/>
-    <addaction name="actionUnsorted"/>
     <addaction name="actionPorn"/>
     <addaction name="actionErotics"/>
     <addaction name="actionArt"/>

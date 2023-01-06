@@ -57,22 +57,6 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_art">
-      <property name="minimumSize">
-       <size>
-        <width>60</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Arts path</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label_erotic">
       <property name="text">
@@ -90,6 +74,22 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_art">
+      <property name="minimumSize">
+       <size>
+        <width>60</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Arts path</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_porn">
       <property name="text">
@@ -97,6 +97,13 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="button_open_art">
+      <property name="text">
+       <string>Open...</string>
       </property>
      </widget>
     </item>
@@ -110,6 +117,20 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="button_open_erotic">
+      <property name="text">
+       <string>Open...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="button_open_porn">
+      <property name="text">
+       <string>Open...</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QLineEdit" name="lineEdit_porn">
       <property name="readOnly">
@@ -120,22 +141,28 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="button_open_art">
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_trash">
       <property name="text">
-       <string>Open...</string>
+       <string>Trash path</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="button_open_erotic">
-      <property name="text">
-       <string>Open...</string>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lineEdit_trash">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="button_open_porn">
+    <item row="3" column="2">
+     <widget class="QPushButton" name="button_open_trash">
       <property name="text">
        <string>Open...</string>
       </property>

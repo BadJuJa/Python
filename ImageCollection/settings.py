@@ -7,10 +7,11 @@ class Settings:
         self.paths = self.get_and_validate_settings()
 
     example_settings = {
-            'art_path': '',
-            'ero_path': '',
-            'porn_path': '',
-            'current_folder_path': os.getcwd()
+        'art_path': '',
+        'ero_path': '',
+        'porn_path': '',
+        'bin_path': '',
+        'current_folder_path': os.getcwd()
         }
 
     def create_settings(self):
@@ -18,8 +19,13 @@ class Settings:
             json.dump(self.example_settings, f, ensure_ascii=False, indent=4)
 
     def get_settings(self):
-        with open('settings.json', 'r') as f:
-            sets = json.load(f)
+        try:
+            with open('settings.json', 'r') as f:
+                sets = json.load(f)
+        except FileNotFoundError:
+            self.create_settings()
+            with open('settings.json', 'r') as f:
+                sets = json.load(f)
         return sets
 
     def validate_settings(self, sets):

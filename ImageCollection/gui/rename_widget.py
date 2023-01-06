@@ -1,19 +1,6 @@
-import sys
-import os
-import fnmatch
-from pathlib import Path
-import time
-
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import QUrl, QDirIterator
-from PyQt5.QtMultimedia import QMediaPlaylist, QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import (QMainWindow, QApplication, QTableWidgetItem,
-                             QListWidgetItem, QPushButton, QWidget, QHBoxLayout,
-                             QFileDialog, QMessageBox, QAction)
+from PyQt5.QtWidgets import (QWidget)
 
 from gui.base.rename_base import Ui_Rename
-
-import common_defs as cd
 
 
 class RenameWidget(QWidget, Ui_Rename):
