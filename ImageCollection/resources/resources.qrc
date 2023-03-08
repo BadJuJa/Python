@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/window_icon.jpg</file>
+  </qresource>
+  <qresource prefix="ui">
+    <file>ui/main_window.ui</file>
+    <file>ui/rename.ui</file>
+    <file>ui/settings.ui</file>
+  </qresource>
+</RCC>

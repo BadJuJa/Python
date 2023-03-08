@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui/ui/rename.ui'
+# Form implementation generated from reading ui file 'resources/ui/rename.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -22,6 +22,16 @@ class Ui_Rename(object):
         Rename.setSizePolicy(sizePolicy)
         Rename.setMinimumSize(QtCore.QSize(548, 107))
         Rename.setMaximumSize(QtCore.QSize(548, 107))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/icons/window_icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Rename.setWindowIcon(icon)
+        Rename.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 13pt \"Century Gothic\";\n"
+"selection-background-color: rgb(188, 188, 188);\n"
+"selection-color: rgb(0, 0, 0);\n"
+"border-color: rgb(15, 15, 15);\n"
+"background-color: rgb(63, 63, 63);\n"
+"alternate-background-color: rgb(188, 188, 188);")
         self.formLayoutWidget = QtWidgets.QWidget(Rename)
         self.formLayoutWidget.setGeometry(QtCore.QRect(10, 10, 531, 41))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
@@ -36,7 +46,11 @@ class Ui_Rename(object):
         self.label_name.setSizePolicy(sizePolicy)
         self.label_name.setMinimumSize(QtCore.QSize(96, 32))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setFamily("Century Gothic")
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
         self.label_name.setFont(font)
         self.label_name.setTextFormat(QtCore.Qt.AutoText)
         self.label_name.setScaledContents(False)
@@ -59,6 +73,16 @@ class Ui_Rename(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_cancel.sizePolicy().hasHeightForWidth())
         self.button_cancel.setSizePolicy(sizePolicy)
+        self.button_cancel.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_cancel.setObjectName("button_cancel")
         self.horizontalLayout.addWidget(self.button_cancel)
         self.button_ok = QtWidgets.QPushButton(self.horizontalLayoutWidget)
@@ -67,6 +91,16 @@ class Ui_Rename(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_ok.sizePolicy().hasHeightForWidth())
         self.button_ok.setSizePolicy(sizePolicy)
+        self.button_ok.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_ok.setObjectName("button_ok")
         self.horizontalLayout.addWidget(self.button_ok)
 
@@ -79,6 +113,7 @@ class Ui_Rename(object):
         self.label_name.setText(_translate("Rename", "New Name:"))
         self.button_cancel.setText(_translate("Rename", "Cancel"))
         self.button_ok.setText(_translate("Rename", "OK"))
+import resources_rc
 
 
 if __name__ == "__main__":

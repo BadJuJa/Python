@@ -18,12 +18,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
         self.image_label_size = self.label_current_image_image.size()
         self.connect_buttons()
-
         self.settings = Settings()
         self.rename_widget = None
         self.images_info = {}
+        self.images_moves = {}
         if not os.path.exists('settings.json'):
             self.settings.create_settings()
         self.fill_list(self.settings.paths['current_folder_path'])
@@ -31,20 +32,37 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.grabKeyboard()
 
     def connect_buttons(self):
-        self.actionOpen_Folder.triggered.connect(self.open_folder)
-        self.actionExit.triggered.connect(QApplication.exit)
-        self.actionSettings.triggered.connect(self.open_settings)
-        self.actionRefresh_List.triggered.connect(lambda: self.fill_list(self.settings.paths['current_folder_path']))
+        # Collections
         self.actionArt.triggered.connect(lambda: self.fill_list(self.settings.paths['art_path']))
         self.actionErotics.triggered.connect(lambda: self.fill_list(self.settings.paths['ero_path']))
         self.actionPorn.triggered.connect(lambda: self.fill_list(self.settings.paths['porn_path']))
         self.actionRecycle_bin.triggered.connect(lambda: self.fill_list(self.settings.paths['bin_path']))
+        self.actionMove_Images.triggered.connect(lambda: self.move_images())
+
+        # All images
         self.actionAll_Images.triggered.connect(lambda: self.fill_list([self.settings.paths['art_path'],
                                                                         self.settings.paths['ero_path'],
                                                                         self.settings.paths['porn_path'],
                                                                         self.settings.paths['bin_path']]))
+
+        # File menu
+        self.actionOpen_Folder.triggered.connect(self.open_folder)
+        self.actionExit.triggered.connect(QApplication.exit)
+        self.actionSettings.triggered.connect(self.open_settings)
+        self.actionRefresh_List.triggered.connect(lambda: self.fill_list(self.settings.paths['current_folder_path']))
+
+        # Triggers
         self.listWidget_image_list.currentItemChanged.connect(self.show_image)
+
+        # Current image
         self.button_rename_image.clicked.connect(self.open_rename_widget)
+        self.button_to_art.clicked.connect(lambda: self.prepare_to_move_image('Art'))
+        self.button_to_porn.clicked.connect(lambda: self.prepare_to_move_image('Porn'))
+        self.button_to_erotics.clicked.connect(lambda: self.prepare_to_move_image('Ero'))
+        self.button_delete_image.clicked.connect(lambda: self.prepare_to_move_image('Delete'))
+
+        self.button_next_image.clicked.connect(self.select_next_image)
+        self.button_previous_image.clicked.connect(self.select_prev_image)
 
     def open_folder(self):
         folder = os.path.abspath(cd.open_folder().strip())
@@ -56,14 +74,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings_widget = SettingsWidget(self.settings)
         settings_widget.show()
 
-#    def refresh_list(self, path):
-#        self.fill_list(self.current_collection)
-
     def fill_list(self, paths, preclear=True):
         if preclear:
             self.clearing()
         if type(paths) is not list:
-            # self.current_collection = paths
             self.settings.paths['current_folder_path'] = paths
             paths = [paths]
         for path_ in paths:
@@ -80,6 +94,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             path_obj = Path(ex_path)
             name = path_obj.stem
             suffix = path_obj.suffix
+
+            if name in list(images.keys()):
+                name = f"_{name}"
+
             images_names.append(name)
             images[name] = {'suffix': suffix, 'directory': Path(ex_path).parents[0], 'full_path': ex_path}
 
@@ -89,7 +107,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.listWidget_image_list.clear()
         self.label_current_image_image.clear()
         self.label_current_image_name.clear()
-        self.label_current_collection_1.clear()
+        self.label_collection_1.clear()
+        self.label_collection_moveto_1.clear()
         self.images_info = {}
 
     def show_image(self):
@@ -111,17 +130,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def open_rename_widget(self):
         self.rename_widget = RenameWidget(self)
         self.rename_widget.show()
+        self.releaseKeyboard()
 
-    def rename_image(self, new_name):
+    def rename_image(self, new_name, new_path=None):
         image_name = self.listWidget_image_list.currentItem().text()
         image_path = self.images_info[image_name]['full_path']
         image_suffix = self.images_info[image_name]['suffix']
-        path_before_image = Path(image_path).parents[0]
+        if new_path is None:
+            path_before_image = Path(image_path).parents[0]
+        else:
+            path_before_image = Path(new_path).parents[0]
         regex = r"(\s\(\d+\))"
         rename_arg = f'{J(path_before_image, new_name)}{image_suffix}'
-
         if Path(rename_arg).exists():
-            new_rename_arg_base = f'{J(self.images_info[image_name]["directory"], new_name)}'
+            new_rename_arg_base = f'{J(path_before_image, new_name)}'
             re_search = re.search(regex, new_rename_arg_base[-4:])
             if re_search is not None:
                 new_rename_arg_base = new_rename_arg_base[:-4]
@@ -133,13 +155,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 else:
                     rename_arg = new_rename_arg
                     break
-
         Path(image_path).rename(rename_arg)
         new_name = Path(rename_arg).stem
-        self.images_info.pop(image_name)
+        old = self.images_info.pop(image_name)
+        self.images_info[new_name] = {
+            'suffix': Path(rename_arg).suffix,
+            'directory': Path(rename_arg).parents[0].__str__(),
+            'full_path': Path(rename_arg).__str__()
+        }
+
         self.listWidget_image_list.currentItem().setText(new_name)
-        self.images_info[new_name] = {'suffix': Path(rename_arg).suffix, 'path': rename_arg}
         self.label_current_image_name.setText(new_name)
+
+        return new_name
 
     def update_image_info(self, current_item):
         # image name
@@ -149,46 +177,74 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for k, v in list(self.settings.paths.items())[:-1]:
             if self.images_info[current_item]['directory'] == Path(v):
                 image_collection = k[:-5]
-        self.label_current_collection_1.setText(image_collection)
+        self.label_collection_moveto_1.setText(self.images_moves.get(current_item))
+        self.label_collection_1.setText(image_collection)
 
-    def move_to_collection(self, collection):
+    def prepare_to_move_image(self, collection):
         if self.listWidget_image_list.currentItem() is None:
             return
         item = self.listWidget_image_list.currentItem()
         item_name = item.text()
-        to = ""
-        match collection:
-            case "Art":
-                to = self.settings.paths['art_path']
-            case "Ero":
-                to = self.settings.paths['ero_path']
-            case "Porn":
-                to = self.settings.paths['porn_path']
-            case "Delete":
-                to = self.settings.paths['bin_path']
-        # move picture to path
-        old_path = self.images_info[item_name]['full_path']
-        new_path = J(to, f'{item_name}{self.images_info[item_name]["suffix"]}')
-        Path(old_path).replace(new_path)
-        # change image info
-        self.images_info[item_name]['directory'] = Path(new_path).parents[0]
-        self.images_info[item_name]['full_path'] = new_path
-        self.update_image_info(item.text())
+
+        self.images_moves[item_name] = collection
+        self.label_collection_moveto_1.setText(collection)
+
+    def move_images(self):
+        self.listWidget_image_list.clearSelection()
+        self.label_current_image_image.clear()
+        self.label_current_image_name.clear()
+        self.label_collection_1.clear()
+        self.label_collection_moveto_1.clear()
+        for im in list(self.images_moves.keys()):
+            to = ""
+            match self.images_moves[im]:
+                case "Art":
+                    to = self.settings.paths['art_path']
+                case "Ero":
+                    to = self.settings.paths['ero_path']
+                case "Porn":
+                    to = self.settings.paths['porn_path']
+                case "Delete":
+                    to = self.settings.paths['bin_path']
+            old_path = self.images_info[im]['full_path']
+            new_path = J(to, f'{im}{self.images_info[im]["suffix"]}')
+            if old_path == new_path:
+                continue
+            if Path(new_path).exists():
+                new_name = self.rename_image(im, new_path)
+                self.images_info[new_name]['directory'] = Path(new_path).parents[0]
+                new_full_path = J(Path(new_path).parents[0], f"{new_name}{self.images_info[new_name]['suffix']}")
+                self.images_info[new_name]['full_path'] = new_full_path
+            else:
+                Path(old_path).replace(new_path)
+                self.images_info[im]['directory'] = Path(new_path).parents[0]
+                self.images_info[im]['full_path'] = new_path
+
+            self.update_image_info(im)
+        self.images_moves.clear()
+
+    def select_next_image(self):
+        self.listWidget_image_list.setCurrentRow(self.listWidget_image_list.currentRow() + 1)
+
+    def select_prev_image(self):
+        self.listWidget_image_list.setCurrentRow(self.listWidget_image_list.currentRow() - 1)
 
     # events
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_A:
-            self.listWidget_image_list.setCurrentRow(self.listWidget_image_list.currentRow()-1)
+            self.select_prev_image()
         if e.key() == Qt.Key_D:
-            self.listWidget_image_list.setCurrentRow(self.listWidget_image_list.currentRow() + 1)
+            self.select_next_image()
         if e.key() == Qt.Key_R:
             if self.listWidget_image_list.currentItem() is not None:
                 self.open_rename_widget()
         if e.key() == Qt.Key_Q:
-            self.move_to_collection('Art')
+            self.prepare_to_move_image('Art')
         if e.key() == Qt.Key_W:
-            self.move_to_collection('Ero')
+            self.prepare_to_move_image('Ero')
         if e.key() == Qt.Key_E:
-            self.move_to_collection('Porn')
+            self.prepare_to_move_image('Porn')
         if e.key() == Qt.Key_Delete:
-            self.move_to_collection('Delete')
+            self.prepare_to_move_image('Delete')
+        if e.key() == Qt.Key_F12:
+            self.move_images()

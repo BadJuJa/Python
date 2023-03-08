@@ -23,17 +23,51 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SORTAH</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../resources/resources.qrc">
+    <normaloff>:/icons/icons/window_icon.jpg</normaloff>:/icons/icons/window_icon.jpg</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(255, 255, 255);
+font: 75 13pt &quot;Century Gothic&quot;;
+selection-background-color: rgb(188, 188, 188);
+selection-color: rgb(0, 0, 0);
+border-color: rgb(15, 15, 15);
+background-color: rgb(63, 63, 63);
+alternate-background-color: rgb(188, 188, 188);</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="verticalFrame_2">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>0</y>
-      <width>1110</width>
-      <height>880</height>
+      <y>-1</y>
+      <width>1101</width>
+      <height>881</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
     </property>
     <widget class="QFrame" name="verticalFrame_3">
      <property name="geometry">
@@ -81,10 +115,10 @@
        </size>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Box</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
+       <enum>QFrame::Raised</enum>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="leftMargin">
@@ -113,6 +147,18 @@
            <height>50</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+         </property>
          <property name="text">
           <string>&lt;-</string>
          </property>
@@ -131,6 +177,18 @@
            <width>100</width>
            <height>50</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
          </property>
          <property name="text">
           <string>-&gt;</string>
@@ -157,6 +215,18 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+         </property>
          <property name="text">
           <string>To Art</string>
          </property>
@@ -181,6 +251,18 @@
            <width>400</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
          </property>
          <property name="text">
           <string>To Erotics</string>
@@ -210,6 +292,18 @@
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+         </property>
          <property name="text">
           <string>To Porn</string>
          </property>
@@ -222,8 +316,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1100</width>
-        <height>60</height>
+        <width>1101</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -234,78 +328,260 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
-        <number>3</number>
+        <number>4</number>
        </property>
        <property name="leftMargin">
-        <number>3</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>3</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>3</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>3</number>
+        <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_current_collection_0">
-         <property name="maximumSize">
-          <size>
-           <width>250</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>20</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
+        <widget class="QFrame" name="frame_3">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="text">
-          <string>Current collection</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_collection_0">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>16</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	background-color: rgb(60, 60, 60);
+    border-top-left-radius: 10%;
+	border-bottom-left-radius: 10%;
+    border: 1px solid rgb(188, 188, 188);
+	border-right: 2px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>Current collection</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>6</number>
+            </property>
+            <property name="indent">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_collection_1">
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>16</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	background-color: rgb(60, 60, 60);
+    border-top-right-radius: 10%;
+	border-bottom-right-radius: 10%;
+    border: 1px solid rgb(188, 188, 188);
+	border-left: 2px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>6</number>
+            </property>
+            <property name="indent">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_current_collection_1">
-         <property name="font">
-          <font>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
+        <widget class="QFrame" name="frame_4">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="margin">
-          <number>6</number>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_collection_moveto_0">
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>16</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	background-color: rgb(60, 60, 60);
+    border-top-left-radius: 10%;
+	border-bottom-left-radius: 10%;
+    border: 1px solid rgb(188, 188, 188);
+	border-right: 2px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>Move to</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>6</number>
+            </property>
+            <property name="indent">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_collection_moveto_1">
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>16</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	background-color: rgb(60, 60, 60);
+    border-top-right-radius: 10%;
+	border-bottom-right-radius: 10%;
+    border: 1px solid rgb(188, 188, 188);
+	border-left: 2px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>6</number>
+            </property>
+            <property name="indent">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -321,7 +597,7 @@
       </rect>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Box</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Sunken</enum>
@@ -344,8 +620,11 @@
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="frameShape">
-         <enum>QFrame::Box</enum>
+         <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Sunken</enum>
@@ -377,8 +656,15 @@
         </property>
         <property name="font">
          <font>
-          <pointsize>18</pointsize>
+          <family>Century Gothic</family>
+          <pointsize>13</pointsize>
+          <weight>9</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 0px;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
@@ -401,9 +687,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-1</y>
       <width>330</width>
-      <height>880</height>
+      <height>881</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -475,6 +761,18 @@
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+        </property>
         <property name="text">
          <string>Rename</string>
         </property>
@@ -488,8 +786,23 @@
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+        </property>
         <property name="text">
          <string>Delete</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -510,11 +823,28 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QListWidget::item:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}
+
+QListWidget::item:selected{
+	background-color: rgb(210, 210, 210);
+	color: rgb(0, 0, 0);
+}</string>
+     </property>
      <property name="frameShape">
-      <enum>QFrame::Box</enum>
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
      </property>
      <property name="lineWidth">
-      <number>2</number>
+      <number>1</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_items_in_list">
@@ -544,10 +874,19 @@
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar::item:selected {
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+   </property>
    <widget class="QMenu" name="menuFile">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
@@ -567,6 +906,9 @@
     <addaction name="actionArt"/>
     <addaction name="separator"/>
     <addaction name="actionRecycle_bin"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionMove_Images"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCollections"/>
@@ -636,7 +978,14 @@
     <string>Refresh List</string>
    </property>
   </action>
+  <action name="actionMove_Images">
+   <property name="text">
+    <string>Move Images</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

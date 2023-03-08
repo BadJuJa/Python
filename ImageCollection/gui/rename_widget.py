@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (QWidget)
-
+from PyQt5.Qt import Qt
 from gui.base.rename_base import Ui_Rename
 
 
@@ -20,6 +20,16 @@ class RenameWidget(QWidget, Ui_Rename):
             new_name = 'unnamed'
         self.main_window.rename_image(new_name)
         self.close()
+        self.releaseKeyboard()
+        self.main_window.grabKeyboard()
 
     def cancel(self):
         self.close()
+        self.releaseKeyboard()
+        self.main_window.grabKeyboard()
+
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_Enter:
+            self.ok()
+        if e.key() == Qt.Key_Escape:
+            self.cancel()

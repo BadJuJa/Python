@@ -31,6 +31,19 @@
   <property name="windowTitle">
    <string>Rename</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/icons/icons/window_icon.jpg</normaloff>:/icons/icons/window_icon.jpg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(255, 255, 255);
+font: 75 13pt &quot;Century Gothic&quot;;
+selection-background-color: rgb(188, 188, 188);
+selection-color: rgb(0, 0, 0);
+border-color: rgb(15, 15, 15);
+background-color: rgb(63, 63, 63);
+alternate-background-color: rgb(188, 188, 188);</string>
+  </property>
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
@@ -57,7 +70,11 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <family>Century Gothic</family>
+        <pointsize>13</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -104,6 +121,18 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+      </property>
       <property name="text">
        <string>Cancel</string>
       </property>
@@ -117,6 +146,18 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+      </property>
       <property name="text">
        <string>OK</string>
       </property>
@@ -125,6 +166,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

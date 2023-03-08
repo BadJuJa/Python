@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui/ui/settings.ui'
+# Form implementation generated from reading ui file 'resources/ui/settings.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -23,8 +23,28 @@ class Ui_Settings(object):
         Settings.setSizePolicy(sizePolicy)
         Settings.setMinimumSize(QtCore.QSize(561, 230))
         Settings.setMaximumSize(QtCore.QSize(561, 230))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/icons/window_icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Settings.setWindowIcon(icon)
+        Settings.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 13pt \"Century Gothic\";\n"
+"selection-background-color: rgb(188, 188, 188);\n"
+"selection-color: rgb(0, 0, 0);\n"
+"border-color: rgb(15, 15, 15);\n"
+"background-color: rgb(63, 63, 63);\n"
+"alternate-background-color: rgb(188, 188, 188);")
         self.button_save = QtWidgets.QPushButton(Settings)
         self.button_save.setGeometry(QtCore.QRect(450, 180, 101, 41))
+        self.button_save.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_save.setObjectName("button_save")
         self.gridLayoutWidget = QtWidgets.QWidget(Settings)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 541, 161))
@@ -50,6 +70,16 @@ class Ui_Settings(object):
         self.label_porn.setObjectName("label_porn")
         self.gridLayout.addWidget(self.label_porn, 2, 0, 1, 1)
         self.button_open_art = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.button_open_art.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 3px;\n"
+"    border: 0px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_open_art.setObjectName("button_open_art")
         self.gridLayout.addWidget(self.button_open_art, 0, 2, 1, 1)
         self.lineEdit_art = QtWidgets.QLineEdit(self.gridLayoutWidget)
@@ -58,9 +88,29 @@ class Ui_Settings(object):
         self.lineEdit_art.setObjectName("lineEdit_art")
         self.gridLayout.addWidget(self.lineEdit_art, 0, 1, 1, 1)
         self.button_open_erotic = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.button_open_erotic.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 3px;\n"
+"    border: 0px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_open_erotic.setObjectName("button_open_erotic")
         self.gridLayout.addWidget(self.button_open_erotic, 1, 2, 1, 1)
         self.button_open_porn = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.button_open_porn.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 3px;\n"
+"    border: 0px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_open_porn.setObjectName("button_open_porn")
         self.gridLayout.addWidget(self.button_open_porn, 2, 2, 1, 1)
         self.lineEdit_porn = QtWidgets.QLineEdit(self.gridLayoutWidget)
@@ -78,6 +128,16 @@ class Ui_Settings(object):
         self.lineEdit_trash.setObjectName("lineEdit_trash")
         self.gridLayout.addWidget(self.lineEdit_trash, 3, 1, 1, 1)
         self.button_open_trash = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.button_open_trash.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border-radius: 3px;\n"
+"    border: 0px solid rgb(188, 188, 188);\n"
+"    font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.button_open_trash.setObjectName("button_open_trash")
         self.gridLayout.addWidget(self.button_open_trash, 3, 2, 1, 1)
 
@@ -96,6 +156,7 @@ class Ui_Settings(object):
         self.button_open_porn.setText(_translate("Settings", "Open..."))
         self.label_trash.setText(_translate("Settings", "Trash path"))
         self.button_open_trash.setText(_translate("Settings", "Open..."))
+import resources_rc
 
 
 if __name__ == "__main__":
