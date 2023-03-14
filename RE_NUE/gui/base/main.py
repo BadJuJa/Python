@@ -406,13 +406,21 @@ class Ui_MainWindow(object):
 
         self.widget_current_playlist_verticalLayout.addWidget(self.label_currently_playing)
 
-        self.listWidget = QListWidget(self.widget_current_playlist)
-        self.listWidget.setObjectName(u"listWidget")
-        sizePolicy4.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
-        self.listWidget.setSizePolicy(sizePolicy4)
-        self.listWidget.setMaximumSize(QSize(250, 16777215))
+        self.listWidget_current_playlist = QListWidget(self.widget_current_playlist)
+        self.listWidget_current_playlist.setObjectName(u"listWidget_current_playlist")
+        sizePolicy4.setHeightForWidth(self.listWidget_current_playlist.sizePolicy().hasHeightForWidth())
+        self.listWidget_current_playlist.setSizePolicy(sizePolicy4)
+        self.listWidget_current_playlist.setMaximumSize(QSize(250, 16777215))
+        self.listWidget_current_playlist.setStyleSheet(u"QListWidget:item:selected {\n"
+"	background-color: rgb(188, 188, 188);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+        self.listWidget_current_playlist.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.listWidget_current_playlist.setProperty("showDropIndicator", False)
+        self.listWidget_current_playlist.setProperty("isWrapping", False)
+        self.listWidget_current_playlist.setWordWrap(True)
 
-        self.widget_current_playlist_verticalLayout.addWidget(self.listWidget)
+        self.widget_current_playlist_verticalLayout.addWidget(self.listWidget_current_playlist)
 
 
         self.widget_bottom_horizontalLayout.addWidget(self.widget_current_playlist)

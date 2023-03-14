@@ -42,6 +42,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabWidget_song_parameters.tabBar().hide()
         self.MainMenuSetup()
         self.setup_resizeGrips()
+        self.button_playlists.hide()
+        self.horizontalSlider_speed.hide()
+        self.label_speed_slider.hide()
         # endregion
 
         # region EVENT PARAMETERS
@@ -143,8 +146,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.button_play_pause.clicked.connect(self.PlayStopMusic)
         self.tableWidget_all_songs.itemDoubleClicked.connect(self.StartSong)
+        self.listWidget_current_playlist.itemDoubleClicked.connect(
+            lambda x: self.player.go_to(self.listWidget_current_playlist.currentRow())
+        )
         self.horizontalSlider_volume.valueChanged.connect(self.SendVolumeChange)
         self.horizontalSlider_speed.valueChanged.connect(self.SendSpeedChange)
+        self.button_restore.clicked.connect(self.StartAllSongs)
+        self.button_next_song.clicked.connect(self.player.next_audio)
+        self.button_previous_song.clicked.connect(self.player.previous_audio)
+
+        self.player.signal_audioIndexChanged.connect(lambda x: self.listWidget_current_playlist.setCurrentRow(x))
+
+        self.listWidget_current_playlist.currentTextChanged.connect(lambda x: self.label_song_name.setText(x))
 
     def rescan_music(self):
         self.db.clear_songs_table()
@@ -218,14 +231,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def PlayStopMusic(self):
         if self.player.IsPlaying():
-            self.player.pause_signal.emit()
+            self.player.signal_pauseAudio.emit()
         else:
-            self.player.play_signal.emit()
+            self.player.signal_playAudio.emit()
 
     def StartSong(self):
         row = self.tableWidget_all_songs.currentRow()
-        self.player.Load(self.songs[row])
-        self.player.Play()
+        song = self.songs[row]
+        self.listWidget_current_playlist.clear()
+        self.listWidget_current_playlist.addItem(self.tableWidget_all_songs.currentItem().text())
+        self.player.set_playlist(song, from_index=row, instant_play=True)
+
+    def StartAllSongs(self):
+        self.listWidget_current_playlist.clear()
+        self.listWidget_current_playlist.addItems([x[0] for x in self.db.get_songs()])
+        self.player.set_playlist(self.songs, instant_play=True)
 
     def SendVolumeChange(self, value):
         self.signal_volumeChanged.emit(value)

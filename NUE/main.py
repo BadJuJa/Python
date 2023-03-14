@@ -19,7 +19,7 @@ import newPlaylist
 import artist
 import playlist
 
-
+"""
 class PathsEditWidget(QWidget, changePath.Ui_EditPathsWidget):
     def __init__(self, parent=None):
         super(PathsEditWidget, self).__init__(parent, QtCore.Qt.Window)
@@ -268,6 +268,7 @@ class Artist(QWidget, artist.Ui_Form):
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         self.listWidget.clear()
 
+"""
 
 class MainClass(QMainWindow, ui.Ui_MainWindow):
     def __init__(self):
@@ -602,7 +603,6 @@ class MainClass(QMainWindow, ui.Ui_MainWindow):
     def set_position(self, position):
         self.player.setPosition(position)
     # endregion
-
 
 def main():
     app = QApplication(sys.argv)

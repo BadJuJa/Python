@@ -15,8 +15,9 @@ from PySide6.QtWidgets import (QMainWindow, QApplication, QTableWidgetItem,
 
 
 class AudioPlayer(QObject):
-    play_signal = Signal(name="PlaySong")
-    pause_signal = Signal(name="PauseSong")
+    signal_playAudio = Signal()
+    signal_pauseAudio = Signal()
+    signal_audioIndexChanged = Signal(int)
 
     def __init__(self, main_window):
         super().__init__(main_window)
@@ -25,13 +26,17 @@ class AudioPlayer(QObject):
         self.audio_output = QAudioOutput()
         self.player.setAudioOutput(self.audio_output)
 
-        self.play_signal.connect(self.Play)
-        self.pause_signal.connect(self.Pause)
+        self.playlist_index = 0
+        self.playlist = []
+
+        self.signal_playAudio.connect(self.Play)
+        self.signal_pauseAudio.connect(self.Pause)
 
         self.main_window.signal_volumeChanged.connect(self.changeVolume)
         self.main_window.signal_speedChanged.connect(self.changeSpeed)
 
-        file_path = r"C:\Users\user\Documents\GitHub\Python\RE_NUE\music\Kelly Camelio  - Dusk on Anvil Harbor.mp3"
+        self.player.mediaStatusChanged.connect(lambda status: self.change_audio(status))
+
         self.player.audioOutput().setVolume(1)
 
     def Load(self, file_path):
@@ -39,13 +44,16 @@ class AudioPlayer(QObject):
 
     @Slot()
     def Play(self):
+        print(self.playlist_index)
         self.player.play()
-        print("PLAY")
 
     @Slot()
     def Pause(self):
         self.player.pause()
-        print("PAUSE")
+
+    @Slot()
+    def Stop(self):
+        self.player.stop()
 
     def IsPlaying(self):
         return self.player.playbackState() is QMediaPlayer.PlaybackState.PlayingState
@@ -57,3 +65,49 @@ class AudioPlayer(QObject):
     @Slot()
     def changeSpeed(self, value):
         self.player.setPlaybackRate(value/100)
+
+    def set_playlist(self, playlist, instant_play=False, from_index=0):
+        if not isinstance(playlist, list):
+            self.playlist = [playlist]
+        else:
+            self.playlist = playlist
+        if from_index != 0:
+            clamped_index = max(0, min(self.playlist_index, len(self.playlist)-1))
+            self.playlist_index = from_index if from_index == clamped_index else clamped_index
+        else:
+            self.playlist_index = from_index
+
+        self.signal_audioIndexChanged.emit(self.playlist_index)
+
+        if instant_play:
+            self.iterate_playlist()
+
+    def iterate_playlist(self):
+        song = self.playlist[self.playlist_index]
+        self.Load(song)
+        self.Play()
+
+    def change_audio(self, status):
+        if status is QMediaPlayer.MediaStatus.EndOfMedia:
+            self.next_audio()
+
+    def next_audio(self):
+        if len(self.playlist) - self.playlist_index == 1:
+            self.Stop()
+            return
+        self.playlist_index += 1
+        self.iterate_playlist()
+        self.signal_audioIndexChanged.emit(self.playlist_index)
+
+    def previous_audio(self):
+        if self.playlist_index == 0:
+            self.Stop()
+            return
+        self.playlist_index -= 1
+        self.iterate_playlist()
+        self.signal_audioIndexChanged.emit(self.playlist_index)
+
+    def go_to(self, index):
+        self.playlist_index = index
+        self.iterate_playlist()
+        self.signal_audioIndexChanged.emit(self.playlist_index)

@@ -779,7 +779,7 @@ QTableCornerButton::section {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QListWidget" name="listWidget">
+                 <widget class="QListWidget" name="listWidget_current_playlist">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -791,6 +791,24 @@ QTableCornerButton::section {
                     <width>250</width>
                     <height>16777215</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QListWidget:item:selected {
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+                  </property>
+                  <property name="editTriggers">
+                   <set>QAbstractItemView::NoEditTriggers</set>
+                  </property>
+                  <property name="showDropIndicator" stdset="0">
+                   <bool>false</bool>
+                  </property>
+                  <property name="isWrapping" stdset="0">
+                   <bool>false</bool>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
