@@ -271,7 +271,7 @@ QPushButton:hover{
                   </property>
                   <property name="icon">
                    <iconset resource="../resources.qrc">
-                    <normaloff>:/icons/assets/mini.svg</normaloff>:/icons/assets/mini.svg</iconset>
+                    <normaloff>:/icons/assets/window-minimize.png</normaloff>:/icons/assets/window-minimize.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -319,7 +319,7 @@ QPushButton:hover{
                   </property>
                   <property name="icon">
                    <iconset resource="../resources.qrc">
-                    <normaloff>:/icons/assets/full_screen.svg</normaloff>:/icons/assets/full_screen.svg</iconset>
+                    <normaloff>:/icons/assets/window-maximize.png</normaloff>:/icons/assets/window-maximize.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -366,12 +366,12 @@ QPushButton:hover{
                   </property>
                   <property name="icon">
                    <iconset resource="../resources.qrc">
-                    <normaloff>:/icons/assets/close.svg</normaloff>:/icons/assets/close.svg</iconset>
+                    <normaloff>:/icons/assets/close-window.png</normaloff>:/icons/assets/close-window.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>24</width>
-                    <height>24</height>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                  </widget>
@@ -533,6 +533,30 @@ QPushButton:hover{
                     </widget>
                    </item>
                    <item>
+                    <widget class="QPushButton" name="button_add_playlist">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border: 1px solid rgb(188, 188, 188);
+	border-left: 0px solid;
+	border-top-right-radius: 10%;
+	border-bottom-right-radius: 10%;
+	font-size: 14pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Add playlist</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <spacer name="verticalSpacer">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
@@ -550,6 +574,9 @@ QPushButton:hover{
                 </item>
                 <item>
                  <widget class="QTabWidget" name="tabWidget_main">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QTabBar {
 	font: 13pt &quot;Century Gothic&quot;;
@@ -665,7 +692,7 @@ QTableCornerButton::section {
                        <bool>true</bool>
                       </property>
                       <attribute name="horizontalHeaderVisible">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </attribute>
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>false</bool>
@@ -695,6 +722,54 @@ QTableCornerButton::section {
                    <attribute name="title">
                     <string>Page</string>
                    </attribute>
+                   <layout class="QGridLayout" name="gridLayout_3">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="1">
+                     <widget class="QTableWidget" name="tableWidget_playlists_table">
+                      <property name="sizeAdjustPolicy">
+                       <enum>QAbstractScrollArea::AdjustToContents</enum>
+                      </property>
+                      <property name="editTriggers">
+                       <set>QAbstractItemView::NoEditTriggers</set>
+                      </property>
+                      <property name="tabKeyNavigation">
+                       <bool>false</bool>
+                      </property>
+                      <property name="showDropIndicator" stdset="0">
+                       <bool>false</bool>
+                      </property>
+                      <property name="dragDropOverwriteMode">
+                       <bool>false</bool>
+                      </property>
+                      <property name="selectionMode">
+                       <enum>QAbstractItemView::SingleSelection</enum>
+                      </property>
+                      <property name="verticalScrollMode">
+                       <enum>QAbstractItemView::ScrollPerPixel</enum>
+                      </property>
+                      <property name="horizontalScrollMode">
+                       <enum>QAbstractItemView::ScrollPerPixel</enum>
+                      </property>
+                      <attribute name="horizontalHeaderStretchLastSection">
+                       <bool>true</bool>
+                      </attribute>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </widget>
                 </item>
@@ -755,11 +830,9 @@ QTableCornerButton::section {
                    <font>
                     <family>Century Gothic</family>
                     <pointsize>16</pointsize>
+                    <weight>9</weight>
                     <italic>false</italic>
                     <bold>false</bold>
-                    <strikeout>false</strikeout>
-                    <stylestrategy>PreferDefault</stylestrategy>
-                    <kerning>true</kerning>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -1106,6 +1179,7 @@ QTabWidget::pane {}</string>
                           <font>
                            <family>Century Gothic</family>
                            <pointsize>13</pointsize>
+                           <weight>9</weight>
                            <italic>false</italic>
                            <bold>false</bold>
                           </font>
@@ -1167,109 +1241,6 @@ QTabWidget::pane {}</string>
                       </layout>
                      </widget>
                     </item>
-                    <item row="0" column="1">
-                     <widget class="QWidget" name="widget_dial_speed" native="true">
-                      <property name="minimumSize">
-                       <size>
-                        <width>175</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <layout class="QGridLayout" name="widget_dial_speed_gridLayout">
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <item row="0" column="0">
-                        <widget class="QDial" name="dial_speed">
-                         <property name="minimumSize">
-                          <size>
-                           <width>60</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>90</width>
-                           <height>90</height>
-                          </size>
-                         </property>
-                         <property name="maximum">
-                          <number>100</number>
-                         </property>
-                         <property name="value">
-                          <number>100</number>
-                         </property>
-                         <property name="tracking">
-                          <bool>true</bool>
-                         </property>
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="invertedAppearance">
-                          <bool>false</bool>
-                         </property>
-                         <property name="wrapping">
-                          <bool>false</bool>
-                         </property>
-                         <property name="notchesVisible">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1" colspan="2">
-                        <widget class="QLabel" name="label_speed_dial">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>80</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Century Gothic</family>
-                           <pointsize>13</pointsize>
-                           <italic>false</italic>
-                           <bold>false</bold>
-                          </font>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="text">
-                          <string>Speed</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="tab_song_parameters_sliders">
@@ -1279,7 +1250,7 @@ QTabWidget::pane {}</string>
                    <attribute name="title">
                     <string>Tab 2</string>
                    </attribute>
-                   <layout class="QGridLayout" name="tab_song_parameters_sliders_gridLayout" rowstretch="1,1" columnstretch="0,0" columnminimumwidth="0,0">
+                   <layout class="QGridLayout" name="tab_song_parameters_sliders_gridLayout" rowstretch="1" columnstretch="0,0">
                     <property name="sizeConstraint">
                      <enum>QLayout::SetDefaultConstraint</enum>
                     </property>
@@ -1301,38 +1272,6 @@ QTabWidget::pane {}</string>
                     <property name="verticalSpacing">
                      <number>0</number>
                     </property>
-                    <item row="1" column="1">
-                     <widget class="QLabel" name="label_speed_slider">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>45</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Century Gothic</family>
-                        <pointsize>13</pointsize>
-                        <italic>false</italic>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Speed</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="1">
                      <widget class="QLabel" name="label_volume_slider">
                       <property name="minimumSize">
@@ -1351,6 +1290,7 @@ QTabWidget::pane {}</string>
                        <font>
                         <family>Century Gothic</family>
                         <pointsize>13</pointsize>
+                        <weight>9</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                        </font>
@@ -1370,19 +1310,20 @@ QTabWidget::pane {}</string>
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>40</height>
+                        <height>60</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>45</height>
+                        <height>60</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>Century Gothic</family>
                         <pointsize>13</pointsize>
+                        <weight>9</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                        </font>
@@ -1404,55 +1345,6 @@ QTabWidget::pane {}</string>
                       </property>
                       <property name="tickInterval">
                        <number>10</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QSlider" name="horizontalSlider_speed">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>45</height>
-                       </size>
-                      </property>
-                      <property name="minimum">
-                       <number>25</number>
-                      </property>
-                      <property name="maximum">
-                       <number>200</number>
-                      </property>
-                      <property name="singleStep">
-                       <number>25</number>
-                      </property>
-                      <property name="pageStep">
-                       <number>0</number>
-                      </property>
-                      <property name="value">
-                       <number>100</number>
-                      </property>
-                      <property name="sliderPosition">
-                       <number>100</number>
-                      </property>
-                      <property name="tracking">
-                       <bool>true</bool>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="tickPosition">
-                       <enum>QSlider::TicksBelow</enum>
-                      </property>
-                      <property name="tickInterval">
-                       <number>25</number>
                       </property>
                      </widget>
                     </item>
@@ -1542,7 +1434,7 @@ QTabWidget::pane {}</string>
                     <number>0</number>
                    </property>
                    <item row="0" column="0">
-                    <widget class="QPushButton" name="button_restore">
+                    <widget class="QPushButton" name="button_stop">
                      <property name="maximumSize">
                       <size>
                        <width>30</width>
@@ -1562,7 +1454,7 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="icon">
                       <iconset resource="../resources.qrc">
-                       <normaloff>:/icons/assets/reset.svg</normaloff>:/icons/assets/reset.svg</iconset>
+                       <normaloff>:/icons/assets/stop-button.png</normaloff>:/icons/assets/stop-button.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1593,12 +1485,12 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="icon">
                       <iconset resource="../resources.qrc">
-                       <normaloff>:/icons/assets/repeat.svg</normaloff>:/icons/assets/repeat.svg</iconset>
+                       <normaloff>:/icons/assets/repeat.png</normaloff>:/icons/assets/repeat.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
-                       <width>30</width>
-                       <height>30</height>
+                       <width>32</width>
+                       <height>32</height>
                       </size>
                      </property>
                     </widget>
@@ -1621,6 +1513,16 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resources.qrc">
+                       <normaloff>:/icons/assets/shuffle.png</normaloff>:/icons/assets/shuffle.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>32</width>
+                       <height>32</height>
+                      </size>
                      </property>
                     </widget>
                    </item>
@@ -1699,12 +1601,12 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="icon">
                       <iconset resource="../resources.qrc">
-                       <normaloff>:/icons/assets/backward.svg</normaloff>:/icons/assets/backward.svg</iconset>
+                       <normaloff>:/icons/assets/previous.png</normaloff>:/icons/assets/previous.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>40</width>
+                       <height>40</height>
                       </size>
                      </property>
                     </widget>
@@ -1742,12 +1644,12 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="icon">
                       <iconset resource="../resources.qrc">
-                       <normaloff>:/icons/assets/play.svg</normaloff>:/icons/assets/play.svg</iconset>
+                       <normaloff>:/icons/assets/play-button.png</normaloff>:/icons/assets/play-button.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
-                       <width>80</width>
-                       <height>80</height>
+                       <width>48</width>
+                       <height>48</height>
                       </size>
                      </property>
                     </widget>
@@ -1785,12 +1687,12 @@ QTabWidget::pane {}</string>
                      </property>
                      <property name="icon">
                       <iconset resource="../resources.qrc">
-                       <normaloff>:/icons/assets/forwad.svg</normaloff>:/icons/assets/forwad.svg</iconset>
+                       <normaloff>:/icons/assets/next.png</normaloff>:/icons/assets/next.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>40</width>
+                       <height>40</height>
                       </size>
                      </property>
                     </widget>

@@ -1,113 +1,98 @@
 # IMPORTS
-import sys
-import os
-import fnmatch
-from pathlib import Path
-import time
 
-from PySide6 import QtCore, QtGui
-from PySide6.QtCore import QUrl, QDirIterator, Slot, Signal, QObject
-from PySide6.QtMultimedia import (QAudio, QAudioOutput, QMediaFormat,
-                                  QMediaPlayer)
-from PySide6.QtWidgets import (QMainWindow, QApplication, QTableWidgetItem,
-                             QListWidgetItem, QPushButton, QWidget, QHBoxLayout,
-                             QFileDialog, QMessageBox)
+from PyQt5 import QtCore
+from PyQt5.QtCore import QUrl, pyqtSignal as Signal
+from PyQt5.QtMultimedia import QMediaPlaylist, QMediaPlayer, QMediaContent
+from PyQt5.QtWidgets import (QMainWindow)
 
 
-class AudioPlayer(QObject):
-    signal_playAudio = Signal()
-    signal_pauseAudio = Signal()
-    signal_audioIndexChanged = Signal(int)
+# noinspection PyUnresolvedReferences
+class MediaPlayer(QMediaPlayer):
+    # region SIGNALS
+    signal_playlist_index_changed = Signal(int)
+    # endregion
 
-    def __init__(self, main_window):
-        super().__init__(main_window)
-        self.main_window = main_window
+    def __init__(self, parent):
+        super().__init__(parent=parent)
+        self.mw_ref = parent
+        self.playlist = QMediaPlaylist()
+        self.playlist.currentIndexChanged.connect(self.signal_playlist_index_changed.emit)
+
+    def set_playlist(self, song_list, start=True):
+        self.stop()
+        self.playlist.clear()
+        self.mw_ref.listWidget_current_playlist.clear()
+
+        if not isinstance(song_list, list):
+            song_list = [song_list]
+
+        for song in song_list:
+            self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(song)))
+            self.mw_ref.listWidget_current_playlist.addItem(self.mw_ref.db.get_song_name(song))
+
+        self.setPlaylist(self.playlist)
+        self.playlist.setCurrentIndex(0)
+        if start:
+            self.play()
+
+    def play_pause(self):
+        if self.state() == QMediaPlayer.State.PlayingState:
+            self.pause()
+        else:
+            self.play()
+
+    def shuffle(self):
+        self.playlist.shuffle()
+        _ = [self.playlist.media(i).canonicalUrl().fileName() for i in range(self.playlist.mediaCount())]
+        #_ = [pathlib.Path(p).name for p in _]
+        self.mw_ref.listWidget_current_playlist.clear()
+        for item in _:
+            self.mw_ref.listWidget_current_playlist.addItem(item)
+
+    def setCurrentIndex(self, index):
+        self.playlist.setCurrentIndex(index)
+        self.play()
+
+
+class MainClass(QMainWindow):
+    def __init__(self):
+        super(MainClass, self).__init__()
+        self.setupUi(self)
+
         self.player = QMediaPlayer()
-        self.audio_output = QAudioOutput()
-        self.player.setAudioOutput(self.audio_output)
+        self.current_playlist = []
 
-        self.playlist_index = 0
-        self.playlist = []
+        self.progress_bar_slider.setRange(0, 0)
+        self.progress_bar_slider.sliderMoved.connect(self.set_position)
 
-        self.signal_playAudio.connect(self.Play)
-        self.signal_pauseAudio.connect(self.Pause)
+        self.sound_bar_slider.setValue(100)
+        self.sound_bar_slider.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.addControls()
 
-        self.main_window.signal_volumeChanged.connect(self.changeVolume)
-        self.main_window.signal_speedChanged.connect(self.changeSpeed)
+        self.update_playlists_list()
+        self.on_show()
 
-        self.player.mediaStatusChanged.connect(lambda status: self.change_audio(status))
+        self.selected_playlist = None
+        self.new_playlist_widget = None
+        self.recently_added_playlist_name = ""
+        self.recently_added_playlist_slist = []
+        self.artist = None
 
-        self.player.audioOutput().setVolume(1)
+    # endregion
 
-    def Load(self, file_path):
-        self.player.setSource(QUrl.fromLocalFile(Path(file_path)))
+    # region MediaPlayer
 
-    @Slot()
-    def Play(self):
-        print(self.playlist_index)
-        self.player.play()
+    def durationHandler(self):
+        pass
 
-    @Slot()
-    def Pause(self):
-        self.player.pause()
+    def position_changed(self, position):
+        self.progress_bar_slider.blockSignals(True)
+        self.progress_bar_slider.setValue(position)
+        self.progress_bar_slider.blockSignals(False)
 
-    @Slot()
-    def Stop(self):
-        self.player.stop()
+    def duration_changed(self, duration):
+        self.progress_bar_slider.setRange(0, duration)
 
-    def IsPlaying(self):
-        return self.player.playbackState() is QMediaPlayer.PlaybackState.PlayingState
-
-    @Slot()
-    def changeVolume(self, value):
-        self.audio_output.setVolume(value/100)
-
-    @Slot()
-    def changeSpeed(self, value):
-        self.player.setPlaybackRate(value/100)
-
-    def set_playlist(self, playlist, instant_play=False, from_index=0):
-        if not isinstance(playlist, list):
-            self.playlist = [playlist]
-        else:
-            self.playlist = playlist
-        if from_index != 0:
-            clamped_index = max(0, min(self.playlist_index, len(self.playlist)-1))
-            self.playlist_index = from_index if from_index == clamped_index else clamped_index
-        else:
-            self.playlist_index = from_index
-
-        self.signal_audioIndexChanged.emit(self.playlist_index)
-
-        if instant_play:
-            self.iterate_playlist()
-
-    def iterate_playlist(self):
-        song = self.playlist[self.playlist_index]
-        self.Load(song)
-        self.Play()
-
-    def change_audio(self, status):
-        if status is QMediaPlayer.MediaStatus.EndOfMedia:
-            self.next_audio()
-
-    def next_audio(self):
-        if len(self.playlist) - self.playlist_index == 1:
-            self.Stop()
-            return
-        self.playlist_index += 1
-        self.iterate_playlist()
-        self.signal_audioIndexChanged.emit(self.playlist_index)
-
-    def previous_audio(self):
-        if self.playlist_index == 0:
-            self.Stop()
-            return
-        self.playlist_index -= 1
-        self.iterate_playlist()
-        self.signal_audioIndexChanged.emit(self.playlist_index)
-
-    def go_to(self, index):
-        self.playlist_index = index
-        self.iterate_playlist()
-        self.signal_audioIndexChanged.emit(self.playlist_index)
+    def set_position(self, position):
+        self.player.setPosition(position)
+    # endregion"""

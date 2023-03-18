@@ -67,12 +67,9 @@ QMenuBar::item:selected {
       <font>
        <family>Century Gothic</family>
        <pointsize>13</pointsize>
+       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-       <stylestrategy>PreferDefault</stylestrategy>
-       <kerning>true</kerning>
       </font>
      </property>
      <property name="layoutDirection">
@@ -110,7 +107,7 @@ QTabWidget::pane {}</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -426,30 +423,13 @@ QTableCornerButton::section {
           <property name="horizontalSpacing">
            <number>25</number>
           </property>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="button_radio_dials">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>13</pointsize>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Dials</string>
-            </property>
-            <property name="checked">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="1">
            <widget class="QRadioButton" name="button_radio_sliders">
             <property name="font">
              <font>
               <family>Century Gothic</family>
               <pointsize>13</pointsize>
+              <weight>9</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
@@ -462,12 +442,32 @@ QTableCornerButton::section {
             </property>
            </widget>
           </item>
+          <item row="0" column="1">
+           <widget class="QRadioButton" name="button_radio_dials">
+            <property name="font">
+             <font>
+              <family>Century Gothic</family>
+              <pointsize>13</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Dials</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_style">
             <property name="font">
              <font>
               <family>Century Gothic</family>
               <pointsize>13</pointsize>
+              <weight>9</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
@@ -572,10 +572,9 @@ QTableCornerButton::section {
             <font>
              <family>Century Gothic</family>
              <pointsize>16</pointsize>
+             <weight>9</weight>
              <italic>false</italic>
              <bold>false</bold>
-             <strikeout>false</strikeout>
-             <kerning>true</kerning>
             </font>
            </property>
            <property name="styleSheet">
@@ -626,6 +625,7 @@ QPushButton:hover{
             <font>
              <family>Century Gothic</family>
              <pointsize>16</pointsize>
+             <weight>9</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -672,6 +672,7 @@ QPushButton:hover{
             <font>
              <family>Century Gothic</family>
              <pointsize>16</pointsize>
+             <weight>9</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>

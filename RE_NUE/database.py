@@ -1,6 +1,6 @@
+import os
 import sqlite3
 from sqlite3 import Error
-import os
 
 
 class Database:
@@ -13,12 +13,15 @@ class Database:
         else:
             self.create_database()
 
+        self.rescan_playlists()
+
     def create_database(self):
         self.connection_create()
         c = self.connection.cursor()
         c.execute("""CREATE TABLE Settings  (SettingName  TEXT PRIMARY KEY, SettingValue TEXT);""")
         c.execute("""CREATE TABLE ScanPaths (Path         TEXT PRIMARY KEY);""")
         c.execute("""CREATE TABLE AllSongs  (FileName     TEXT,Path TEXT REFERENCES ScanPaths (Path));""")
+        c.execute("""CREATE TABLE Playlists (path         TEXT PRIMARY KEY, name TEXT, icon TEXT)""")
         self.save_changes()
 
     # region CONNECTION
@@ -56,11 +59,28 @@ class Database:
     def add_song(self, file_name, file_path):
         self.cursor.execute(f'''INSERT INTO AllSongs (FileName, Path) VALUES ("{file_name}","{file_path}")''')
 
+    def add_playlist(self, name, file_path, icon_path):
+        query = f"""
+            INSERT INTO Playlists (path, name, icon) 
+            VALUES (?,?,?) 
+            ON CONFLICT (path) 
+            DO UPDATE SET path=?, name=?, icon=?
+        """
+        self.cursor.execute(query, (file_path, name, icon_path, file_path, name, icon_path))
+
     def clear_songs_table(self):
         self.cursor.execute('''DELETE FROM AllSongs''')
         self.save_changes()
         self.cursor.execute('''VACUUM''')
         self.save_changes()
+
+    def remove_playlist(self, name):
+        query = f"""
+        DELETE FROM Playlists
+        WHERE name LIKE ?
+        """
+
+        self.cursor.execute(query, (name,))
     # endregion
 
     # region GETTERS
@@ -72,4 +92,38 @@ class Database:
     def get_songs(self):
         songs = self.cursor.execute('''SELECT FileName, path FROM AllSongs''').fetchall()
         return songs
+
+    def get_song(self, name):
+        query = f'''SELECT path FROM AllSongs WHERE FileName == "{name}"'''
+        song = self.cursor.execute(query).fetchone()[0]
+        return song
+
+    def get_song_name(self, path):
+        query = f'''SELECT FileName from AllSongs WHERE path LIKE "%{path}%"'''
+        name = self.cursor.execute(query).fetchone()[0]
+        return name
+
+    def get_playlists(self):
+        _ = self.cursor.execute('''SELECT name FROM Playlists''').fetchall()
+        _ = [_[x][0] for x in range(len(_))]
+        return _
+
+    def get_playlist(self, name):
+        playlist = self.cursor.execute(f'''SELECT path, name, icon FROM Playlists WHERE name == "{name}"''').fetchone()
+        return playlist
     # endregion
+
+    def rescan_playlists(self):
+        ps_all = self.get_playlists()
+        for ps in ps_all:
+            path = self.get_playlist(ps)[0]
+            if not os.path.exists(path):
+                self.remove_playlist(path)
+
+    def update_playlist(self, old_name, new_name, csv_path, icon_path):
+        query = """
+        UPDATE Playlists
+        SET (path, name, icon) = (?,?,?)
+        WHERE name == ?
+        """
+        self.cursor.execute(query, (csv_path, new_name, icon_path, old_name,))

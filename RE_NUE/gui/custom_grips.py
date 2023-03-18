@@ -1,6 +1,6 @@
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 
 class CustomGrip(QWidget):
@@ -14,7 +14,7 @@ class CustomGrip(QWidget):
 
         # SHOW TOP GRIP
         if position == Qt.TopEdge:
-            self.wi.top(self)
+            self.wi.top_f(self)
             self.setGeometry(0, 0, self.parent.width(), self.grip_width)
             self.setMaximumHeight(10)
 
@@ -40,7 +40,7 @@ class CustomGrip(QWidget):
 
         # SHOW BOTTOM GRIP
         elif position == Qt.BottomEdge:
-            self.wi.bottom(self)
+            self.wi.bottom_f(self)
             self.setGeometry(0, self.parent.height() - self.grip_width, self.parent.width(), self.grip_width)
             self.setMaximumHeight(self.grip_width)
 
@@ -120,7 +120,7 @@ class Widgets(object):
     def __init__(self, grip_width):
         self.grip_width = grip_width
 
-    def top(self, Form):
+    def top_f(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         self.container_top = QFrame(Form)
@@ -160,7 +160,7 @@ class Widgets(object):
         self.top_right.setFrameShadow(QFrame.Raised)
         self.top_layout.addWidget(self.top_right)
 
-    def bottom(self, Form):
+    def bottom_f(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         self.container_bottom = QFrame(Form)
