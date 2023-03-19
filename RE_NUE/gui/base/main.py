@@ -82,14 +82,14 @@ class Ui_MainWindow(object):
         self.button_menu.setSizePolicy(sizePolicy)
         self.button_menu.setMinimumSize(QtCore.QSize(100, 30))
         self.button_menu.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-bottom-right-radius: 10%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
+"background-color: rgb(60, 60, 60);\n"
+"border-bottom-right-radius: 10%;\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"font-size: 16pt;\n"
 "}\n"
 "QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
 "}")
         self.button_menu.setObjectName("button_menu")
         self.title_bar_horizontalLayout.addWidget(self.button_menu)
@@ -99,6 +99,14 @@ class Ui_MainWindow(object):
         self.widget_header_buttons.setMinimumSize(QtCore.QSize(90, 30))
         self.widget_header_buttons.setMaximumSize(QtCore.QSize(30, 30))
         self.widget_header_buttons.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.widget_header_buttons.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(60, 60, 60);\n"
+"    border: 0px solid rgb(188, 188, 188);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color: rgb(188, 188, 188);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
         self.widget_header_buttons.setObjectName("widget_header_buttons")
         self.widget_header_buttons_horizontalLayout = QtWidgets.QHBoxLayout(self.widget_header_buttons)
         self.widget_header_buttons_horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -113,15 +121,8 @@ class Ui_MainWindow(object):
         self.button_minimize.setMinimumSize(QtCore.QSize(30, 30))
         self.button_minimize.setMaximumSize(QtCore.QSize(30, 30))
         self.button_minimize.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-bottom-left-radius: 10%;\n"
-"    border-bottom-right-radius: 10%;\n"
-"    border: 0px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"border-bottom-left-radius: 10%;\n"
+"border-bottom-right-radius: 10%;\n"
 "}")
         self.button_minimize.setText("")
         icon = QtGui.QIcon()
@@ -139,15 +140,8 @@ class Ui_MainWindow(object):
         self.button_maximize.setMinimumSize(QtCore.QSize(30, 30))
         self.button_maximize.setMaximumSize(QtCore.QSize(30, 30))
         self.button_maximize.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-bottom-left-radius: 10%;\n"
-"    border-bottom-right-radius: 10%;\n"
-"    border: 0px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"border-bottom-left-radius: 10%;\n"
+"border-bottom-right-radius: 10%;\n"
 "}")
         self.button_maximize.setText("")
         icon1 = QtGui.QIcon()
@@ -165,14 +159,7 @@ class Ui_MainWindow(object):
         self.button_exit.setMinimumSize(QtCore.QSize(30, 30))
         self.button_exit.setMaximumSize(QtCore.QSize(30, 30))
         self.button_exit.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-bottom-left-radius: 10%;\n"
-"    border: 0px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"border-bottom-left-radius: 10%;\n"
 "}")
         self.button_exit.setText("")
         icon2 = QtGui.QIcon()
@@ -210,68 +197,48 @@ class Ui_MainWindow(object):
         self.widget_left_buttons.setMinimumSize(QtCore.QSize(120, 0))
         self.widget_left_buttons.setMaximumSize(QtCore.QSize(120, 16777215))
         self.widget_left_buttons.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.widget_left_buttons.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-left: 0px solid;\n"
+"border-top-right-radius: 10%;\n"
+"border-bottom-right-radius: 10%;\n"
+"font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"")
         self.widget_left_buttons.setObjectName("widget_left_buttons")
         self.widget_left_buttons_verticalLayout = QtWidgets.QVBoxLayout(self.widget_left_buttons)
         self.widget_left_buttons_verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget_left_buttons_verticalLayout.setSpacing(5)
         self.widget_left_buttons_verticalLayout.setObjectName("widget_left_buttons_verticalLayout")
-        self.button_all_songs = QtWidgets.QPushButton(self.widget_left_buttons)
+        self.button_all_audio = QtWidgets.QPushButton(self.widget_left_buttons)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.button_all_songs.sizePolicy().hasHeightForWidth())
-        self.button_all_songs.setSizePolicy(sizePolicy)
-        self.button_all_songs.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-left: 0px solid;\n"
-"    border-top-right-radius: 10%;\n"
-"    border-bottom-right-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
-        self.button_all_songs.setCheckable(False)
-        self.button_all_songs.setAutoExclusive(False)
-        self.button_all_songs.setAutoDefault(False)
-        self.button_all_songs.setObjectName("button_all_songs")
-        self.widget_left_buttons_verticalLayout.addWidget(self.button_all_songs)
+        sizePolicy.setHeightForWidth(self.button_all_audio.sizePolicy().hasHeightForWidth())
+        self.button_all_audio.setSizePolicy(sizePolicy)
+        self.button_all_audio.setStyleSheet("")
+        self.button_all_audio.setCheckable(False)
+        self.button_all_audio.setAutoExclusive(False)
+        self.button_all_audio.setAutoDefault(False)
+        self.button_all_audio.setObjectName("button_all_audio")
+        self.widget_left_buttons_verticalLayout.addWidget(self.button_all_audio)
         self.button_playlists = QtWidgets.QPushButton(self.widget_left_buttons)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_playlists.sizePolicy().hasHeightForWidth())
         self.button_playlists.setSizePolicy(sizePolicy)
-        self.button_playlists.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-left: 0px solid;\n"
-"    border-top-right-radius: 10%;\n"
-"    border-bottom-right-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_playlists.setStyleSheet("")
         self.button_playlists.setObjectName("button_playlists")
         self.widget_left_buttons_verticalLayout.addWidget(self.button_playlists)
         self.button_add_playlist = QtWidgets.QPushButton(self.widget_left_buttons)
         self.button_add_playlist.setEnabled(True)
-        self.button_add_playlist.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-left: 0px solid;\n"
-"    border-top-right-radius: 10%;\n"
-"    border-bottom-right-radius: 10%;\n"
-"    font-size: 14pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_add_playlist.setStyleSheet("")
         self.button_add_playlist.setObjectName("button_add_playlist")
         self.widget_left_buttons_verticalLayout.addWidget(self.button_add_playlist)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -306,15 +273,15 @@ class Ui_MainWindow(object):
         self.tabWidget_main.setIconSize(QtCore.QSize(0, 0))
         self.tabWidget_main.setUsesScrollButtons(False)
         self.tabWidget_main.setObjectName("tabWidget_main")
-        self.tab_all_songs = QtWidgets.QWidget()
-        self.tab_all_songs.setObjectName("tab_all_songs")
-        self.tab_all_songs_gridLayout = QtWidgets.QGridLayout(self.tab_all_songs)
+        self.tab_all_audio = QtWidgets.QWidget()
+        self.tab_all_audio.setObjectName("tab_all_audio")
+        self.tab_all_songs_gridLayout = QtWidgets.QGridLayout(self.tab_all_audio)
         self.tab_all_songs_gridLayout.setContentsMargins(0, 0, 0, 0)
         self.tab_all_songs_gridLayout.setSpacing(0)
         self.tab_all_songs_gridLayout.setObjectName("tab_all_songs_gridLayout")
-        self.tableWidget_all_songs = QtWidgets.QTableWidget(self.tab_all_songs)
-        self.tableWidget_all_songs.setMinimumSize(QtCore.QSize(501, 0))
-        self.tableWidget_all_songs.setStyleSheet("QHeaderView {\n"
+        self.tableWidget_all_audio = QtWidgets.QTableWidget(self.tab_all_audio)
+        self.tableWidget_all_audio.setMinimumSize(QtCore.QSize(501, 0))
+        self.tableWidget_all_audio.setStyleSheet("QHeaderView {\n"
 "    background: transparent;\n"
 "    border: 0px solid;\n"
 "}\n"
@@ -329,27 +296,27 @@ class Ui_MainWindow(object):
 "    background-color: rgb(63,63, 63);\n"
 "    border: 0px solid;\n"
 "}")
-        self.tableWidget_all_songs.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.tableWidget_all_songs.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.tableWidget_all_songs.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.tableWidget_all_songs.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidget_all_songs.setTabKeyNavigation(False)
-        self.tableWidget_all_songs.setDragDropOverwriteMode(False)
-        self.tableWidget_all_songs.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
-        self.tableWidget_all_songs.setShowGrid(False)
-        self.tableWidget_all_songs.setObjectName("tableWidget_all_songs")
-        self.tableWidget_all_songs.setColumnCount(1)
-        self.tableWidget_all_songs.setRowCount(0)
+        self.tableWidget_all_audio.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.tableWidget_all_audio.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.tableWidget_all_audio.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.tableWidget_all_audio.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_all_audio.setTabKeyNavigation(False)
+        self.tableWidget_all_audio.setDragDropOverwriteMode(False)
+        self.tableWidget_all_audio.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.tableWidget_all_audio.setShowGrid(False)
+        self.tableWidget_all_audio.setObjectName("tableWidget_all_audio")
+        self.tableWidget_all_audio.setColumnCount(1)
+        self.tableWidget_all_audio.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_all_songs.setHorizontalHeaderItem(0, item)
-        self.tableWidget_all_songs.horizontalHeader().setVisible(False)
-        self.tableWidget_all_songs.horizontalHeader().setCascadingSectionResizes(False)
-        self.tableWidget_all_songs.horizontalHeader().setSortIndicatorShown(True)
-        self.tableWidget_all_songs.horizontalHeader().setStretchLastSection(True)
-        self.tableWidget_all_songs.verticalHeader().setVisible(False)
-        self.tableWidget_all_songs.verticalHeader().setHighlightSections(False)
-        self.tab_all_songs_gridLayout.addWidget(self.tableWidget_all_songs, 0, 0, 1, 1)
-        self.tabWidget_main.addTab(self.tab_all_songs, "")
+        self.tableWidget_all_audio.setHorizontalHeaderItem(0, item)
+        self.tableWidget_all_audio.horizontalHeader().setVisible(False)
+        self.tableWidget_all_audio.horizontalHeader().setCascadingSectionResizes(False)
+        self.tableWidget_all_audio.horizontalHeader().setSortIndicatorShown(True)
+        self.tableWidget_all_audio.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget_all_audio.verticalHeader().setVisible(False)
+        self.tableWidget_all_audio.verticalHeader().setHighlightSections(False)
+        self.tab_all_songs_gridLayout.addWidget(self.tableWidget_all_audio, 0, 0, 1, 1)
+        self.tabWidget_main.addTab(self.tab_all_audio, "")
         self.tab_all_playlists = QtWidgets.QWidget()
         self.tab_all_playlists.setObjectName("tab_all_playlists")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.tab_all_playlists)
@@ -401,10 +368,10 @@ class Ui_MainWindow(object):
         font.setWeight(9)
         self.label_currently_playing.setFont(font)
         self.label_currently_playing.setStyleSheet("QLabel {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-left: 2px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-left: 2px solid rgb(188, 188, 188);\n"
+"font-size: 16pt;\n"
 "}")
         self.label_currently_playing.setAlignment(QtCore.Qt.AlignCenter)
         self.label_currently_playing.setObjectName("label_currently_playing")
@@ -417,8 +384,8 @@ class Ui_MainWindow(object):
         self.listWidget_current_playlist.setSizePolicy(sizePolicy)
         self.listWidget_current_playlist.setMaximumSize(QtCore.QSize(250, 16777215))
         self.listWidget_current_playlist.setStyleSheet("QListWidget:item:selected {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
 "}")
         self.listWidget_current_playlist.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.listWidget_current_playlist.setProperty("showDropIndicator", False)
@@ -441,134 +408,87 @@ class Ui_MainWindow(object):
         self.widget_player_gridLayout.setContentsMargins(0, 0, 0, 0)
         self.widget_player_gridLayout.setSpacing(0)
         self.widget_player_gridLayout.setObjectName("widget_player_gridLayout")
-        self.widget_song_info = QtWidgets.QWidget(self.widget_player)
+        self.widget_audio_info = QtWidgets.QWidget(self.widget_player)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_song_info.sizePolicy().hasHeightForWidth())
-        self.widget_song_info.setSizePolicy(sizePolicy)
-        self.widget_song_info.setMinimumSize(QtCore.QSize(350, 90))
-        self.widget_song_info.setMaximumSize(QtCore.QSize(16777215, 90))
-        self.widget_song_info.setObjectName("widget_song_info")
-        self.widget_song_info_horizontalLayout = QtWidgets.QHBoxLayout(self.widget_song_info)
+        sizePolicy.setHeightForWidth(self.widget_audio_info.sizePolicy().hasHeightForWidth())
+        self.widget_audio_info.setSizePolicy(sizePolicy)
+        self.widget_audio_info.setMinimumSize(QtCore.QSize(350, 90))
+        self.widget_audio_info.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.widget_audio_info.setObjectName("widget_audio_info")
+        self.widget_song_info_horizontalLayout = QtWidgets.QHBoxLayout(self.widget_audio_info)
         self.widget_song_info_horizontalLayout.setContentsMargins(5, 5, 5, 5)
         self.widget_song_info_horizontalLayout.setSpacing(10)
         self.widget_song_info_horizontalLayout.setObjectName("widget_song_info_horizontalLayout")
-        self.label_song_icon = QtWidgets.QLabel(self.widget_song_info)
-        self.label_song_icon.setMinimumSize(QtCore.QSize(80, 80))
-        self.label_song_icon.setMaximumSize(QtCore.QSize(80, 80))
-        self.label_song_icon.setText("")
-        self.label_song_icon.setObjectName("label_song_icon")
-        self.widget_song_info_horizontalLayout.addWidget(self.label_song_icon)
-        self.label_song_name = QtWidgets.QLabel(self.widget_song_info)
-        self.label_song_name.setMinimumSize(QtCore.QSize(0, 80))
-        self.label_song_name.setMaximumSize(QtCore.QSize(16777215, 80))
-        self.label_song_name.setText("")
-        self.label_song_name.setWordWrap(True)
-        self.label_song_name.setObjectName("label_song_name")
-        self.widget_song_info_horizontalLayout.addWidget(self.label_song_name)
-        self.widget_player_gridLayout.addWidget(self.widget_song_info, 0, 0, 1, 1)
-        self.widget_song_parameters = QtWidgets.QWidget(self.widget_player)
+        self.label_audio_icon = QtWidgets.QLabel(self.widget_audio_info)
+        self.label_audio_icon.setMinimumSize(QtCore.QSize(80, 80))
+        self.label_audio_icon.setMaximumSize(QtCore.QSize(80, 80))
+        self.label_audio_icon.setText("")
+        self.label_audio_icon.setObjectName("label_audio_icon")
+        self.widget_song_info_horizontalLayout.addWidget(self.label_audio_icon)
+        self.label_audio_name = QtWidgets.QLabel(self.widget_audio_info)
+        self.label_audio_name.setMinimumSize(QtCore.QSize(0, 80))
+        self.label_audio_name.setMaximumSize(QtCore.QSize(16777215, 80))
+        self.label_audio_name.setText("")
+        self.label_audio_name.setWordWrap(True)
+        self.label_audio_name.setObjectName("label_audio_name")
+        self.widget_song_info_horizontalLayout.addWidget(self.label_audio_name)
+        self.widget_player_gridLayout.addWidget(self.widget_audio_info, 0, 0, 1, 1)
+        self.widget_audio_parameters = QtWidgets.QWidget(self.widget_player)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_song_parameters.sizePolicy().hasHeightForWidth())
-        self.widget_song_parameters.setSizePolicy(sizePolicy)
-        self.widget_song_parameters.setMinimumSize(QtCore.QSize(350, 90))
-        self.widget_song_parameters.setMaximumSize(QtCore.QSize(16777215, 90))
-        self.widget_song_parameters.setStyleSheet("border: 0px solid")
-        self.widget_song_parameters.setObjectName("widget_song_parameters")
-        self.widget_song_parameters_horizontalLayout = QtWidgets.QHBoxLayout(self.widget_song_parameters)
+        sizePolicy.setHeightForWidth(self.widget_audio_parameters.sizePolicy().hasHeightForWidth())
+        self.widget_audio_parameters.setSizePolicy(sizePolicy)
+        self.widget_audio_parameters.setMinimumSize(QtCore.QSize(350, 90))
+        self.widget_audio_parameters.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.widget_audio_parameters.setStyleSheet("border: 0px solid")
+        self.widget_audio_parameters.setObjectName("widget_audio_parameters")
+        self.widget_song_parameters_horizontalLayout = QtWidgets.QHBoxLayout(self.widget_audio_parameters)
         self.widget_song_parameters_horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.widget_song_parameters_horizontalLayout.setSpacing(0)
         self.widget_song_parameters_horizontalLayout.setObjectName("widget_song_parameters_horizontalLayout")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.widget_song_parameters_horizontalLayout.addItem(spacerItem2)
-        self.tabWidget_song_parameters = QtWidgets.QTabWidget(self.widget_song_parameters)
-        self.tabWidget_song_parameters.setMinimumSize(QtCore.QSize(350, 90))
-        self.tabWidget_song_parameters.setMaximumSize(QtCore.QSize(350, 90))
-        self.tabWidget_song_parameters.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.tabWidget_song_parameters.setStyleSheet("QTabBar {\n"
-"    font: 13pt \"Century Gothic\";\n"
-"    border: 0px solid;\n"
+        self.tabWidget_audio_parameters = QtWidgets.QTabWidget(self.widget_audio_parameters)
+        self.tabWidget_audio_parameters.setMinimumSize(QtCore.QSize(350, 90))
+        self.tabWidget_audio_parameters.setMaximumSize(QtCore.QSize(350, 90))
+        self.tabWidget_audio_parameters.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.tabWidget_audio_parameters.setStyleSheet("QTabBar {\n"
+"font: 13pt \"Century Gothic\";\n"
+"border: 0px solid;\n"
 "}\n"
 "\n"
 "QTabBar:tab {\n"
-"    font: 13pt \"Century Gothic\";\n"
-"    background-color: rgb(63, 63, 63);\n"
-"    height: 0px;\n"
+"font: 13pt \"Century Gothic\";\n"
+"background-color: rgb(63, 63, 63);\n"
+"height: 0px;\n"
 "\n"
 "}\n"
 "QTabBar:tab:hover {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0)\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0)\n"
 "}\n"
 "QTabBar:tab:selected {\n"
-"    background-color: rgb(160, 160, 160);\n"
-"    color: rgb(12, 12, 12);\n"
+"background-color: rgb(160, 160, 160);\n"
+"color: rgb(12, 12, 12);\n"
 "}\n"
 "\n"
 "QTabWidget::pane {}")
-        self.tabWidget_song_parameters.setIconSize(QtCore.QSize(0, 0))
-        self.tabWidget_song_parameters.setUsesScrollButtons(False)
-        self.tabWidget_song_parameters.setObjectName("tabWidget_song_parameters")
-        self.tab_song_parameters_dials = QtWidgets.QWidget()
-        self.tab_song_parameters_dials.setObjectName("tab_song_parameters_dials")
-        self.tab_song_parameters_dials_gridLayout = QtWidgets.QGridLayout(self.tab_song_parameters_dials)
-        self.tab_song_parameters_dials_gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.tab_song_parameters_dials_gridLayout.setSpacing(0)
-        self.tab_song_parameters_dials_gridLayout.setObjectName("tab_song_parameters_dials_gridLayout")
-        self.widget_dial_volume = QtWidgets.QWidget(self.tab_song_parameters_dials)
-        self.widget_dial_volume.setMinimumSize(QtCore.QSize(175, 0))
-        self.widget_dial_volume.setObjectName("widget_dial_volume")
-        self.widget_dial_volume_gridLayout = QtWidgets.QGridLayout(self.widget_dial_volume)
-        self.widget_dial_volume_gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.widget_dial_volume_gridLayout.setSpacing(0)
-        self.widget_dial_volume_gridLayout.setObjectName("widget_dial_volume_gridLayout")
-        self.label_volume_dial = QtWidgets.QLabel(self.widget_dial_volume)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_volume_dial.sizePolicy().hasHeightForWidth())
-        self.label_volume_dial.setSizePolicy(sizePolicy)
-        self.label_volume_dial.setMinimumSize(QtCore.QSize(60, 0))
-        self.label_volume_dial.setMaximumSize(QtCore.QSize(100, 80))
-        font = QtGui.QFont()
-        font.setFamily("Century Gothic")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(9)
-        self.label_volume_dial.setFont(font)
-        self.label_volume_dial.setScaledContents(False)
-        self.label_volume_dial.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label_volume_dial.setObjectName("label_volume_dial")
-        self.widget_dial_volume_gridLayout.addWidget(self.label_volume_dial, 0, 0, 1, 1)
-        self.dial_volume = QtWidgets.QDial(self.widget_dial_volume)
-        self.dial_volume.setMinimumSize(QtCore.QSize(60, 60))
-        self.dial_volume.setMaximumSize(QtCore.QSize(80, 80))
-        self.dial_volume.setMaximum(100)
-        self.dial_volume.setProperty("value", 100)
-        self.dial_volume.setTracking(True)
-        self.dial_volume.setOrientation(QtCore.Qt.Horizontal)
-        self.dial_volume.setInvertedAppearance(False)
-        self.dial_volume.setInvertedControls(False)
-        self.dial_volume.setWrapping(False)
-        self.dial_volume.setNotchesVisible(True)
-        self.dial_volume.setObjectName("dial_volume")
-        self.widget_dial_volume_gridLayout.addWidget(self.dial_volume, 0, 1, 1, 1)
-        self.tab_song_parameters_dials_gridLayout.addWidget(self.widget_dial_volume, 0, 0, 1, 1)
-        self.tabWidget_song_parameters.addTab(self.tab_song_parameters_dials, "")
-        self.tab_song_parameters_sliders = QtWidgets.QWidget()
-        self.tab_song_parameters_sliders.setStyleSheet("border: 0px solid;")
-        self.tab_song_parameters_sliders.setObjectName("tab_song_parameters_sliders")
-        self.tab_song_parameters_sliders_gridLayout = QtWidgets.QGridLayout(self.tab_song_parameters_sliders)
+        self.tabWidget_audio_parameters.setIconSize(QtCore.QSize(0, 0))
+        self.tabWidget_audio_parameters.setUsesScrollButtons(False)
+        self.tabWidget_audio_parameters.setObjectName("tabWidget_audio_parameters")
+        self.tab_audio_parameters_sliders = QtWidgets.QWidget()
+        self.tab_audio_parameters_sliders.setStyleSheet("border: 0px solid;")
+        self.tab_audio_parameters_sliders.setObjectName("tab_audio_parameters_sliders")
+        self.tab_song_parameters_sliders_gridLayout = QtWidgets.QGridLayout(self.tab_audio_parameters_sliders)
         self.tab_song_parameters_sliders_gridLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.tab_song_parameters_sliders_gridLayout.setContentsMargins(2, 0, 5, 0)
         self.tab_song_parameters_sliders_gridLayout.setHorizontalSpacing(5)
         self.tab_song_parameters_sliders_gridLayout.setVerticalSpacing(0)
         self.tab_song_parameters_sliders_gridLayout.setObjectName("tab_song_parameters_sliders_gridLayout")
-        self.label_volume_slider = QtWidgets.QLabel(self.tab_song_parameters_sliders)
+        self.label_volume_slider = QtWidgets.QLabel(self.tab_audio_parameters_sliders)
         self.label_volume_slider.setMinimumSize(QtCore.QSize(0, 40))
         self.label_volume_slider.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
@@ -583,7 +503,7 @@ class Ui_MainWindow(object):
 "}")
         self.label_volume_slider.setObjectName("label_volume_slider")
         self.tab_song_parameters_sliders_gridLayout.addWidget(self.label_volume_slider, 0, 1, 1, 1)
-        self.horizontalSlider_volume = QtWidgets.QSlider(self.tab_song_parameters_sliders)
+        self.horizontalSlider_volume = QtWidgets.QSlider(self.tab_audio_parameters_sliders)
         self.horizontalSlider_volume.setMinimumSize(QtCore.QSize(0, 60))
         self.horizontalSlider_volume.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
@@ -602,24 +522,24 @@ class Ui_MainWindow(object):
         self.horizontalSlider_volume.setObjectName("horizontalSlider_volume")
         self.tab_song_parameters_sliders_gridLayout.addWidget(self.horizontalSlider_volume, 0, 0, 1, 1)
         self.tab_song_parameters_sliders_gridLayout.setRowStretch(0, 1)
-        self.tabWidget_song_parameters.addTab(self.tab_song_parameters_sliders, "")
-        self.widget_song_parameters_horizontalLayout.addWidget(self.tabWidget_song_parameters)
-        self.widget_player_gridLayout.addWidget(self.widget_song_parameters, 0, 2, 1, 1)
-        self.song_control_buttons = QtWidgets.QWidget(self.widget_player)
+        self.tabWidget_audio_parameters.addTab(self.tab_audio_parameters_sliders, "")
+        self.widget_song_parameters_horizontalLayout.addWidget(self.tabWidget_audio_parameters)
+        self.widget_player_gridLayout.addWidget(self.widget_audio_parameters, 0, 2, 1, 1)
+        self.audio_control_buttons = QtWidgets.QWidget(self.widget_player)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.song_control_buttons.sizePolicy().hasHeightForWidth())
-        self.song_control_buttons.setSizePolicy(sizePolicy)
-        self.song_control_buttons.setMinimumSize(QtCore.QSize(200, 90))
-        self.song_control_buttons.setMaximumSize(QtCore.QSize(200, 90))
-        self.song_control_buttons.setObjectName("song_control_buttons")
-        self.song_control_buttons_gridLayout = QtWidgets.QGridLayout(self.song_control_buttons)
+        sizePolicy.setHeightForWidth(self.audio_control_buttons.sizePolicy().hasHeightForWidth())
+        self.audio_control_buttons.setSizePolicy(sizePolicy)
+        self.audio_control_buttons.setMinimumSize(QtCore.QSize(200, 90))
+        self.audio_control_buttons.setMaximumSize(QtCore.QSize(200, 90))
+        self.audio_control_buttons.setObjectName("audio_control_buttons")
+        self.song_control_buttons_gridLayout = QtWidgets.QGridLayout(self.audio_control_buttons)
         self.song_control_buttons_gridLayout.setContentsMargins(0, 0, 0, 0)
         self.song_control_buttons_gridLayout.setHorizontalSpacing(10)
         self.song_control_buttons_gridLayout.setVerticalSpacing(0)
         self.song_control_buttons_gridLayout.setObjectName("song_control_buttons_gridLayout")
-        self.widget_restore_repeat_shuffle = QtWidgets.QWidget(self.song_control_buttons)
+        self.widget_restore_repeat_shuffle = QtWidgets.QWidget(self.audio_control_buttons)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -627,6 +547,15 @@ class Ui_MainWindow(object):
         self.widget_restore_repeat_shuffle.setSizePolicy(sizePolicy)
         self.widget_restore_repeat_shuffle.setMinimumSize(QtCore.QSize(0, 40))
         self.widget_restore_repeat_shuffle.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.widget_restore_repeat_shuffle.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 15%;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
         self.widget_restore_repeat_shuffle.setObjectName("widget_restore_repeat_shuffle")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_restore_repeat_shuffle)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -636,9 +565,7 @@ class Ui_MainWindow(object):
         self.button_stop = QtWidgets.QPushButton(self.widget_restore_repeat_shuffle)
         self.button_stop.setMaximumSize(QtCore.QSize(30, 30))
         self.button_stop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_stop.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
+        self.button_stop.setStyleSheet("")
         self.button_stop.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/icons/assets/stop-button.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -649,9 +576,7 @@ class Ui_MainWindow(object):
         self.button_repeat = QtWidgets.QPushButton(self.widget_restore_repeat_shuffle)
         self.button_repeat.setMaximumSize(QtCore.QSize(30, 30))
         self.button_repeat.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_repeat.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
+        self.button_repeat.setStyleSheet("")
         self.button_repeat.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/icons/assets/repeat.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -662,9 +587,7 @@ class Ui_MainWindow(object):
         self.button_shuffle = QtWidgets.QPushButton(self.widget_restore_repeat_shuffle)
         self.button_shuffle.setMaximumSize(QtCore.QSize(30, 30))
         self.button_shuffle.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_shuffle.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
+        self.button_shuffle.setStyleSheet("")
         self.button_shuffle.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(":/icons/assets/shuffle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -673,7 +596,7 @@ class Ui_MainWindow(object):
         self.button_shuffle.setObjectName("button_shuffle")
         self.gridLayout_2.addWidget(self.button_shuffle, 0, 2, 1, 1)
         self.song_control_buttons_gridLayout.addWidget(self.widget_restore_repeat_shuffle, 1, 0, 1, 2)
-        self.widget_prev_play_next = QtWidgets.QWidget(self.song_control_buttons)
+        self.widget_prev_play_next = QtWidgets.QWidget(self.audio_control_buttons)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -681,31 +604,39 @@ class Ui_MainWindow(object):
         self.widget_prev_play_next.setSizePolicy(sizePolicy)
         self.widget_prev_play_next.setMinimumSize(QtCore.QSize(0, 50))
         self.widget_prev_play_next.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_prev_play_next.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 20%;\n"
+"font-size: 14pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
         self.widget_prev_play_next.setObjectName("widget_prev_play_next")
         self.gridLayout = QtWidgets.QGridLayout(self.widget_prev_play_next)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setHorizontalSpacing(10)
         self.gridLayout.setVerticalSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.button_previous_song = QtWidgets.QPushButton(self.widget_prev_play_next)
+        self.button_previous_audio = QtWidgets.QPushButton(self.widget_prev_play_next)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.button_previous_song.sizePolicy().hasHeightForWidth())
-        self.button_previous_song.setSizePolicy(sizePolicy)
-        self.button_previous_song.setMinimumSize(QtCore.QSize(40, 40))
-        self.button_previous_song.setMaximumSize(QtCore.QSize(40, 40))
-        self.button_previous_song.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_previous_song.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
-        self.button_previous_song.setText("")
+        sizePolicy.setHeightForWidth(self.button_previous_audio.sizePolicy().hasHeightForWidth())
+        self.button_previous_audio.setSizePolicy(sizePolicy)
+        self.button_previous_audio.setMinimumSize(QtCore.QSize(40, 40))
+        self.button_previous_audio.setMaximumSize(QtCore.QSize(40, 40))
+        self.button_previous_audio.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_previous_audio.setStyleSheet("")
+        self.button_previous_audio.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/icons/assets/previous.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.button_previous_song.setIcon(icon6)
-        self.button_previous_song.setIconSize(QtCore.QSize(40, 40))
-        self.button_previous_song.setObjectName("button_previous_song")
-        self.gridLayout.addWidget(self.button_previous_song, 0, 0, 1, 1)
+        self.button_previous_audio.setIcon(icon6)
+        self.button_previous_audio.setIconSize(QtCore.QSize(40, 40))
+        self.button_previous_audio.setObjectName("button_previous_audio")
+        self.gridLayout.addWidget(self.button_previous_audio, 0, 0, 1, 1)
         self.button_play_pause = QtWidgets.QPushButton(self.widget_prev_play_next)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -715,9 +646,7 @@ class Ui_MainWindow(object):
         self.button_play_pause.setMinimumSize(QtCore.QSize(50, 50))
         self.button_play_pause.setMaximumSize(QtCore.QSize(50, 50))
         self.button_play_pause.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_play_pause.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
+        self.button_play_pause.setStyleSheet("QPushButton {border-radius: 25%;}")
         self.button_play_pause.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(":/icons/assets/play-button.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -725,27 +654,25 @@ class Ui_MainWindow(object):
         self.button_play_pause.setIconSize(QtCore.QSize(48, 48))
         self.button_play_pause.setObjectName("button_play_pause")
         self.gridLayout.addWidget(self.button_play_pause, 0, 1, 1, 1)
-        self.button_next_song = QtWidgets.QPushButton(self.widget_prev_play_next)
+        self.button_next_audio = QtWidgets.QPushButton(self.widget_prev_play_next)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.button_next_song.sizePolicy().hasHeightForWidth())
-        self.button_next_song.setSizePolicy(sizePolicy)
-        self.button_next_song.setMinimumSize(QtCore.QSize(40, 40))
-        self.button_next_song.setMaximumSize(QtCore.QSize(40, 40))
-        self.button_next_song.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_next_song.setStyleSheet("QPushButton {\n"
-"    background-color: rgba(255, 255, 255, 0);\n"
-"}")
-        self.button_next_song.setText("")
+        sizePolicy.setHeightForWidth(self.button_next_audio.sizePolicy().hasHeightForWidth())
+        self.button_next_audio.setSizePolicy(sizePolicy)
+        self.button_next_audio.setMinimumSize(QtCore.QSize(40, 40))
+        self.button_next_audio.setMaximumSize(QtCore.QSize(40, 40))
+        self.button_next_audio.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_next_audio.setStyleSheet("")
+        self.button_next_audio.setText("")
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(":/icons/assets/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.button_next_song.setIcon(icon8)
-        self.button_next_song.setIconSize(QtCore.QSize(40, 40))
-        self.button_next_song.setObjectName("button_next_song")
-        self.gridLayout.addWidget(self.button_next_song, 0, 2, 1, 1)
+        self.button_next_audio.setIcon(icon8)
+        self.button_next_audio.setIconSize(QtCore.QSize(40, 40))
+        self.button_next_audio.setObjectName("button_next_audio")
+        self.gridLayout.addWidget(self.button_next_audio, 0, 2, 1, 1)
         self.song_control_buttons_gridLayout.addWidget(self.widget_prev_play_next, 0, 0, 1, 2)
-        self.widget_player_gridLayout.addWidget(self.song_control_buttons, 0, 1, 1, 1)
+        self.widget_player_gridLayout.addWidget(self.audio_control_buttons, 0, 1, 1, 1)
         self.widget_player_gridLayout.setColumnStretch(0, 1)
         self.widget_player_gridLayout.setColumnStretch(1, 1)
         self.widget_player_gridLayout.setColumnStretch(2, 1)
@@ -771,26 +698,24 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget_main.setCurrentIndex(0)
-        self.tabWidget_song_parameters.setCurrentIndex(1)
+        self.tabWidget_audio_parameters.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.button_menu.setText(_translate("MainWindow", "Menu"))
-        self.button_all_songs.setText(_translate("MainWindow", "Songs"))
+        self.button_all_audio.setText(_translate("MainWindow", "All files"))
         self.button_playlists.setText(_translate("MainWindow", "Playlists"))
         self.button_add_playlist.setText(_translate("MainWindow", "Add playlist"))
-        self.tableWidget_all_songs.setSortingEnabled(True)
-        item = self.tableWidget_all_songs.horizontalHeaderItem(0)
+        self.tableWidget_all_audio.setSortingEnabled(True)
+        item = self.tableWidget_all_audio.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "FileName"))
-        self.tabWidget_main.setTabText(self.tabWidget_main.indexOf(self.tab_all_songs), _translate("MainWindow", "Page"))
+        self.tabWidget_main.setTabText(self.tabWidget_main.indexOf(self.tab_all_audio), _translate("MainWindow", "Page"))
         self.tabWidget_main.setTabText(self.tabWidget_main.indexOf(self.tab_all_playlists), _translate("MainWindow", "Page"))
         self.label_currently_playing.setText(_translate("MainWindow", "CURRENT PLAYLIST"))
-        self.label_volume_dial.setText(_translate("MainWindow", "Volume"))
-        self.tabWidget_song_parameters.setTabText(self.tabWidget_song_parameters.indexOf(self.tab_song_parameters_dials), _translate("MainWindow", "Tab 1"))
         self.label_volume_slider.setText(_translate("MainWindow", "Volume"))
-        self.tabWidget_song_parameters.setTabText(self.tabWidget_song_parameters.indexOf(self.tab_song_parameters_sliders), _translate("MainWindow", "Tab 2"))
+        self.tabWidget_audio_parameters.setTabText(self.tabWidget_audio_parameters.indexOf(self.tab_audio_parameters_sliders), _translate("MainWindow", "Tab 2"))
         self.action1.setText(_translate("MainWindow", "1"))
         self.action2.setText(_translate("MainWindow", "2"))
 import resources_rc

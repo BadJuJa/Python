@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import pyqtSignal as Signal
+from PyQt5.QtWidgets import QLabel
 
 
 class ClickableLabel(QLabel):
@@ -8,5 +8,6 @@ class ClickableLabel(QLabel):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+    # Перезапись события отжатия кнопки мыши
     def mouseReleaseEvent(self, event):
         self.clicked.emit()

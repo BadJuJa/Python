@@ -31,9 +31,23 @@ class Ui_MainWidget(object):
 "alternate-background-color: rgb(188, 188, 188);\n"
 "\n"
 "QMenuBar::item:selected {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border-radius: 5%;\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"font-size: 16pt;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"                                                                \n"
+"            ")
         self.MainWidget_gridLayout = QtWidgets.QGridLayout(MainWidget)
         self.MainWidget_gridLayout.setContentsMargins(0, 0, 0, 0)
         self.MainWidget_gridLayout.setSpacing(0)
@@ -50,25 +64,26 @@ class Ui_MainWidget(object):
         self.tabWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tabWidget.setAutoFillBackground(False)
         self.tabWidget.setStyleSheet("QTabBar {\n"
-"    font: 13pt \"Century Gothic\";\n"
-"    border: 0px solid;\n"
-"}\n"
+"                            font: 13pt \"Century Gothic\";\n"
+"                            border: 0px solid;\n"
+"                            }\n"
 "\n"
-"QTabBar:tab {\n"
-"    font: 13pt \"Century Gothic\";\n"
-"    background-color: rgb(63, 63, 63);\n"
+"                            QTabBar:tab {\n"
+"                            font: 13pt \"Century Gothic\";\n"
+"                            background-color: rgb(63, 63, 63);\n"
 "\n"
-"}\n"
-"QTabBar:tab:hover {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0)\n"
-"}\n"
-"QTabBar:tab:selected {\n"
-"    background-color: rgb(160, 160, 160);\n"
-"    color: rgb(12, 12, 12);\n"
-"}\n"
+"                            }\n"
+"                            QTabBar:tab:hover {\n"
+"                            background-color: rgb(188, 188, 188);\n"
+"                            color: rgb(0, 0, 0)\n"
+"                            }\n"
+"                            QTabBar:tab:selected {\n"
+"                            background-color: rgb(160, 160, 160);\n"
+"                            color: rgb(12, 12, 12);\n"
+"                            }\n"
 "\n"
-"QTabWidget::pane {}")
+"                            QTabWidget::pane {}\n"
+"                        ")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.tabWidget.setElideMode(QtCore.Qt.ElideNone)
@@ -85,157 +100,91 @@ class Ui_MainWidget(object):
         self.tab_general_gridLayout.setContentsMargins(0, 0, 0, 0)
         self.tab_general_gridLayout.setSpacing(0)
         self.tab_general_gridLayout.setObjectName("tab_general_gridLayout")
-        self.groupBox_music_paths = QtWidgets.QGroupBox(self.tab_general)
-        self.groupBox_music_paths.setStyleSheet("")
-        self.groupBox_music_paths.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.groupBox_music_paths.setFlat(True)
-        self.groupBox_music_paths.setCheckable(False)
-        self.groupBox_music_paths.setObjectName("groupBox_music_paths")
-        self.groupBox_music_paths_gridLayout = QtWidgets.QGridLayout(self.groupBox_music_paths)
+        self.groupBox_audio_paths = QtWidgets.QGroupBox(self.tab_general)
+        self.groupBox_audio_paths.setStyleSheet("")
+        self.groupBox_audio_paths.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.groupBox_audio_paths.setFlat(True)
+        self.groupBox_audio_paths.setCheckable(False)
+        self.groupBox_audio_paths.setObjectName("groupBox_audio_paths")
+        self.groupBox_music_paths_gridLayout = QtWidgets.QGridLayout(self.groupBox_audio_paths)
         self.groupBox_music_paths_gridLayout.setContentsMargins(5, 5, 5, 0)
         self.groupBox_music_paths_gridLayout.setObjectName("groupBox_music_paths_gridLayout")
-        self.widget_music_paths_buttons = QtWidgets.QWidget(self.groupBox_music_paths)
-        self.widget_music_paths_buttons.setObjectName("widget_music_paths_buttons")
-        self.widget_music_paths_buttons_verticalLayout = QtWidgets.QVBoxLayout(self.widget_music_paths_buttons)
+        self.widget_audio_paths_buttons = QtWidgets.QWidget(self.groupBox_audio_paths)
+        self.widget_audio_paths_buttons.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border-radius: 5%;\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"font-size: 16pt;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
+        self.widget_audio_paths_buttons.setObjectName("widget_audio_paths_buttons")
+        self.widget_music_paths_buttons_verticalLayout = QtWidgets.QVBoxLayout(self.widget_audio_paths_buttons)
         self.widget_music_paths_buttons_verticalLayout.setContentsMargins(5, 0, 5, 0)
         self.widget_music_paths_buttons_verticalLayout.setSpacing(5)
         self.widget_music_paths_buttons_verticalLayout.setObjectName("widget_music_paths_buttons_verticalLayout")
-        self.button_add_path = QtWidgets.QPushButton(self.widget_music_paths_buttons)
+        self.button_add_path = QtWidgets.QPushButton(self.widget_audio_paths_buttons)
         self.button_add_path.setMinimumSize(QtCore.QSize(80, 0))
         self.button_add_path.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.button_add_path.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_add_path.setStyleSheet("")
         self.button_add_path.setObjectName("button_add_path")
         self.widget_music_paths_buttons_verticalLayout.addWidget(self.button_add_path)
-        self.button_delete_path = QtWidgets.QPushButton(self.widget_music_paths_buttons)
+        self.button_delete_path = QtWidgets.QPushButton(self.widget_audio_paths_buttons)
         self.button_delete_path.setMinimumSize(QtCore.QSize(80, 0))
         self.button_delete_path.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.button_delete_path.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_delete_path.setStyleSheet("")
         self.button_delete_path.setObjectName("button_delete_path")
         self.widget_music_paths_buttons_verticalLayout.addWidget(self.button_delete_path)
-        self.button_edit_path = QtWidgets.QPushButton(self.widget_music_paths_buttons)
+        self.button_edit_path = QtWidgets.QPushButton(self.widget_audio_paths_buttons)
         self.button_edit_path.setMinimumSize(QtCore.QSize(80, 0))
         self.button_edit_path.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.button_edit_path.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_edit_path.setStyleSheet("")
         self.button_edit_path.setObjectName("button_edit_path")
         self.widget_music_paths_buttons_verticalLayout.addWidget(self.button_edit_path)
         spacerItem = QtWidgets.QSpacerItem(20, 318, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.widget_music_paths_buttons_verticalLayout.addItem(spacerItem)
-        self.groupBox_music_paths_gridLayout.addWidget(self.widget_music_paths_buttons, 0, 1, 1, 1)
-        self.tableWidget_music_paths = QtWidgets.QTableWidget(self.groupBox_music_paths)
-        self.tableWidget_music_paths.setStyleSheet("QHeaderView {\n"
-"    background: transparent;\n"
-"    border: 0px solid;\n"
+        self.groupBox_music_paths_gridLayout.addWidget(self.widget_audio_paths_buttons, 0, 1, 1, 1)
+        self.tableWidget_audio_paths = QtWidgets.QTableWidget(self.groupBox_audio_paths)
+        self.tableWidget_audio_paths.setStyleSheet("QHeaderView {\n"
+"background: transparent;\n"
+"border: 0px solid;\n"
 "}\n"
 "\n"
 "QHeaderView::section {\n"
-"    background-color: rgb(63, 63, 63);\n"
-"    color: white;\n"
-"    border: 0px solid;\n"
+"background-color: rgb(63, 63, 63);\n"
+"color: white;\n"
+"border: 0px solid;\n"
 "}\n"
 "\n"
 "QTableCornerButton::section {\n"
-"    background-color: rgb(63,63, 63);\n"
-"    border: 0px solid;\n"
+"background-color: rgb(63,63, 63);\n"
+"border: 0px solid;\n"
 "}")
-        self.tableWidget_music_paths.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.tableWidget_music_paths.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.tableWidget_music_paths.setLineWidth(1)
-        self.tableWidget_music_paths.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
-        self.tableWidget_music_paths.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.tableWidget_music_paths.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
-        self.tableWidget_music_paths.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
-        self.tableWidget_music_paths.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectItems)
-        self.tableWidget_music_paths.setShowGrid(True)
-        self.tableWidget_music_paths.setCornerButtonEnabled(True)
-        self.tableWidget_music_paths.setObjectName("tableWidget_music_paths")
-        self.tableWidget_music_paths.setColumnCount(2)
-        self.tableWidget_music_paths.setRowCount(0)
+        self.tableWidget_audio_paths.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.tableWidget_audio_paths.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.tableWidget_audio_paths.setLineWidth(1)
+        self.tableWidget_audio_paths.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.tableWidget_audio_paths.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.tableWidget_audio_paths.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.tableWidget_audio_paths.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.tableWidget_audio_paths.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectItems)
+        self.tableWidget_audio_paths.setShowGrid(True)
+        self.tableWidget_audio_paths.setCornerButtonEnabled(True)
+        self.tableWidget_audio_paths.setObjectName("tableWidget_audio_paths")
+        self.tableWidget_audio_paths.setColumnCount(2)
+        self.tableWidget_audio_paths.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_music_paths.setHorizontalHeaderItem(0, item)
+        self.tableWidget_audio_paths.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_music_paths.setHorizontalHeaderItem(1, item)
-        self.tableWidget_music_paths.horizontalHeader().setMinimumSectionSize(10)
-        self.tableWidget_music_paths.horizontalHeader().setStretchLastSection(True)
-        self.groupBox_music_paths_gridLayout.addWidget(self.tableWidget_music_paths, 0, 0, 1, 1)
-        self.tab_general_gridLayout.addWidget(self.groupBox_music_paths, 0, 0, 1, 1)
+        self.tableWidget_audio_paths.setHorizontalHeaderItem(1, item)
+        self.tableWidget_audio_paths.horizontalHeader().setMinimumSectionSize(10)
+        self.tableWidget_audio_paths.horizontalHeader().setStretchLastSection(True)
+        self.groupBox_music_paths_gridLayout.addWidget(self.tableWidget_audio_paths, 0, 0, 1, 1)
+        self.tab_general_gridLayout.addWidget(self.groupBox_audio_paths, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab_general, "")
-        self.tab_interface = QtWidgets.QWidget()
-        self.tab_interface.setObjectName("tab_interface")
-        self.tab_interface_gridLayout = QtWidgets.QGridLayout(self.tab_interface)
-        self.tab_interface_gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.tab_interface_gridLayout.setSpacing(0)
-        self.tab_interface_gridLayout.setObjectName("tab_interface_gridLayout")
-        self.groupBox_current_song_parameters = QtWidgets.QGroupBox(self.tab_interface)
-        self.groupBox_current_song_parameters.setStyleSheet("")
-        self.groupBox_current_song_parameters.setObjectName("groupBox_current_song_parameters")
-        self.groupBox_current_song_parameters_gridLayout = QtWidgets.QGridLayout(self.groupBox_current_song_parameters)
-        self.groupBox_current_song_parameters_gridLayout.setHorizontalSpacing(25)
-        self.groupBox_current_song_parameters_gridLayout.setObjectName("groupBox_current_song_parameters_gridLayout")
-        self.button_radio_sliders = QtWidgets.QRadioButton(self.groupBox_current_song_parameters)
-        font = QtGui.QFont()
-        font.setFamily("Century Gothic")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(9)
-        self.button_radio_sliders.setFont(font)
-        self.button_radio_sliders.setChecked(True)
-        self.button_radio_sliders.setObjectName("button_radio_sliders")
-        self.groupBox_current_song_parameters_gridLayout.addWidget(self.button_radio_sliders, 1, 1, 1, 1)
-        self.button_radio_dials = QtWidgets.QRadioButton(self.groupBox_current_song_parameters)
-        font = QtGui.QFont()
-        font.setFamily("Century Gothic")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(9)
-        self.button_radio_dials.setFont(font)
-        self.button_radio_dials.setChecked(False)
-        self.button_radio_dials.setObjectName("button_radio_dials")
-        self.groupBox_current_song_parameters_gridLayout.addWidget(self.button_radio_dials, 0, 1, 1, 1)
-        self.label_style = QtWidgets.QLabel(self.groupBox_current_song_parameters)
-        font = QtGui.QFont()
-        font.setFamily("Century Gothic")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(9)
-        self.label_style.setFont(font)
-        self.label_style.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_style.setObjectName("label_style")
-        self.groupBox_current_song_parameters_gridLayout.addWidget(self.label_style, 0, 0, 1, 1)
-        self.tab_interface_gridLayout.addWidget(self.groupBox_current_song_parameters, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tab_interface, "")
         self.MainWidget_gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         self.widget_footer = QtWidgets.QWidget(MainWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
@@ -253,6 +202,17 @@ class Ui_MainWidget(object):
         spacerItem1 = QtWidgets.QSpacerItem(498, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.widget_footer_horizontalLayout.addItem(spacerItem1)
         self.widget_footer_buttons = QtWidgets.QWidget(self.widget_footer)
+        self.widget_footer_buttons.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border-radius: 5%;\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"font-size: 16pt;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
         self.widget_footer_buttons.setObjectName("widget_footer_buttons")
         self.widget_footer_buttons_gridLayout = QtWidgets.QGridLayout(self.widget_footer_buttons)
         self.widget_footer_buttons_gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -268,17 +228,7 @@ class Ui_MainWidget(object):
         font.setItalic(False)
         font.setWeight(9)
         self.button_ok.setFont(font)
-        self.button_ok.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_ok.setStyleSheet("")
         self.button_ok.setObjectName("button_ok")
         self.widget_footer_buttons_gridLayout.addWidget(self.button_ok, 0, 0, 1, 1)
         self.button_cancel = QtWidgets.QPushButton(self.widget_footer_buttons)
@@ -293,17 +243,7 @@ class Ui_MainWidget(object):
         font.setItalic(False)
         font.setWeight(9)
         self.button_cancel.setFont(font)
-        self.button_cancel.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_cancel.setStyleSheet("")
         self.button_cancel.setObjectName("button_cancel")
         self.widget_footer_buttons_gridLayout.addWidget(self.button_cancel, 0, 1, 1, 1)
         self.button_apply = QtWidgets.QPushButton(self.widget_footer_buttons)
@@ -317,44 +257,29 @@ class Ui_MainWidget(object):
         font.setItalic(False)
         font.setWeight(9)
         self.button_apply.setFont(font)
-        self.button_apply.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border-radius: 5%;\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    font-size: 16pt;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"} ")
+        self.button_apply.setStyleSheet("")
         self.button_apply.setObjectName("button_apply")
         self.widget_footer_buttons_gridLayout.addWidget(self.button_apply, 0, 2, 1, 1)
         self.widget_footer_horizontalLayout.addWidget(self.widget_footer_buttons)
         self.MainWidget_gridLayout.addWidget(self.widget_footer, 2, 0, 1, 1)
 
         self.retranslateUi(MainWidget)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWidget)
 
     def retranslateUi(self, MainWidget):
         _translate = QtCore.QCoreApplication.translate
         MainWidget.setWindowTitle(_translate("MainWidget", "Settings"))
-        self.groupBox_music_paths.setTitle(_translate("MainWidget", "Music paths"))
+        self.groupBox_audio_paths.setTitle(_translate("MainWidget", "Paths"))
         self.button_add_path.setText(_translate("MainWidget", "Add"))
         self.button_delete_path.setText(_translate("MainWidget", "Delete"))
         self.button_edit_path.setText(_translate("MainWidget", "Edit"))
-        self.tableWidget_music_paths.setSortingEnabled(True)
-        item = self.tableWidget_music_paths.horizontalHeaderItem(0)
+        self.tableWidget_audio_paths.setSortingEnabled(True)
+        item = self.tableWidget_audio_paths.horizontalHeaderItem(0)
         item.setText(_translate("MainWidget", "R"))
-        item = self.tableWidget_music_paths.horizontalHeaderItem(1)
+        item = self.tableWidget_audio_paths.horizontalHeaderItem(1)
         item.setText(_translate("MainWidget", "Path"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_general), _translate("MainWidget", "General"))
-        self.groupBox_current_song_parameters.setTitle(_translate("MainWidget", "Current song parameters"))
-        self.button_radio_sliders.setText(_translate("MainWidget", "Sliders"))
-        self.button_radio_dials.setText(_translate("MainWidget", "Dials"))
-        self.label_style.setText(_translate("MainWidget", "Style"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_interface), _translate("MainWidget", "Interface"))
         self.button_ok.setText(_translate("MainWidget", "OK"))
         self.button_cancel.setText(_translate("MainWidget", "Cancel"))
         self.button_apply.setText(_translate("MainWidget", "Apply"))

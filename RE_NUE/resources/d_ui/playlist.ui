@@ -32,17 +32,14 @@
    <string>Playlist</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(255, 255, 255);
-font: 75 13pt &quot;Century Gothic&quot;;
+   <string notr="true">color: rgb(255, 255, 255); font: 75 13pt &quot;Century Gothic&quot;;
 selection-background-color: rgb(188, 188, 188);
-selection-color: rgb(0, 0, 0);
-border-color: rgb(15, 15, 15);
+selection-color: rgb(0, 0, 0); border-color: rgb(15, 15, 15);
 background-color: rgb(63, 63, 63);
 alternate-background-color: rgb(188, 188, 188);
 
-QMenuBar::item:selected {
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
+QMenuBar::item:selected { 
+background-color: rgb(188, 188, 188); color: rgb(0, 0, 0);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -168,6 +165,18 @@ QMenuBar::item:selected {
              <height>75</height>
             </size>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+background-color: rgb(60, 60, 60);
+border: 1px solid rgb(188, 188, 188);
+border-radius: 10%;
+font-size: 16pt;
+}
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}</string>
+           </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <spacer name="horizontalSpacer_2">
@@ -191,16 +200,7 @@ QMenuBar::item:selected {
                </sizepolicy>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+               <string notr="true"/>
               </property>
               <property name="text">
                <string>PLAY</string>
@@ -216,16 +216,7 @@ QPushButton:hover{
                </sizepolicy>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+               <string notr="true"/>
               </property>
               <property name="text">
                <string>EDIT</string>
@@ -241,17 +232,7 @@ QPushButton:hover{
                </sizepolicy>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-	margin: 1px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+               <string notr="true"/>
               </property>
               <property name="text">
                <string>SHUFFLE</string>
@@ -284,7 +265,7 @@ QPushButton:hover{
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget_songs">
+    <widget class="QListWidget" name="listWidget_audio">
      <property name="mouseTracking">
       <bool>true</bool>
      </property>
@@ -298,6 +279,18 @@ QPushButton:hover{
    </item>
    <item>
     <widget class="QWidget" name="widget_buttons" native="true">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+background-color: rgb(60, 60, 60);
+border: 1px solid rgb(188, 188, 188);
+border-radius: 10%;
+font-size: 16pt;
+}
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}</string>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
        <number>10</number>
@@ -330,15 +323,8 @@ QPushButton:hover{
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-	margin: -1px;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
+border-radius: 13%;
+margin: -1px;
 }</string>
         </property>
         <property name="text">
@@ -384,16 +370,7 @@ QPushButton:hover{
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>OK</string>
@@ -415,16 +392,7 @@ QPushButton:hover{
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border: 1px solid rgb(188, 188, 188);
-	border-radius: 10%;
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Cancel</string>

@@ -1,16 +1,9 @@
-# IMPORTS
-
-from PyQt5 import QtCore
 from PyQt5.QtCore import QUrl, pyqtSignal as Signal
 from PyQt5.QtMultimedia import QMediaPlaylist, QMediaPlayer, QMediaContent
-from PyQt5.QtWidgets import (QMainWindow)
 
 
-# noinspection PyUnresolvedReferences
 class MediaPlayer(QMediaPlayer):
-    # region SIGNALS
     signal_playlist_index_changed = Signal(int)
-    # endregion
 
     def __init__(self, parent):
         super().__init__(parent=parent)
@@ -18,81 +11,56 @@ class MediaPlayer(QMediaPlayer):
         self.playlist = QMediaPlaylist()
         self.playlist.currentIndexChanged.connect(self.signal_playlist_index_changed.emit)
 
-    def set_playlist(self, song_list, start=True):
+        self.repeat = 0
+
+    # Установка списка воспроизведения
+    def set_playlist(self, audio_list, start=True):
         self.stop()
         self.playlist.clear()
         self.mw_ref.listWidget_current_playlist.clear()
 
-        if not isinstance(song_list, list):
-            song_list = [song_list]
+        if not isinstance(audio_list, list):
+            audio_list = [audio_list]
 
-        for song in song_list:
-            self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(song)))
-            self.mw_ref.listWidget_current_playlist.addItem(self.mw_ref.db.get_song_name(song))
+        for audio in audio_list:
+            self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(audio)))
+            self.mw_ref.listWidget_current_playlist.addItem(self.mw_ref.db.get_audio_name(audio))
 
         self.setPlaylist(self.playlist)
         self.playlist.setCurrentIndex(0)
         if start:
             self.play()
 
+    # Переключение воспроизведения/паузы
     def play_pause(self):
         if self.state() == QMediaPlayer.State.PlayingState:
             self.pause()
         else:
             self.play()
 
+    # Перемешивание плейлиста
     def shuffle(self):
         self.playlist.shuffle()
         _ = [self.playlist.media(i).canonicalUrl().fileName() for i in range(self.playlist.mediaCount())]
-        #_ = [pathlib.Path(p).name for p in _]
         self.mw_ref.listWidget_current_playlist.clear()
         for item in _:
             self.mw_ref.listWidget_current_playlist.addItem(item)
+        self.playlist.setCurrentIndex(0)
 
+    # Переключение текущего трека на
     def setCurrentIndex(self, index):
         self.playlist.setCurrentIndex(index)
         self.play()
 
-
-class MainClass(QMainWindow):
-    def __init__(self):
-        super(MainClass, self).__init__()
-        self.setupUi(self)
-
-        self.player = QMediaPlayer()
-        self.current_playlist = []
-
-        self.progress_bar_slider.setRange(0, 0)
-        self.progress_bar_slider.sliderMoved.connect(self.set_position)
-
-        self.sound_bar_slider.setValue(100)
-        self.sound_bar_slider.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.addControls()
-
-        self.update_playlists_list()
-        self.on_show()
-
-        self.selected_playlist = None
-        self.new_playlist_widget = None
-        self.recently_added_playlist_name = ""
-        self.recently_added_playlist_slist = []
-        self.artist = None
-
-    # endregion
-
-    # region MediaPlayer
-
-    def durationHandler(self):
-        pass
-
-    def position_changed(self, position):
-        self.progress_bar_slider.blockSignals(True)
-        self.progress_bar_slider.setValue(position)
-        self.progress_bar_slider.blockSignals(False)
-
-    def duration_changed(self, duration):
-        self.progress_bar_slider.setRange(0, duration)
-
-    def set_position(self, position):
-        self.player.setPosition(position)
-    # endregion"""
+    # Переключение режимов повтора аудио
+    def repeat_toggle(self):
+        match self.repeat:
+            case 0:
+                self.playlist.setPlaybackMode(QMediaPlaylist.PlaybackMode.Loop)
+                self.repeat = 1
+            case 1:
+                self.playlist.setPlaybackMode(QMediaPlaylist.PlaybackMode.CurrentItemInLoop)
+                self.repeat = 2
+            case 2:
+                self.playlist.setPlaybackMode(QMediaPlaylist.PlaybackMode.Sequential)
+                self.repeat = 0

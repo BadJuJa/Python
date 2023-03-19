@@ -38,9 +38,23 @@ background-color: rgb(63, 63, 63);
 alternate-background-color: rgb(188, 188, 188);
 
 QMenuBar::item:selected {
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}
+
+QPushButton {
+background-color: rgb(60, 60, 60);
+border-radius: 5%;
+border: 1px solid rgb(188, 188, 188);
+font-size: 16pt;
+}
+
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}
+                                                                
+            </string>
   </property>
   <layout class="QGridLayout" name="MainWidget_gridLayout">
    <property name="leftMargin">
@@ -80,25 +94,26 @@ QMenuBar::item:selected {
      </property>
      <property name="styleSheet">
       <string notr="true">QTabBar {
-	font: 13pt &quot;Century Gothic&quot;;
-	border: 0px solid;
-}
+                            font: 13pt &quot;Century Gothic&quot;;
+                            border: 0px solid;
+                            }
 
-QTabBar:tab {
-	font: 13pt &quot;Century Gothic&quot;;
-	background-color: rgb(63, 63, 63);
+                            QTabBar:tab {
+                            font: 13pt &quot;Century Gothic&quot;;
+                            background-color: rgb(63, 63, 63);
 
-}
-QTabBar:tab:hover {
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0)
-}
-QTabBar:tab:selected {
-	background-color: rgb(160, 160, 160);
-	color: rgb(12, 12, 12);
-}
+                            }
+                            QTabBar:tab:hover {
+                            background-color: rgb(188, 188, 188);
+                            color: rgb(0, 0, 0)
+                            }
+                            QTabBar:tab:selected {
+                            background-color: rgb(160, 160, 160);
+                            color: rgb(12, 12, 12);
+                            }
 
-QTabWidget::pane {}</string>
+                            QTabWidget::pane {}
+                        </string>
      </property>
      <property name="tabPosition">
       <enum>QTabWidget::North</enum>
@@ -107,7 +122,7 @@ QTabWidget::pane {}</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -151,12 +166,12 @@ QTabWidget::pane {}</string>
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QGroupBox" name="groupBox_music_paths">
+        <widget class="QGroupBox" name="groupBox_audio_paths">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <property name="title">
-          <string>Music paths</string>
+          <string>Paths</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -181,7 +196,20 @@ QTabWidget::pane {}</string>
            <number>0</number>
           </property>
           <item row="0" column="1">
-           <widget class="QWidget" name="widget_music_paths_buttons" native="true">
+           <widget class="QWidget" name="widget_audio_paths_buttons" native="true">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+background-color: rgb(60, 60, 60);
+border-radius: 5%;
+border: 1px solid rgb(188, 188, 188);
+font-size: 16pt;
+}
+
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}</string>
+            </property>
             <layout class="QVBoxLayout" name="widget_music_paths_buttons_verticalLayout">
              <property name="spacing">
               <number>5</number>
@@ -213,17 +241,7 @@ QTabWidget::pane {}</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>Add</string>
@@ -245,17 +263,7 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>Delete</string>
@@ -277,17 +285,7 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>Edit</string>
@@ -311,22 +309,22 @@ QPushButton:hover{
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="QTableWidget" name="tableWidget_music_paths">
+           <widget class="QTableWidget" name="tableWidget_audio_paths">
             <property name="styleSheet">
              <string notr="true">QHeaderView {
-	background: transparent;
-	border: 0px solid;
+background: transparent;
+border: 0px solid;
 }
 
 QHeaderView::section {
-	background-color: rgb(63, 63, 63);
-	color: white;
-	border: 0px solid;
+background-color: rgb(63, 63, 63);
+color: white;
+border: 0px solid;
 }
 
 QTableCornerButton::section {
-	background-color: rgb(63,63, 63);
-	border: 0px solid;
+background-color: rgb(63,63, 63);
+border: 0px solid;
 }</string>
             </property>
             <property name="frameShape">
@@ -391,100 +389,6 @@ QTableCornerButton::section {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_interface">
-      <attribute name="title">
-       <string>Interface</string>
-      </attribute>
-      <layout class="QGridLayout" name="tab_interface_gridLayout">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QGroupBox" name="groupBox_current_song_parameters">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="title">
-          <string>Current song parameters</string>
-         </property>
-         <layout class="QGridLayout" name="groupBox_current_song_parameters_gridLayout">
-          <property name="horizontalSpacing">
-           <number>25</number>
-          </property>
-          <item row="1" column="1">
-           <widget class="QRadioButton" name="button_radio_sliders">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>13</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Sliders</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="button_radio_dials">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>13</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Dials</string>
-            </property>
-            <property name="checked">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_style">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>13</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Style</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
    <item row="2" column="0">
@@ -538,6 +442,19 @@ QTableCornerButton::section {
       </item>
       <item>
        <widget class="QWidget" name="widget_footer_buttons" native="true">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+background-color: rgb(60, 60, 60);
+border-radius: 5%;
+border: 1px solid rgb(188, 188, 188);
+font-size: 16pt;
+}
+
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}</string>
+        </property>
         <layout class="QGridLayout" name="widget_footer_buttons_gridLayout">
          <property name="leftMargin">
           <number>0</number>
@@ -578,17 +495,7 @@ QTableCornerButton::section {
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>OK</string>
@@ -631,17 +538,7 @@ QPushButton:hover{
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Cancel</string>
@@ -678,17 +575,7 @@ QPushButton:hover{
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-	border-radius: 5%;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-} </string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Apply</string>

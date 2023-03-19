@@ -9,11 +9,9 @@ class TablePlaylist(QWidget):
     def __init__(self, table_parent, _name, _icon):
         super().__init__(table_parent)
 
-        # LAYOUT
         self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
-        # IMAGE
         self.image = QLabel(self)
         self.image.setMinimumSize(QSize(125, 125))
         self.image.setMaximumSize(QSize(125, 125))
@@ -25,7 +23,6 @@ class TablePlaylist(QWidget):
         self.image.setContentsMargins(10, 5, 10, 5)
         self.image.setPixmap(pixmap)
 
-        # NAME
         self.name = QLabel(self)
         self.name.setMinimumSize(QSize(0, 100))
         self.name.setMaximumSize(QSize(16777215, 150))
@@ -33,6 +30,5 @@ class TablePlaylist(QWidget):
         self.name.setContentsMargins(10, 10, 10, 10)
         self.name.setWordWrap(True)
 
-        # ADD TO LAYOUT
         self.layout.addWidget(self.image)
         self.layout.addWidget(self.name)

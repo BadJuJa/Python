@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'resources/d_ui/playlist_songlist_edit.ui'
+# Form implementation generated from reading ui file 'resources/d_ui/playlist_audio_list_edit.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -16,17 +16,18 @@ class Ui_mainWidget(object):
         mainWidget.setObjectName("mainWidget")
         mainWidget.resize(687, 480)
         mainWidget.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 13pt \"Century Gothic\";\n"
-"selection-background-color: rgb(188, 188, 188);\n"
-"selection-color: rgb(0, 0, 0);\n"
-"border-color: rgb(15, 15, 15);\n"
-"background-color: rgb(63, 63, 63);\n"
-"alternate-background-color: rgb(188, 188, 188);\n"
+"                font: 75 13pt \"Century Gothic\";\n"
+"                selection-background-color: rgb(188, 188, 188);\n"
+"                selection-color: rgb(0, 0, 0);\n"
+"                border-color: rgb(15, 15, 15);\n"
+"                background-color: rgb(63, 63, 63);\n"
+"                alternate-background-color: rgb(188, 188, 188);\n"
 "\n"
-"QMenuBar::item:selected {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+"                QMenuBar::item:selected {\n"
+"                background-color: rgb(188, 188, 188);\n"
+"                color: rgb(0, 0, 0);\n"
+"                }\n"
+"            ")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(mainWidget)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
@@ -42,35 +43,38 @@ class Ui_mainWidget(object):
         self.listWidget_from.setObjectName("listWidget_from")
         self.horizontalLayout_2.addWidget(self.listWidget_from)
         self.widget = QtWidgets.QWidget(self.widget_top)
+        self.widget.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 25%;\n"
+"font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"                                                ")
         self.widget.setObjectName("widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout.setObjectName("verticalLayout")
         spacerItem = QtWidgets.QSpacerItem(20, 179, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.button_to = QtWidgets.QPushButton(self.widget)
-        self.button_to.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_to.setStyleSheet("")
+        self.button_to.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/assets/arrows-right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.button_to.setIcon(icon)
+        self.button_to.setIconSize(QtCore.QSize(48, 48))
         self.button_to.setObjectName("button_to")
         self.verticalLayout.addWidget(self.button_to)
         self.button_from = QtWidgets.QPushButton(self.widget)
-        self.button_from.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_from.setStyleSheet("")
+        self.button_from.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/assets/arrows-left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.button_from.setIcon(icon1)
+        self.button_from.setIconSize(QtCore.QSize(48, 48))
         self.button_from.setObjectName("button_from")
         self.verticalLayout.addWidget(self.button_from)
         spacerItem1 = QtWidgets.QSpacerItem(20, 178, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -83,15 +87,16 @@ class Ui_mainWidget(object):
         self.verticalLayout_2.addWidget(self.widget_top)
         self.widget_bottom = QtWidgets.QWidget(mainWidget)
         self.widget_bottom.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 10%;\n"
+"font-size: 16pt;\n"
 "}\n"
 "QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"                        ")
         self.widget_bottom.setObjectName("widget_bottom")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_bottom)
         self.horizontalLayout.setContentsMargins(4, 4, 4, 4)
@@ -99,16 +104,7 @@ class Ui_mainWidget(object):
         spacerItem2 = QtWidgets.QSpacerItem(514, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.button_ok = QtWidgets.QPushButton(self.widget_bottom)
-        self.button_ok.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_ok.setStyleSheet("")
         self.button_ok.setObjectName("button_ok")
         self.horizontalLayout.addWidget(self.button_ok)
         self.button_cancel = QtWidgets.QPushButton(self.widget_bottom)
@@ -122,7 +118,6 @@ class Ui_mainWidget(object):
     def retranslateUi(self, mainWidget):
         _translate = QtCore.QCoreApplication.translate
         mainWidget.setWindowTitle(_translate("mainWidget", "Form"))
-        self.button_to.setText(_translate("mainWidget", "TO"))
-        self.button_from.setText(_translate("mainWidget", "FROM"))
         self.button_ok.setText(_translate("mainWidget", "OK"))
         self.button_cancel.setText(_translate("mainWidget", "Cancel"))
+import resources_rc

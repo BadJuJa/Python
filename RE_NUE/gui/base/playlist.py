@@ -22,17 +22,14 @@ class Ui_main_widget(object):
         main_widget.setSizePolicy(sizePolicy)
         main_widget.setMinimumSize(QtCore.QSize(800, 600))
         main_widget.setMaximumSize(QtCore.QSize(800, 600))
-        main_widget.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 13pt \"Century Gothic\";\n"
+        main_widget.setStyleSheet("color: rgb(255, 255, 255); font: 75 13pt \"Century Gothic\";\n"
 "selection-background-color: rgb(188, 188, 188);\n"
-"selection-color: rgb(0, 0, 0);\n"
-"border-color: rgb(15, 15, 15);\n"
+"selection-color: rgb(0, 0, 0); border-color: rgb(15, 15, 15);\n"
 "background-color: rgb(63, 63, 63);\n"
 "alternate-background-color: rgb(188, 188, 188);\n"
 "\n"
-"QMenuBar::item:selected {\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"QMenuBar::item:selected { \n"
+"background-color: rgb(188, 188, 188); color: rgb(0, 0, 0);\n"
 "}")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(main_widget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -81,6 +78,16 @@ class Ui_main_widget(object):
         self.widget = QtWidgets.QWidget(self.widget_text_edits)
         self.widget.setMinimumSize(QtCore.QSize(0, 75))
         self.widget.setMaximumSize(QtCore.QSize(16777215, 75))
+        self.widget.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 10%;\n"
+"font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
         self.widget.setObjectName("widget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -92,16 +99,7 @@ class Ui_main_widget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_play.sizePolicy().hasHeightForWidth())
         self.button_play.setSizePolicy(sizePolicy)
-        self.button_play.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_play.setStyleSheet("")
         self.button_play.setObjectName("button_play")
         self.horizontalLayout_3.addWidget(self.button_play)
         self.button_edit = QtWidgets.QPushButton(self.widget)
@@ -110,16 +108,7 @@ class Ui_main_widget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_edit.sizePolicy().hasHeightForWidth())
         self.button_edit.setSizePolicy(sizePolicy)
-        self.button_edit.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_edit.setStyleSheet("")
         self.button_edit.setObjectName("button_edit")
         self.horizontalLayout_3.addWidget(self.button_edit)
         self.button_shuffle = QtWidgets.QPushButton(self.widget)
@@ -128,17 +117,7 @@ class Ui_main_widget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button_shuffle.sizePolicy().hasHeightForWidth())
         self.button_shuffle.setSizePolicy(sizePolicy)
-        self.button_shuffle.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"    margin: 1px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_shuffle.setStyleSheet("")
         self.button_shuffle.setObjectName("button_shuffle")
         self.horizontalLayout_3.addWidget(self.button_shuffle)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
@@ -146,13 +125,23 @@ class Ui_main_widget(object):
         self.verticalLayout.addWidget(self.widget)
         self.horizontalLayout_2.addWidget(self.widget_text_edits)
         self.verticalLayout_2.addWidget(self.widget_top)
-        self.listWidget_songs = QtWidgets.QListWidget(main_widget)
-        self.listWidget_songs.setMouseTracking(True)
-        self.listWidget_songs.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.listWidget_songs.setWordWrap(True)
-        self.listWidget_songs.setObjectName("listWidget_songs")
-        self.verticalLayout_2.addWidget(self.listWidget_songs)
+        self.listWidget_audio = QtWidgets.QListWidget(main_widget)
+        self.listWidget_audio.setMouseTracking(True)
+        self.listWidget_audio.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.listWidget_audio.setWordWrap(True)
+        self.listWidget_audio.setObjectName("listWidget_audio")
+        self.verticalLayout_2.addWidget(self.listWidget_audio)
         self.widget_buttons = QtWidgets.QWidget(main_widget)
+        self.widget_buttons.setStyleSheet("QPushButton {\n"
+"background-color: rgb(60, 60, 60);\n"
+"border: 1px solid rgb(188, 188, 188);\n"
+"border-radius: 10%;\n"
+"font-size: 16pt;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(188, 188, 188);\n"
+"color: rgb(0, 0, 0);\n"
+"}")
         self.widget_buttons.setObjectName("widget_buttons")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_buttons)
         self.horizontalLayout.setContentsMargins(0, 0, 5, 0)
@@ -162,15 +151,8 @@ class Ui_main_widget(object):
         self.button_delete.setMinimumSize(QtCore.QSize(26, 26))
         self.button_delete.setMaximumSize(QtCore.QSize(26, 26))
         self.button_delete.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"    margin: -1px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
+"border-radius: 13%;\n"
+"margin: -1px;\n"
 "}")
         self.button_delete.setText("")
         icon = QtGui.QIcon()
@@ -184,31 +166,13 @@ class Ui_main_widget(object):
         self.button_ok = QtWidgets.QPushButton(self.widget_buttons)
         self.button_ok.setMinimumSize(QtCore.QSize(40, 26))
         self.button_ok.setMaximumSize(QtCore.QSize(16777215, 26))
-        self.button_ok.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_ok.setStyleSheet("")
         self.button_ok.setObjectName("button_ok")
         self.horizontalLayout.addWidget(self.button_ok)
         self.button_cancel = QtWidgets.QPushButton(self.widget_buttons)
         self.button_cancel.setMinimumSize(QtCore.QSize(90, 26))
         self.button_cancel.setMaximumSize(QtCore.QSize(16777215, 26))
-        self.button_cancel.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+        self.button_cancel.setStyleSheet("")
         self.button_cancel.setObjectName("button_cancel")
         self.horizontalLayout.addWidget(self.button_cancel)
         self.verticalLayout_2.addWidget(self.widget_buttons)

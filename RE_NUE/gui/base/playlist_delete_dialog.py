@@ -21,11 +21,12 @@ class Ui_dialog_delete(object):
         font.setFamily("Century Gothic")
         dialog_delete.setFont(font)
         dialog_delete.setStyleSheet("color: rgb(255, 255, 255);\n"
-"selection-background-color: rgb(188, 188, 188);\n"
-"selection-color: rgb(0, 0, 0);\n"
-"border-color: rgb(15, 15, 15);\n"
-"background-color: rgb(63, 63, 63);\n"
-"alternate-background-color: rgb(188, 188, 188);")
+"                selection-background-color: rgb(188, 188, 188);\n"
+"                selection-color: rgb(0, 0, 0);\n"
+"                border-color: rgb(15, 15, 15);\n"
+"                background-color: rgb(63, 63, 63);\n"
+"                alternate-background-color: rgb(188, 188, 188);\n"
+"            ")
         self.verticalLayout = QtWidgets.QVBoxLayout(dialog_delete)
         self.verticalLayout.setContentsMargins(0, 10, 0, 15)
         self.verticalLayout.setSpacing(0)
@@ -59,16 +60,17 @@ class Ui_dialog_delete(object):
         self.buttonBox = QtWidgets.QDialogButtonBox(dialog_delete)
         self.buttonBox.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.buttonBox.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(60, 60, 60);\n"
-"    border: 1px solid rgb(188, 188, 188);\n"
-"    border-radius: 10%;\n"
-"    font-size: 16pt;\n"
-"    width: 100px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: rgb(188, 188, 188);\n"
-"    color: rgb(0, 0, 0);\n"
-"}")
+"                            background-color: rgb(60, 60, 60);\n"
+"                            border: 1px solid rgb(188, 188, 188);\n"
+"                            border-radius: 10%;\n"
+"                            font-size: 16pt;\n"
+"                            width: 100px;\n"
+"                            }\n"
+"                            QPushButton:hover{\n"
+"                            background-color: rgb(188, 188, 188);\n"
+"                            color: rgb(0, 0, 0);\n"
+"                            }\n"
+"                        ")
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.No|QtWidgets.QDialogButtonBox.Yes)
         self.buttonBox.setCenterButtons(True)
@@ -83,7 +85,8 @@ class Ui_dialog_delete(object):
     def retranslateUi(self, dialog_delete):
         _translate = QtCore.QCoreApplication.translate
         dialog_delete.setWindowTitle(_translate("dialog_delete", "Dialog"))
-        self.label.setText(_translate("dialog_delete", "STOP RIGHT THERE, YOU,  USER!"))
+        self.label.setText(_translate("dialog_delete", "STOP RIGHT THERE, YOU, USER!"))
         self.label_2.setText(_translate("dialog_delete", "That little button you clicked\n"
-" is for deleting the playlist"))
+" is for deleting the playlist\n"
+"                        "))
         self.label_3.setText(_translate("dialog_delete", "Are you sure you know what you\'re doing?"))
