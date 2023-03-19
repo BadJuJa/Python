@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtCore import pyqtSignal as Signal
 from PyQt5.QtWidgets import (QWidget)
 
@@ -18,7 +20,7 @@ class audiolistEdit(QWidget, Ui_mainWidget):
         self.button_from.clicked.connect(self.from_playlist)
         self.button_ok.clicked.connect(self.save)
 
-    # Çàïîëíÿåò ëèñòû ñ àóäèî
+    # Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÑ‚ Ð»Ð¸ÑÑ‚Ñ‹ Ñ Ð°ÑƒÐ´Ð¸Ð¾
     def fill_playlists(self, old_audiolist):
         audio = [x[0] for x in self.mw_ref.db.get_all_audio()]
         playlist_audio = [old_audiolist.item(i).text() for i in range(old_audiolist.count())]
@@ -32,7 +34,7 @@ class audiolistEdit(QWidget, Ui_mainWidget):
 
         self.check_list()
 
-    # Äîáàâëÿåò âûáðàííîå àóäèî â ïëåéëèñò
+    # Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ Ð°ÑƒÐ´Ð¸Ð¾ Ð² Ð¿Ð»ÐµÐ¹Ð»Ð¸ÑÑ‚
     def to_playlist(self):
         if len(self.listWidget_from.selectedItems()) == 0:
             return
@@ -42,7 +44,7 @@ class audiolistEdit(QWidget, Ui_mainWidget):
 
         self.check_list()
 
-    # Óáèðàåò àóäèî èç ïëåéëèñòà
+    # Ð£Ð±Ð¸Ñ€Ð°ÐµÑ‚ Ð°ÑƒÐ´Ð¸Ð¾ Ð¸Ð· Ð¿Ð»ÐµÐ¹Ð»Ð¸ÑÑ‚Ð°
     def from_playlist(self):
         if len(self.listWidget_to.selectedItems()) == 0:
             return
@@ -52,13 +54,13 @@ class audiolistEdit(QWidget, Ui_mainWidget):
 
         self.check_list()
 
-    # Ñîõðàíåíèå èçìåíåíèé
+    # Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹
     def save(self):
         _ = [self.listWidget_to.item(i).text() for i in range(self.listWidget_to.count())]
         self.listChanged.emit(_)
         self.close()
 
-    # Ïðîâåðÿåò ÷òîáû ñïèñîê àóäèî â ïëåéëèñòå íå áûë ïóñò, èíà÷å áëîêèðóåò êíîïêó ñîõðàíåíèÿ
+    # ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐ¿Ð¸ÑÐ¾Ðº Ð°ÑƒÐ´Ð¸Ð¾ Ð² Ð¿Ð»ÐµÐ¹Ð»Ð¸ÑÑ‚Ðµ Ð½Ðµ Ð±Ñ‹Ð» Ð¿ÑƒÑÑ‚, Ð¸Ð½Ð°Ñ‡Ðµ Ð±Ð»Ð¾ÐºÐ¸Ñ€ÑƒÐµÑ‚ ÐºÐ½Ð¾Ð¿ÐºÑƒ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ
     def check_list(self):
         safe = self.listWidget_to.count() > 0
         self.button_ok.setEnabled(safe)

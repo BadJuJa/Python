@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -14,10 +16,10 @@ class CustomGrip(QWidget):
         self.setGeometry(0, self.parent.height() - self.grip_width, self.parent.width(), self.grip_width)
         self.setMaximumHeight(self.grip_width)
 
-        # Виджет захвата
+        # Р’РёРґР¶РµС‚ Р·Р°С…РІР°С‚Р°
         self.bottom_right = QSizeGrip(self.widget.bottom_right)
 
-        # Масштабирование виджета захвата при изменении размера окна
+        # РњР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РІРёРґР¶РµС‚Р° Р·Р°С…РІР°С‚Р° РїСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР°
         def resize_bottom(event):
             delta = event.pos()
             height = max(self.parent.minimumHeight(), self.parent.height() + delta.y())
@@ -25,7 +27,7 @@ class CustomGrip(QWidget):
             event.accept()
         self.widget.bottom_right.mouseMoveEvent = resize_bottom
 
-    # region Перезапись событий масштабирования
+    # region РџРµСЂРµР·Р°РїРёСЃСЊ СЃРѕР±С‹С‚РёР№ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ
     def mouseReleaseEvent(self, event):
         self.mousePos = None
 

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtCore import QPoint, QSize, Qt
 from PyQt5.QtWidgets import QWidget, QFileDialog, QTableWidgetItem, QHeaderView
 
@@ -21,31 +23,31 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         }
         self.table_rows_count = 0
 
-        # region Изменение параметров окна
+        # region РР·РјРµРЅРµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ РѕРєРЅР°
         self.setWindowModality(Qt.WindowModality.ApplicationModal)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.bottom_grip = CustomGrip(self, 3)
         # endregion
 
-        # region Изменение параметров таблицы
+        # region РР·РјРµРЅРµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ С‚Р°Р±Р»РёС†С‹
         self.tableWidget_audio_paths.horizontalHeader().setMinimumSectionSize(20)
         self.tableWidget_audio_paths.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         self.tableWidget_audio_paths.verticalHeader().hide()
         # endregion
 
-        # region Поля для событий масштабирования
+        # region РџРѕР»СЏ РґР»СЏ СЃРѕР±С‹С‚РёР№ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ
         self.mouse_press_start = QPoint(0, 0)
         self.mouse_pressed = False
         self.grip_title_bar = False
         # endregion
 
-        # Заполнение таблицы путями к папкам с аудио
+        # Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ РїСѓС‚СЏРјРё Рє РїР°РїРєР°Рј СЃ Р°СѓРґРёРѕ
         for p in self.db.get_paths():
             self.add_path(p, False)
 
         self.connect_signals()
 
-    # region Перезапись событий для масштабирования окна
+    # region РџРµСЂРµР·Р°РїРёСЃСЊ СЃРѕР±С‹С‚РёР№ РґР»СЏ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ РѕРєРЅР°
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             if 5 < event.pos().y() < 20:
@@ -77,7 +79,7 @@ class SettingsWidget(QWidget, Ui_MainWidget):
 
     # endregion
 
-    # Подписка методов на сигналы от элементов интерфейса
+    # РџРѕРґРїРёСЃРєР° РјРµС‚РѕРґРѕРІ РЅР° СЃРёРіРЅР°Р»С‹ РѕС‚ СЌР»РµРјРµРЅС‚РѕРІ РёРЅС‚РµСЂС„РµР№СЃР°
     def connect_signals(self):
         self.button_cancel.clicked.connect(self.cancel)
         self.button_ok.clicked.connect(self.ok)
@@ -87,7 +89,7 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         self.button_edit_path.clicked.connect(self.edit)
         self.button_delete_path.clicked.connect(self.delete)
 
-    # Отмена внесённых, но не сохранённых изменений
+    # РћС‚РјРµРЅР° РІРЅРµСЃС‘РЅРЅС‹С…, РЅРѕ РЅРµ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№
     def discard_changes(self):
         add = self.changes['paths']['add']
         remove = self.changes['paths']['remove']
@@ -105,13 +107,13 @@ class SettingsWidget(QWidget, Ui_MainWidget):
 
         self.clear_changelist()
 
-    # Очистка списка изменений после сохранения или отмены
+    # РћС‡РёСЃС‚РєР° СЃРїРёСЃРєР° РёР·РјРµРЅРµРЅРёР№ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ РёР»Рё РѕС‚РјРµРЅС‹
     def clear_changelist(self):
         self.changes['paths']['add'].clear()
         self.changes['paths']['remove'].clear()
         self.changes['paths']['change'].clear()
 
-    # Добавление пути в таблицу
+    # Р”РѕР±Р°РІР»РµРЅРёРµ РїСѓС‚Рё РІ С‚Р°Р±Р»РёС†Сѓ
     def add_path(self, path, with_discard=True):
         if self.tableWidget_audio_paths.findItems(path, Qt.MatchFlag.MatchExactly):
             return
@@ -132,17 +134,17 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         if with_discard:
             self.changes['paths']['add'].append(path)
 
-    # Отмена изменений и закрытие окна
+    # РћС‚РјРµРЅР° РёР·РјРµРЅРµРЅРёР№ Рё Р·Р°РєСЂС‹С‚РёРµ РѕРєРЅР°
     def cancel(self):
         self.close()
         self.discard_changes()
 
-    # Закрепление изменений и закрытие окна
+    # Р—Р°РєСЂРµРїР»РµРЅРёРµ РёР·РјРµРЅРµРЅРёР№ Рё Р·Р°РєСЂС‹С‚РёРµ РѕРєРЅР°
     def ok(self):
         self.apply()
         self.close()
 
-    # Закрепление внесённых изменений
+    # Р—Р°РєСЂРµРїР»РµРЅРёРµ РІРЅРµСЃС‘РЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№
     def apply(self):
         add = self.changes['paths']['add']
         remove = self.changes['paths']['remove']
@@ -162,12 +164,12 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         self.db.save_changes()
         self.clear_changelist()
 
-    # Добавить новый путь к папке с аудио
+    # Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ РїСѓС‚СЊ Рє РїР°РїРєРµ СЃ Р°СѓРґРёРѕ
     def add(self):
         path = QFileDialog.getExistingDirectory(self, 'Get Path')
         self.add_path(path)
 
-    # Удалить путь к папке с аудио
+    # РЈРґР°Р»РёС‚СЊ РїСѓС‚СЊ Рє РїР°РїРєРµ СЃ Р°СѓРґРёРѕ
     def delete(self):
         if len(self.tableWidget_audio_paths.selectedItems()) == 0:
             return
@@ -177,7 +179,7 @@ class SettingsWidget(QWidget, Ui_MainWidget):
 
         self.changes['paths']['remove'].append(path)
 
-    # Изменить путь к папке с аудио
+    # РР·РјРµРЅРёС‚СЊ РїСѓС‚СЊ Рє РїР°РїРєРµ СЃ Р°СѓРґРёРѕ
     def edit(self):
         if len(self.tableWidget_audio_paths.selectedItems()) == 0:
             return

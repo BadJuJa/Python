@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import fnmatch
 import pathlib
 
@@ -23,13 +25,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         utils.create_subfolders()
         self.setupUi(self)
         self.audio_paths = []
-        # region Подключение базы данных
+        # region РџРѕРґРєР»СЋС‡РµРЅРёРµ Р±Р°Р·С‹ РґР°РЅРЅС‹С…
         self.db = Database('data.db')
         self.player = MediaPlayer(self)
         self.scan_audio()
         # endregion
 
-        # region Дополнительная настройка интерфейса
+        # region Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РЅР°СЃС‚СЂРѕР№РєР° РёРЅС‚РµСЂС„РµР№СЃР°
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, on=True)
         self.tabWidget_main.tabBar().hide()
@@ -43,14 +45,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.bottom_grip = CustomGrip(self, 5)
         # endregion
 
-        # region Поля для событий
+        # region РџРѕР»СЏ РґР»СЏ СЃРѕР±С‹С‚РёР№
         self.mouse_press_start = QPoint(0, 0)
         self.mouse_pressed = False
         self.grip_title_bar = False
         self.maximized = False
         # endregion
 
-        # region Виджеты
+        # region Р’РёРґР¶РµС‚С‹
         self.settingsWidget = None
         self.playlistWidget = None
 
@@ -59,7 +61,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fill_playlists_table()
         self.connect_signals()
 
-    # region Перезапись событий
+    # region РџРµСЂРµР·Р°РїРёСЃСЊ СЃРѕР±С‹С‚РёР№
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             if self.title_bar.geometry().top() < event.pos().y() < self.title_bar.geometry().bottom() \
@@ -99,7 +101,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.db.connection_close()
     # endregion
 
-    # Переключение в полноэкранный режим
+    # РџРµСЂРµРєР»СЋС‡РµРЅРёРµ РІ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅС‹Р№ СЂРµР¶РёРј
     def toggle_maximize(self):
         if not self.maximized:
             self.showMaximized()
@@ -108,9 +110,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.showNormal()
             self.maximized = not self.maximized
 
-    # Подключение сигналов
+    # РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРёРіРЅР°Р»РѕРІ
     def connect_signals(self):
-        # Нажатие кнопок
+        # РќР°Р¶Р°С‚РёРµ РєРЅРѕРїРѕРє
         self.button_menu.clicked.connect(self.qm_popup)
         self.button_minimize.clicked.connect(self.showMinimized)
         self.button_exit.clicked.connect(self.close)
@@ -125,20 +127,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.button_repeat.clicked.connect(self.player.repeat_toggle)
         self.button_stop.clicked.connect(self.player.stop)
 
-        # Изменения значений
+        # РР·РјРµРЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№
         self.tabWidget_main.currentChanged.connect(lambda x: self.button_add_playlist.setHidden(not x))
         self.horizontalSlider_volume.valueChanged.connect(self.player.setVolume)
         self.listWidget_current_playlist.currentTextChanged.connect(lambda x: self.label_audio_name.setText(x))
         self.player.signal_playlist_index_changed.connect(lambda x: self.listWidget_current_playlist.setCurrentRow(x))
 
-        # Двойное нажатие на элемент списка/таблицы
+        # Р”РІРѕР№РЅРѕРµ РЅР°Р¶Р°С‚РёРµ РЅР° СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°/С‚Р°Р±Р»РёС†С‹
         self.tableWidget_all_audio.itemDoubleClicked.connect(self.play_audio)
         self.listWidget_current_playlist.itemDoubleClicked.connect(
             lambda x: self.player.setCurrentIndex(self.listWidget_current_playlist.currentRow())
         )
         self.tableWidget_playlists_table.cellDoubleClicked.connect(self.show_playlist_widget)
 
-    # Сканирование аудио в папках, указанных в настройках
+    # РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ Р°СѓРґРёРѕ РІ РїР°РїРєР°С…, СѓРєР°Р·Р°РЅРЅС‹С… РІ РЅР°СЃС‚СЂРѕР№РєР°С…
     def scan_audio(self):
         self.db.clear_audio_table()
         self.tableWidget_all_audio.clearContents()
@@ -166,26 +168,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.tableWidget_all_audio.setItem(row, 0, item)
             self.audio_paths.append(db_audio[row][1])
 
-    # Открытие виджета настроек
+    # РћС‚РєСЂС‹С‚РёРµ РІРёРґР¶РµС‚Р° РЅР°СЃС‚СЂРѕРµРє
     def showSettingsWidget(self):
         if self.settingsWidget is None:
             self.settingsWidget = SettingsWidget(self)
 
         self.settingsWidget.show()
 
-    # Открытие виджета существующего плейлиста
+    # РћС‚РєСЂС‹С‚РёРµ РІРёРґР¶РµС‚Р° СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РїР»РµР№Р»РёСЃС‚Р°
     def show_playlist_widget(self, index):
         name = self.tableWidget_playlists_table.cellWidget(index, 0).name.text()
         self.playlistWidget = Playlist(self)
         self.playlistWidget.load_playlist(name)
         self.playlistWidget.show()
 
-    # Создание плейлиста
+    # РЎРѕР·РґР°РЅРёРµ РїР»РµР№Р»РёСЃС‚Р°
     def create_playlist(self):
         self.playlistWidget = Playlist(self, True)
         self.playlistWidget.show()
 
-    # Появление меню под кнопкой
+    # РџРѕСЏРІР»РµРЅРёРµ РјРµРЅСЋ РїРѕРґ РєРЅРѕРїРєРѕР№
     def qm_popup(self):
         point = self.button_menu.mapToGlobal(self.button_menu.geometry().bottomLeft())
         qm_height = self.qMenu.size().height()
@@ -194,7 +196,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             point.setY(point.y() - (qm_height + offset))
         self.qMenu.popup(point)
 
-    # Определение всплывающего меню
+    # РћРїСЂРµРґРµР»РµРЅРёРµ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РјРµРЅСЋ
     def main_menu_setup(self):
         self.qMenu = QMenu(self.button_menu)
 
@@ -218,31 +220,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.qMenu.adjustSize()
 
-    # Вопспроизведение выбранного аудио
+    # Р’РѕРїСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р°СѓРґРёРѕ
     def play_audio(self):
         row = self.tableWidget_all_audio.currentRow()
         audio = self.audio_paths[row]
         self.player.set_playlist(audio)
 
-    # Заполнение таблицы с плейлистами
+    # Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃ РїР»РµР№Р»РёСЃС‚Р°РјРё
     def fill_playlists_table(self):
-        # Добавление плейлиста в таблицу
+        # Р”РѕР±Р°РІР»РµРЅРёРµ РїР»РµР№Р»РёСЃС‚Р° РІ С‚Р°Р±Р»РёС†Сѓ
         def add_playlist(playlist_name, row_):
-            # Создание объекта таблицы
+            # РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° С‚Р°Р±Р»РёС†С‹
             _path, _name, _icon = self.db.get_playlist(playlist_name)
             pl_item = TablePlaylist(self.tableWidget_playlists_table, _name, _icon)
 
-            # Добавление объекта в таблицу
+            # Р”РѕР±Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° РІ С‚Р°Р±Р»РёС†Сѓ
             self.tableWidget_playlists_table.setCellWidget(row_, 0, pl_item)
 
-            # Масштабирование таблицы под содержимое
+            # РњР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ РїРѕРґ СЃРѕРґРµСЂР¶РёРјРѕРµ
             self.tableWidget_playlists_table.resizeRowsToContents()
             self.tableWidget_playlists_table.resizeColumnsToContents()
 
-        # Очистка таблицы
+        # РћС‡РёСЃС‚РєР° С‚Р°Р±Р»РёС†С‹
         self.tableWidget_playlists_table.clear()
 
-        # Получение списка плейлистов и добавление их в таблицу
+        # РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїР»РµР№Р»РёСЃС‚РѕРІ Рё РґРѕР±Р°РІР»РµРЅРёРµ РёС… РІ С‚Р°Р±Р»РёС†Сѓ
         p_list = self.db.get_playlists()
         rows = len(p_list)
         self.tableWidget_playlists_table.setRowCount(len(p_list))

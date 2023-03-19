@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sqlite3
 from sqlite3 import Error
@@ -15,7 +17,7 @@ class Database:
 
         self.scan_playlists()
 
-    # Создание базы данных и её таблиц
+    # РЎРѕР·РґР°РЅРёРµ Р±Р°Р·С‹ РґР°РЅРЅС‹С… Рё РµС‘ С‚Р°Р±Р»РёС†
     def create_database(self):
         self.connection_create()
         c = self.connection.cursor()
@@ -25,7 +27,7 @@ class Database:
         c.execute("""CREATE TABLE Playlists (path         TEXT PRIMARY KEY, name TEXT, icon TEXT)""")
         self.save_changes()
 
-    # Подключение к базе
+    # РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р±Р°Р·Рµ
     def connection_create(self, existing_db=None):
         db_file_name = 'data.db'
         if existing_db is not None:
@@ -39,29 +41,29 @@ class Database:
         self.connection = connection
         self.cursor = connection.cursor()
 
-    # Разрыв соединения с базой
+    # Р Р°Р·СЂС‹РІ СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р±Р°Р·РѕР№
     def connection_close(self):
         if self.connection:
             self.connection.close()
 
-    # Сохранение внесённых изменений
+    # РЎРѕС…СЂР°РЅРµРЅРёРµ РІРЅРµСЃС‘РЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№
     def save_changes(self):
         self.connection.commit()
 
-    # Добавление в базу пути к аудио
+    # Р”РѕР±Р°РІР»РµРЅРёРµ РІ Р±Р°Р·Сѓ РїСѓС‚Рё Рє Р°СѓРґРёРѕ
     def add_path(self, path):
         self.cursor.execute(f'''INSERT INTO ScanPaths (Path) VALUES("{path}")''')
 
-    # Удаление из базы пути к аудио
+    # РЈРґР°Р»РµРЅРёРµ РёР· Р±Р°Р·С‹ РїСѓС‚Рё Рє Р°СѓРґРёРѕ
     def delete_path(self, path):
         self.cursor.execute(f'''DELETE FROM AllSongs WHERE Path LIKE "%{path}%"''')
         self.cursor.execute(f'''DELETE FROM ScanPaths WHERE Path == "{path}"''')
 
-    # Добавление аудио
+    # Р”РѕР±Р°РІР»РµРЅРёРµ Р°СѓРґРёРѕ
     def add_audio(self, file_name, file_path):
         self.cursor.execute(f'''INSERT INTO AllSongs (FileName, Path) VALUES ("{file_name}","{file_path}")''')
 
-    # Добавление плейлиста в базу
+    # Р”РѕР±Р°РІР»РµРЅРёРµ РїР»РµР№Р»РёСЃС‚Р° РІ Р±Р°Р·Сѓ
     def add_playlist(self, name, file_path, icon_path):
         query = f"""
             INSERT INTO Playlists (path, name, icon) 
@@ -71,14 +73,14 @@ class Database:
         """
         self.cursor.execute(query, (file_path, name, icon_path, file_path, name, icon_path))
 
-    # Очистка таблицы с аудио
+    # РћС‡РёСЃС‚РєР° С‚Р°Р±Р»РёС†С‹ СЃ Р°СѓРґРёРѕ
     def clear_audio_table(self):
         self.cursor.execute('''DELETE FROM AllSongs''')
         self.save_changes()
         self.cursor.execute('''VACUUM''')
         self.save_changes()
 
-    # Удаление плейлиста из базы
+    # РЈРґР°Р»РµРЅРёРµ РїР»РµР№Р»РёСЃС‚Р° РёР· Р±Р°Р·С‹
     def remove_playlist(self, name):
         query = f"""
         DELETE FROM Playlists
@@ -86,48 +88,48 @@ class Database:
         """
         self.cursor.execute(query, (name,))
 
-    # Получение путей к папкам с аудио
+    # РџРѕР»СѓС‡РµРЅРёРµ РїСѓС‚РµР№ Рє РїР°РїРєР°Рј СЃ Р°СѓРґРёРѕ
     def get_paths(self):
         paths = self.cursor.execute('''SELECT * FROM ScanPaths''').fetchall()
         paths = [x[0] for x in paths]
         return paths
 
-    # Получение списка аудио и их путей
+    # РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° Р°СѓРґРёРѕ Рё РёС… РїСѓС‚РµР№
     def get_all_audio(self):
         audio = self.cursor.execute('''SELECT FileName, path FROM AllSongs''').fetchall()
         return audio
 
-    # Получение пути к аудио по его имени
+    # РџРѕР»СѓС‡РµРЅРёРµ РїСѓС‚Рё Рє Р°СѓРґРёРѕ РїРѕ РµРіРѕ РёРјРµРЅРё
     def get_audio(self, name):
         query = f'''SELECT path FROM AllSongs WHERE FileName == "{name}"'''
         audio = self.cursor.execute(query).fetchone()[0]
         return audio
 
-    # Получение имени аудио по его пути
+    # РџРѕР»СѓС‡РµРЅРёРµ РёРјРµРЅРё Р°СѓРґРёРѕ РїРѕ РµРіРѕ РїСѓС‚Рё
     def get_audio_name(self, path):
         query = f'''SELECT FileName from AllSongs WHERE path LIKE "%{path}%"'''
         name = self.cursor.execute(query).fetchone()[0]
         return name
 
-    # Получение списка плейлистов
+    # РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїР»РµР№Р»РёСЃС‚РѕРІ
     def get_playlists(self):
         _ = self.cursor.execute('''SELECT name FROM Playlists''').fetchall()
         _ = [_[x][0] for x in range(len(_))]
         return _
 
-    # Получение плейлиста по его имени
+    # РџРѕР»СѓС‡РµРЅРёРµ РїР»РµР№Р»РёСЃС‚Р° РїРѕ РµРіРѕ РёРјРµРЅРё
     def get_playlist(self, name):
         playlist = self.cursor.execute(f'''SELECT path, name, icon FROM Playlists WHERE name == "{name}"''').fetchone()
         return playlist
 
-    # Сканирование на наличие файлов плейлистов из базы, очистка от несуществующий плейлистов
+    # РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ РЅР° РЅР°Р»РёС‡РёРµ С„Р°Р№Р»РѕРІ РїР»РµР№Р»РёСЃС‚РѕРІ РёР· Р±Р°Р·С‹, РѕС‡РёСЃС‚РєР° РѕС‚ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РїР»РµР№Р»РёСЃС‚РѕРІ
     def scan_playlists(self):
         for ps in self.get_playlists():
             path = self.get_playlist(ps)[0]
             if not os.path.exists(path):
                 self.remove_playlist(path)
 
-    # Обновление данных плейлиста
+    # РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РїР»РµР№Р»РёСЃС‚Р°
     def update_playlist(self, old_name, new_name, csv_path, icon_path):
         query = """
         UPDATE Playlists

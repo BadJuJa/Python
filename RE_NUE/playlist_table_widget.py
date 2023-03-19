@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import pathlib
 
 from PyQt5.QtCore import (QSize)

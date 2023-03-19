@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import csv
 import os
 
 
-# Создание подкаталогов для хранения файлов плейлистов
+# РЎРѕР·РґР°РЅРёРµ РїРѕРґРєР°С‚Р°Р»РѕРіРѕРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»РѕРІ РїР»РµР№Р»РёСЃС‚РѕРІ
 def create_subfolders():
     p = os.path.join(os.getcwd(), "Playlists")
     if not os.path.exists(p):
@@ -13,7 +15,7 @@ def create_subfolders():
 
 
 class CsvControl:
-    # Чтение из csv файла
+    # Р§С‚РµРЅРёРµ РёР· csv С„Р°Р№Р»Р°
     @staticmethod
     def read_from_file(path_to_file):
         _list = []
@@ -23,7 +25,7 @@ class CsvControl:
                 _list.append(audio[0])
         return _list
 
-    # Запись в csv файл
+    # Р—Р°РїРёСЃСЊ РІ csv С„Р°Р№Р»
     @staticmethod
     def write_to_file(_slist, location):
         path = location + ".csv"

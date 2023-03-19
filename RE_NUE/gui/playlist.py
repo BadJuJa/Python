@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import pathlib
 
@@ -40,7 +42,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.connect_signals()
         self.check_name()
 
-    # Подключает сигналы от элементов интерфейса
+    # РџРѕРґРєР»СЋС‡Р°РµС‚ СЃРёРіРЅР°Р»С‹ РѕС‚ СЌР»РµРјРµРЅС‚РѕРІ РёРЅС‚РµСЂС„РµР№СЃР°
     def connect_signals(self):
         if self.editMode:
             self.button_ok.clicked.connect(self.save)
@@ -56,7 +58,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.button_play.clicked.connect(self.start_playlist)
         self.button_shuffle.clicked.connect(self.shuffle_playlist)
 
-    # Переключает режим редактирования
+    # РџРµСЂРµРєР»СЋС‡Р°РµС‚ СЂРµР¶РёРј СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
     def toggle_edit_mode(self):
         self.editMode = not self.editMode
 
@@ -75,7 +77,7 @@ class Playlist(QWidget, Ui_main_widget):
             if not self.changes_saved:
                 self.revert_changes()
 
-    # Устанавливает изображения на превью плейлиста
+    # РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° РїСЂРµРІСЊСЋ РїР»РµР№Р»РёСЃС‚Р°
     def set_picture(self):
         if not self.editMode:
             return
@@ -89,7 +91,7 @@ class Playlist(QWidget, Ui_main_widget):
         pixmap = QtGui.QPixmap(fileName)
         self.label_image.setPixmap(pixmap)
 
-    # Заполняет виджет информацией о плейлисте (название, превью, список песен)
+    # Р—Р°РїРѕР»РЅСЏРµС‚ РІРёРґР¶РµС‚ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїР»РµР№Р»РёСЃС‚Рµ (РЅР°Р·РІР°РЅРёРµ, РїСЂРµРІСЊСЋ, СЃРїРёСЃРѕРє РїРµСЃРµРЅ)
     def load_playlist(self, playlist_name):
         path, name, icon = self.main_window_ref.db.get_playlist(playlist_name)
         s_list = utils.CsvControl.read_from_file(path)
@@ -106,7 +108,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.lineEdit_name.setReadOnly(True)
         self.check_name()
 
-    # Сохраняет плейлист
+    # РЎРѕС…СЂР°РЅСЏРµС‚ РїР»РµР№Р»РёСЃС‚
     def save(self):
         playlists_folder = os.path.join(os.getcwd(), "Playlists")
         # CREATE PLAYLIST FOR SAVE
@@ -158,30 +160,30 @@ class Playlist(QWidget, Ui_main_widget):
         self.main_window_ref.fill_playlists_table()
         self.close()
 
-    # Открывает виджет изменения списка аудио в плейлисте
+    # РћС‚РєСЂС‹РІР°РµС‚ РІРёРґР¶РµС‚ РёР·РјРµРЅРµРЅРёСЏ СЃРїРёСЃРєР° Р°СѓРґРёРѕ РІ РїР»РµР№Р»РёСЃС‚Рµ
     def open_audio_list_edit(self):
         self.audio_list_edit = audiolistEdit(self.main_window_ref, self.listWidget_audio)
         self.audio_list_edit.listChanged.connect(self.change_audio_list)
         self.audio_list_edit.show()
 
-    # Измение списка аудио в плейлисте на новый, получаемый из виджета
+    # РР·РјРµРЅРёРµ СЃРїРёСЃРєР° Р°СѓРґРёРѕ РІ РїР»РµР№Р»РёСЃС‚Рµ РЅР° РЅРѕРІС‹Р№, РїРѕР»СѓС‡Р°РµРјС‹Р№ РёР· РІРёРґР¶РµС‚Р°
     def change_audio_list(self, new_list):
         self.listWidget_audio.clear()
         self.listWidget_audio.addItems(new_list)
 
-    # Проверяет чтобы имя плейлиста не было пусто, иначе блокирует кнопку сохранения
+    # РџСЂРѕРІРµСЂСЏРµС‚ С‡С‚РѕР±С‹ РёРјСЏ РїР»РµР№Р»РёСЃС‚Р° РЅРµ Р±С‹Р»Рѕ РїСѓСЃС‚Рѕ, РёРЅР°С‡Рµ Р±Р»РѕРєРёСЂСѓРµС‚ РєРЅРѕРїРєСѓ СЃРѕС…СЂР°РЅРµРЅРёСЏ
     def check_name(self):
         safe = self.lineEdit_name.text().strip() != ""
         self.button_ok.setEnabled(safe)
 
-    # Сохраняет данные плейлиста перед изменением
+    # РЎРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ РїР»РµР№Р»РёСЃС‚Р° РїРµСЂРµРґ РёР·РјРµРЅРµРЅРёРµРј
     def backup(self):
         self.old_name = self.lineEdit_name.text()
         self.old_list = self.get_audio_list()
         self.old_pixmap = self.label_image.pixmap()
         self.backup_done = True
 
-    # Откатывает изменения в плейлисте
+    # РћС‚РєР°С‚С‹РІР°РµС‚ РёР·РјРµРЅРµРЅРёСЏ РІ РїР»РµР№Р»РёСЃС‚Рµ
     def revert_changes(self):
 
         self.lineEdit_name.setText(self.old_name.text() if isinstance(self.old_name, QLineEdit) else self.old_name)
@@ -189,14 +191,14 @@ class Playlist(QWidget, Ui_main_widget):
         self.listWidget_audio.clear()
         self.listWidget_audio.addItems(self.old_list)
 
-    # Переключает привязку сигналов списка
+    # РџРµСЂРµРєР»СЋС‡Р°РµС‚ РїСЂРёРІСЏР·РєСѓ СЃРёРіРЅР°Р»РѕРІ СЃРїРёСЃРєР°
     def toggle_audio_list_signals(self):
         if self.editMode:
             self.listWidget_audio.doubleClicked.connect(self.open_audio_list_edit)
         else:
             self.listWidget_audio.doubleClicked.disconnect()
 
-    # Переключает поведение кнопки OK в режиме редактирования
+    # РџРµСЂРµРєР»СЋС‡Р°РµС‚ РїРѕРІРµРґРµРЅРёРµ РєРЅРѕРїРєРё OK РІ СЂРµР¶РёРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
     def toggle_ok_button_signals(self):
         self.button_ok.clicked.disconnect()
         if self.editMode:
@@ -206,11 +208,11 @@ class Playlist(QWidget, Ui_main_widget):
             self.button_ok.clicked.connect(self.close)
             self.button_ok.setText("OK")
 
-    # Возвращает Python лист с аудио в плейлисте
+    # Р’РѕР·РІСЂР°С‰Р°РµС‚ Python Р»РёСЃС‚ СЃ Р°СѓРґРёРѕ РІ РїР»РµР№Р»РёСЃС‚Рµ
     def get_audio_list(self):
         return [self.listWidget_audio.item(x).text() for x in range(self.listWidget_audio.count())]
 
-    # Удаляет плейлист
+    # РЈРґР°Р»СЏРµС‚ РїР»РµР№Р»РёСЃС‚
     def delete(self):
         dialog = DeleteDialog()
         dialog.show()
@@ -236,13 +238,13 @@ class Playlist(QWidget, Ui_main_widget):
         self.close()
         self.main_window_ref.fill_playlists_table()
 
-    # Начинает проигрывание плейлиста
+    # РќР°С‡РёРЅР°РµС‚ РїСЂРѕРёРіСЂС‹РІР°РЅРёРµ РїР»РµР№Р»РёСЃС‚Р°
     def start_playlist(self):
         _ = [self.main_window_ref.db.get_audio(audio) for audio in self.get_audio_list()]
         self.main_window_ref.player.set_playlist(_)
         self.close()
 
-    # Начинает проигрывание плейлиста в случайном порядке
+    # РќР°С‡РёРЅР°РµС‚ РїСЂРѕРёРіСЂС‹РІР°РЅРёРµ РїР»РµР№Р»РёСЃС‚Р° РІ СЃР»СѓС‡Р°Р№РЅРѕРј РїРѕСЂСЏРґРєРµ
     def shuffle_playlist(self):
         _ = [self.main_window_ref.db.get_audio(audio) for audio in self.get_audio_list()]
         self.main_window_ref.player.set_playlist(_, False)

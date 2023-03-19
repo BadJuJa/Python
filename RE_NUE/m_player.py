@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtCore import QUrl, pyqtSignal as Signal
 from PyQt5.QtMultimedia import QMediaPlaylist, QMediaPlayer, QMediaContent
 
@@ -13,7 +15,7 @@ class MediaPlayer(QMediaPlayer):
 
         self.repeat = 0
 
-    # Установка списка воспроизведения
+    # РЈСЃС‚Р°РЅРѕРІРєР° СЃРїРёСЃРєР° РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ
     def set_playlist(self, audio_list, start=True):
         self.stop()
         self.playlist.clear()
@@ -31,14 +33,14 @@ class MediaPlayer(QMediaPlayer):
         if start:
             self.play()
 
-    # Переключение воспроизведения/паузы
+    # РџРµСЂРµРєР»СЋС‡РµРЅРёРµ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ/РїР°СѓР·С‹
     def play_pause(self):
         if self.state() == QMediaPlayer.State.PlayingState:
             self.pause()
         else:
             self.play()
 
-    # Перемешивание плейлиста
+    # РџРµСЂРµРјРµС€РёРІР°РЅРёРµ РїР»РµР№Р»РёСЃС‚Р°
     def shuffle(self):
         self.playlist.shuffle()
         _ = [self.playlist.media(i).canonicalUrl().fileName() for i in range(self.playlist.mediaCount())]
@@ -47,12 +49,12 @@ class MediaPlayer(QMediaPlayer):
             self.mw_ref.listWidget_current_playlist.addItem(item)
         self.playlist.setCurrentIndex(0)
 
-    # Переключение текущего трека на
+    # РџРµСЂРµРєР»СЋС‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ С‚СЂРµРєР° РЅР°
     def setCurrentIndex(self, index):
         self.playlist.setCurrentIndex(index)
         self.play()
 
-    # Переключение режимов повтора аудио
+    # РџРµСЂРµРєР»СЋС‡РµРЅРёРµ СЂРµР¶РёРјРѕРІ РїРѕРІС‚РѕСЂР° Р°СѓРґРёРѕ
     def repeat_toggle(self):
         match self.repeat:
             case 0:
