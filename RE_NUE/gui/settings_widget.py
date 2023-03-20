@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QPoint, QSize, Qt
-from PyQt5.QtWidgets import QWidget, QFileDialog, QTableWidgetItem, QHeaderView
-
-from gui.base.settings import Ui_MainWidget
+from PyQt5.QtCore import QPoint, QSize, Qt, pyqtSignal as Signal
+from PyQt5.QtWidgets import QWidget, QFileDialog, QTableWidgetItem, QHeaderView, QFormLayout, QColorDialog
+from PyQt5.QtGui import QColor
+from gui.base.settings_base import Ui_MainWidget
 from gui.custom_grips import CustomGrip
 
 
 class SettingsWidget(QWidget, Ui_MainWidget):
+    signal_selectionColorChanged = Signal(tuple)
+
     def __init__(self, parent):
         super().__init__()
         self.main_window_ref = parent
@@ -77,6 +79,8 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         self.bottom_grip.setGeometry(0, self.height() - self.bottom_grip.grip_width,
                                      self.width(), self.bottom_grip.grip_width)
 
+    def closeEvent(self, event):
+        self.main_window_ref.scan_audio()
     # endregion
 
     # Подписка методов на сигналы от элементов интерфейса
@@ -88,6 +92,9 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         self.button_add_path.clicked.connect(self.add)
         self.button_edit_path.clicked.connect(self.edit)
         self.button_delete_path.clicked.connect(self.delete)
+
+        self.color_label_selection_color.clicked.connect(lambda: self.change_color("selection"))
+        self.button_default_selection_color.clicked.connect(lambda: self.change_color("selection", True))
 
     # Отмена внесённых, но не сохранённых изменений
     def discard_changes(self):
@@ -188,5 +195,18 @@ class SettingsWidget(QWidget, Ui_MainWidget):
         self.tableWidget_audio_paths.currentItem().setText(new_path)
         self.changes['paths']['change'].append((path, new_path))
 
-
-
+    # Измененте цвета части интерфейса
+    def change_color(self, element, default=False):
+        if default:
+            color = QColor.fromRgb(188, 188, 188, 255).getRgb()
+        else:
+            color = QColorDialog.getColor().getRgb()
+        match element:
+            case "selection":
+                self.signal_selectionColorChanged.emit(color)
+                self.color_label_selection_color.setStyleSheet(
+                    "QLabel { background-color: "+ QColor.fromRgb(*color).name() + ";}")
+            case "background":
+                pass
+            case "text":
+                pass

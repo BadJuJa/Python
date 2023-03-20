@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>assets/renewable-energies.png</file>
     <file>assets/no-photo.png</file>
     <file>assets/close-window.png</file>
     <file>assets/delete.png</file>
@@ -7,8 +8,8 @@
     <file>assets/pause-button.png</file>
     <file>assets/play-button.png</file>
     <file>assets/previous.png</file>
-    <file>assets/repeat (2).png</file>
     <file>assets/repeat.png</file>
+    <file>assets/repeat-once.png</file>
     <file>assets/shuffle.png</file>
     <file>assets/arrows-left.png</file>
     <file>assets/arrows-right.png</file>

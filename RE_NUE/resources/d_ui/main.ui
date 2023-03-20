@@ -499,6 +499,19 @@ color: rgb(0, 0, 0);
                     </widget>
                    </item>
                    <item>
+                    <widget class="QLCDNumber" name="lcdNumber">
+                     <property name="styleSheet">
+                      <string notr="true">border: 0px</string>
+                     </property>
+                     <property name="smallDecimalPoint">
+                      <bool>false</bool>
+                     </property>
+                     <property name="mode">
+                      <enum>QLCDNumber::Dec</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QPushButton" name="button_playlists">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1089,7 +1102,7 @@ QTabWidget::pane {}</string>
                    <attribute name="title">
                     <string>Tab 2</string>
                    </attribute>
-                   <layout class="QGridLayout" name="tab_song_parameters_sliders_gridLayout" rowstretch="1" columnstretch="0,0">
+                   <layout class="QGridLayout" name="tab_song_parameters_sliders_gridLayout" rowstretch="1" columnstretch="0,0,0">
                     <property name="sizeConstraint">
                      <enum>QLayout::SetDefaultConstraint</enum>
                     </property>
@@ -1111,39 +1124,6 @@ QTabWidget::pane {}</string>
                     <property name="verticalSpacing">
                      <number>0</number>
                     </property>
-                    <item row="0" column="1">
-                     <widget class="QLabel" name="label_volume_slider">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>45</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Century Gothic</family>
-                        <pointsize>13</pointsize>
-                        <weight>9</weight>
-                        <italic>false</italic>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Volume</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="0">
                      <widget class="QSlider" name="horizontalSlider_volume">
                       <property name="minimumSize">
@@ -1184,6 +1164,39 @@ QTabWidget::pane {}</string>
                       </property>
                       <property name="tickInterval">
                        <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <widget class="QLabel" name="label_volume_slider">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>45</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Century Gothic</family>
+                        <pointsize>13</pointsize>
+                        <weight>9</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+	background-color: rgb(60, 60, 60);
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Volume</string>
                       </property>
                      </widget>
                     </item>

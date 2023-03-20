@@ -5,15 +5,16 @@ import pathlib
 
 from PyQt5.QtCore import (QPoint, Qt, pyqtSignal as Signal)
 from PyQt5.QtWidgets import (QAction, QMainWindow, QMenu, QTableWidgetItem)
+from PyQt5.QtGui import QIcon, QPixmap, QColor
 
 import utils
 from database import *
-from gui.base.main import Ui_MainWindow
+from gui.base.main_window_base import Ui_MainWindow
 from gui.custom_grips import CustomGrip
 from gui.playlist import Playlist
 from gui.settings_widget import SettingsWidget
 from m_player import MediaPlayer
-from playlist_table_widget import TablePlaylist
+from custom_table_item import CustomTableItem
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -38,6 +39,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabWidget_audio_parameters.tabBar().hide()
         self.main_menu_setup()
         self.button_add_playlist.setHidden(1)
+        self.lcdNumber.setHidden(0)
         self.tableWidget_playlists_table.setColumnCount(1)
         self.tableWidget_playlists_table.setRowCount(1)
         self.tableWidget_playlists_table.horizontalHeader().hide()
@@ -53,7 +55,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # endregion
 
         # region Виджеты
-        self.settingsWidget = None
+        self.settingsWidget = SettingsWidget(self)
         self.playlistWidget = None
 
         # endregion
@@ -129,9 +131,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Изменения значений
         self.tabWidget_main.currentChanged.connect(lambda x: self.button_add_playlist.setHidden(not x))
+        self.tabWidget_main.currentChanged.connect(lambda x: self.lcdNumber.setHidden(x))
         self.horizontalSlider_volume.valueChanged.connect(self.player.setVolume)
         self.listWidget_current_playlist.currentTextChanged.connect(lambda x: self.label_audio_name.setText(x))
         self.player.signal_playlist_index_changed.connect(lambda x: self.listWidget_current_playlist.setCurrentRow(x))
+        self.player.stateChanged.connect(self.change_play_button_icon)
+        self.player.playlist.playbackModeChanged.connect(self.change_repeat_button_icon)
 
         # Двойное нажатие на элемент списка/таблицы
         self.tableWidget_all_audio.itemDoubleClicked.connect(self.play_audio)
@@ -139,6 +144,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             lambda x: self.player.setCurrentIndex(self.listWidget_current_playlist.currentRow())
         )
         self.tableWidget_playlists_table.cellDoubleClicked.connect(self.show_playlist_widget)
+
+        # Другие сигланы
+        self.settingsWidget.signal_selectionColorChanged.connect(self.change_selection_color)
 
     # Сканирование аудио в папках, указанных в настройках
     def scan_audio(self):
@@ -148,6 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         paths = self.db.get_paths()
         if len(paths) < 1:
+            self.lcdNumber.display(0)
             return
 
         for path in paths:
@@ -168,11 +177,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.tableWidget_all_audio.setItem(row, 0, item)
             self.audio_paths.append(db_audio[row][1])
 
+        self.lcdNumber.display(len(db_audio))
+
     # Открытие виджета настроек
     def showSettingsWidget(self):
-        if self.settingsWidget is None:
-            self.settingsWidget = SettingsWidget(self)
-
         self.settingsWidget.show()
 
     # Открытие виджета существующего плейлиста
@@ -232,7 +240,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         def add_playlist(playlist_name, row_):
             # Создание объекта таблицы
             _path, _name, _icon = self.db.get_playlist(playlist_name)
-            pl_item = TablePlaylist(self.tableWidget_playlists_table, _name, _icon)
+            pl_item = CustomTableItem(self.tableWidget_playlists_table, _name, _icon)
 
             # Добавление объекта в таблицу
             self.tableWidget_playlists_table.setCellWidget(row_, 0, pl_item)
@@ -252,3 +260,40 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for row in range(rows):
             add_playlist(p_list[row], row)
     # endregion
+
+    def change_play_button_icon(self, x):
+        icon = QIcon()
+        match x:
+            case 1:
+                icon.addPixmap(QPixmap(":/icons/assets/pause-button.png"), QIcon.Normal, QIcon.Off)
+            case 0 | 2:
+                icon.addPixmap(QPixmap(":/icons/assets/play-button.png"), QIcon.Normal, QIcon.Off)
+
+        self.button_play_pause.setIcon(icon)
+
+    def change_repeat_button_icon(self, x):
+        icon = QIcon()
+        match x:
+            # Sequential
+            case 2:
+                icon.addPixmap(QPixmap(":/icons/assets/repeat.png"), QIcon.Normal, QIcon.Off)
+                self.button_repeat.setStyleSheet("QPushButton {\n""background-color: rgb(60, 60, 60);\n""}\n"
+                                                 "QPushButton:hover{\n""background-color: rgb(188, 188, 188);\n""}")
+            # Loop
+            case 3:
+                icon.addPixmap(QPixmap(":/icons/assets/repeat.png"), QIcon.Normal, QIcon.Off)
+                self.button_repeat.setStyleSheet("QPushButton {\n""background-color: rgb(188, 188, 188);\n""}\n"
+                                                 "QPushButton:hover{\n""background-color: rgb(188, 188, 188);\n""}")
+            # Current Item in Loop
+            case 1:
+                icon.addPixmap(QPixmap(":/icons/assets/repeat-once.png"), QIcon.Normal, QIcon.Off)
+                self.button_repeat.setStyleSheet("QPushButton {\n""background-color: rgb(188, 188, 188);\n""}\n"
+                                                 "QPushButton:hover{\n""background-color: rgb(188, 188, 188);\n""}")
+        self.button_repeat.setIcon(icon)
+
+    def change_selection_color(self, color):
+        color = QColor.fromRgb(*color)
+        styleString = "QTableWidget::item::selected {background-color: " + color.name() + "};"
+        self.tableWidget_all_audio.setStyleSheet(styleString)
+        self.tableWidget_playlists_table.setStyleSheet(styleString)
+        self.settingsWidget.tableWidget_audio_paths.setStyleSheet(styleString)

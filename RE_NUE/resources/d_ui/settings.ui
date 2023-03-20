@@ -94,26 +94,25 @@ color: rgb(0, 0, 0);
      </property>
      <property name="styleSheet">
       <string notr="true">QTabBar {
-                            font: 13pt &quot;Century Gothic&quot;;
-                            border: 0px solid;
-                            }
+font: 13pt &quot;Century Gothic&quot;;
+border: 0px solid;
+}
 
-                            QTabBar:tab {
-                            font: 13pt &quot;Century Gothic&quot;;
-                            background-color: rgb(63, 63, 63);
+QTabBar:tab {
+font: 13pt &quot;Century Gothic&quot;;
+background-color: rgb(63, 63, 63);
 
-                            }
-                            QTabBar:tab:hover {
-                            background-color: rgb(188, 188, 188);
-                            color: rgb(0, 0, 0)
-                            }
-                            QTabBar:tab:selected {
-                            background-color: rgb(160, 160, 160);
-                            color: rgb(12, 12, 12);
-                            }
+}
+QTabBar:tab:hover {
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0)
+}
+QTabBar:tab:selected {
+background-color: rgb(160, 160, 160);
+color: rgb(12, 12, 12);
+}
 
-                            QTabWidget::pane {}
-                        </string>
+QTabWidget::pane {}</string>
      </property>
      <property name="tabPosition">
       <enum>QTabWidget::North</enum>
@@ -345,11 +344,14 @@ border: 0px solid;
             <property name="sizeAdjustPolicy">
              <enum>QAbstractScrollArea::AdjustIgnored</enum>
             </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
             <property name="selectionBehavior">
-             <enum>QAbstractItemView::SelectItems</enum>
+             <enum>QAbstractItemView::SelectRows</enum>
             </property>
             <property name="showGrid">
              <bool>true</bool>
@@ -382,6 +384,239 @@ border: 0px solid;
               <string>Path</string>
              </property>
             </column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_visual">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: rgb(60, 60, 60);
+border-radius: 5%;
+border: 1px solid rgb(188, 188, 188);
+font-size: 16pt;
+}
+
+QPushButton:hover{
+background-color: rgb(188, 188, 188);
+color: rgb(0, 0, 0);
+}</string>
+      </property>
+      <attribute name="title">
+       <string>Visuals</string>
+      </attribute>
+      <layout class="QFormLayout" name="tab_visuals_layout">
+       <property name="leftMargin">
+        <number>8</number>
+       </property>
+       <property name="topMargin">
+        <number>4</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_selection_color">
+         <property name="text">
+          <string>Selection color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QWidget" name="widget_selection_color" native="true">
+         <layout class="QGridLayout" name="widget_background_color_layout">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="ClickableLabel" name="color_label_selection_color">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="button_default_selection_color">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius: 15%;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/assets/renewable-energies.png</normaloff>:/icons/assets/renewable-energies.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_background_color">
+         <property name="text">
+          <string>Background color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QWidget" name="widget_background_color" native="true">
+         <layout class="QGridLayout" name="widget_background_color_ayout">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="ClickableLabel" name="color_label_background_color">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="button_default_background_color">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius: 15%;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/assets/renewable-energies.png</normaloff>:/icons/assets/renewable-energies.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_text_color">
+         <property name="text">
+          <string>Text color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QWidget" name="widget_text_color" native="true">
+         <layout class="QGridLayout" name="widget_text_color_layout">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="ClickableLabel" name="color_label_text_color">
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="button_default_text_color">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius: 15%;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/assets/renewable-energies.png</normaloff>:/icons/assets/renewable-energies.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
            </widget>
           </item>
          </layout>
@@ -590,6 +825,15 @@ color: rgb(0, 0, 0);
    </item>
   </layout>
  </widget>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header>clickable_label.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -7,7 +7,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QWidget, QHBoxLayout, QLabel)
 
 
-class TablePlaylist(QWidget):
+class CustomTableItem(QWidget):
     def __init__(self, table_parent, _name, _icon):
         super().__init__(table_parent)
 

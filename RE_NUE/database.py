@@ -23,7 +23,7 @@ class Database:
         c = self.connection.cursor()
         c.execute("""CREATE TABLE Settings  (SettingName  TEXT PRIMARY KEY, SettingValue TEXT);""")
         c.execute("""CREATE TABLE ScanPaths (Path         TEXT PRIMARY KEY);""")
-        c.execute("""CREATE TABLE AllSongs  (FileName     TEXT,Path TEXT REFERENCES ScanPaths (Path));""")
+        c.execute("""CREATE TABLE AllAudio  (FileName     TEXT,Path TEXT REFERENCES ScanPaths (Path));""")
         c.execute("""CREATE TABLE Playlists (path         TEXT PRIMARY KEY, name TEXT, icon TEXT)""")
         self.save_changes()
 
@@ -56,12 +56,12 @@ class Database:
 
     # Удаление из базы пути к аудио
     def delete_path(self, path):
-        self.cursor.execute(f'''DELETE FROM AllSongs WHERE Path LIKE "%{path}%"''')
+        self.cursor.execute(f'''DELETE FROM AllAudio WHERE Path LIKE "%{path}%"''')
         self.cursor.execute(f'''DELETE FROM ScanPaths WHERE Path == "{path}"''')
 
     # Добавление аудио
     def add_audio(self, file_name, file_path):
-        self.cursor.execute(f'''INSERT INTO AllSongs (FileName, Path) VALUES ("{file_name}","{file_path}")''')
+        self.cursor.execute(f'''INSERT INTO AllAudio (FileName, Path) VALUES ("{file_name}","{file_path}")''')
 
     # Добавление плейлиста в базу
     def add_playlist(self, name, file_path, icon_path):
@@ -75,7 +75,7 @@ class Database:
 
     # Очистка таблицы с аудио
     def clear_audio_table(self):
-        self.cursor.execute('''DELETE FROM AllSongs''')
+        self.cursor.execute('''DELETE FROM AllAudio''')
         self.save_changes()
         self.cursor.execute('''VACUUM''')
         self.save_changes()
@@ -96,18 +96,18 @@ class Database:
 
     # Получение списка аудио и их путей
     def get_all_audio(self):
-        audio = self.cursor.execute('''SELECT FileName, path FROM AllSongs''').fetchall()
+        audio = self.cursor.execute('''SELECT FileName, path FROM AllAudio''').fetchall()
         return audio
 
     # Получение пути к аудио по его имени
     def get_audio(self, name):
-        query = f'''SELECT path FROM AllSongs WHERE FileName == "{name}"'''
+        query = f'''SELECT path FROM AllAudio WHERE FileName == "{name}"'''
         audio = self.cursor.execute(query).fetchone()[0]
         return audio
 
     # Получение имени аудио по его пути
     def get_audio_name(self, path):
-        query = f'''SELECT FileName from AllSongs WHERE path LIKE "%{path}%"'''
+        query = f'''SELECT FileName from AllAudio WHERE path LIKE "%{path}%"'''
         name = self.cursor.execute(query).fetchone()[0]
         return name
 

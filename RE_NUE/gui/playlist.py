@@ -10,7 +10,7 @@ from PyQt5.QtMultimedia import QMediaPlaylist, QMediaContent
 from PyQt5.QtWidgets import (QWidget, QFileDialog, QLineEdit)
 
 import utils
-from gui.base.playlist import Ui_main_widget
+from gui.base.playlist_base import Ui_main_widget
 from gui.playlist_delete_dialog import DeleteDialog
 from gui.playlist_audio_list_edit import audiolistEdit
 
@@ -31,6 +31,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.old_pixmap = QPixmap(":/icons/assets/no-photo.png") if self.new else self.label_image.pixmap()
         if self.new:
             self.listWidget_audio.addItems([""] * 11)
+            self.label_image.setPixmap(QPixmap(":/icons/assets/no-photo.png"))
 
         self.button_edit.setEnabled(not self.new)
         self.button_play.setEnabled(not self.new)
@@ -38,9 +39,10 @@ class Playlist(QWidget, Ui_main_widget):
 
         self.backup_done = False
         self.changes_saved = False
+        self.audio_list_edited = False if self.new else True
 
         self.connect_signals()
-        self.check_name()
+        self.validate_playlist()
 
     # Подключает сигналы от элементов интерфейса
     def connect_signals(self):
@@ -53,7 +55,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.button_cancel.clicked.connect(self.close)
         self.label_image.clicked.connect(self.set_picture)
         self.button_edit.clicked.connect(self.toggle_edit_mode)
-        self.lineEdit_name.textEdited.connect(self.check_name)
+        self.lineEdit_name.textEdited.connect(self.validate_playlist)
         self.button_delete.clicked.connect(self.delete)
         self.button_play.clicked.connect(self.start_playlist)
         self.button_shuffle.clicked.connect(self.shuffle_playlist)
@@ -106,7 +108,7 @@ class Playlist(QWidget, Ui_main_widget):
         self.listWidget_audio.addItems(s_list)
 
         self.lineEdit_name.setReadOnly(True)
-        self.check_name()
+        self.validate_playlist()
 
     # Сохраняет плейлист
     def save(self):
@@ -119,7 +121,6 @@ class Playlist(QWidget, Ui_main_widget):
             new_playlist.addMedia(QMediaContent(QUrl.fromLocalFile(p)))
 
         if self.new:
-            self.label_image.setPixmap(QPixmap(":/icons/assets/no-photo.png"))
             dir_ = os.path.join(playlists_folder, self.lineEdit_name.text())
             new_playlist.save(QUrl().fromLocalFile(dir_ + '.m3u'), "m3u")
             csv = utils.CsvControl.write_to_file(ts, dir_)
@@ -170,10 +171,12 @@ class Playlist(QWidget, Ui_main_widget):
     def change_audio_list(self, new_list):
         self.listWidget_audio.clear()
         self.listWidget_audio.addItems(new_list)
+        self.audio_list_edited = True
+        self.validate_playlist()
 
     # Проверяет чтобы имя плейлиста не было пусто, иначе блокирует кнопку сохранения
-    def check_name(self):
-        safe = self.lineEdit_name.text().strip() != ""
+    def validate_playlist(self):
+        safe = self.lineEdit_name.text().strip() != "" and self.audio_list_edited
         self.button_ok.setEnabled(safe)
 
     # Сохраняет данные плейлиста перед изменением
@@ -185,7 +188,6 @@ class Playlist(QWidget, Ui_main_widget):
 
     # Откатывает изменения в плейлисте
     def revert_changes(self):
-
         self.lineEdit_name.setText(self.old_name.text() if isinstance(self.old_name, QLineEdit) else self.old_name)
         self.label_image.setPixmap(self.old_pixmap)
         self.listWidget_audio.clear()

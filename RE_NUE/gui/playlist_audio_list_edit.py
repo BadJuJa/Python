@@ -3,7 +3,7 @@
 from PyQt5.QtCore import pyqtSignal as Signal
 from PyQt5.QtWidgets import (QWidget)
 
-from gui.base.playlist_audio_list_edit import Ui_mainWidget
+from gui.base.playlist_audio_list_edit_base import Ui_mainWidget
 
 
 class audiolistEdit(QWidget, Ui_mainWidget):

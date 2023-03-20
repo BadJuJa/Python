@@ -2,7 +2,7 @@
 
 from PyQt5 import QtWidgets
 
-from gui.base.playlist_delete_dialog import Ui_dialog_delete
+from gui.base.playlist_delete_dialog_base import Ui_dialog_delete
 
 
 class DeleteDialog(QtWidgets.QDialog, Ui_dialog_delete):
