@@ -19,12 +19,12 @@ def Rename(folder):
     for i in range(len(files)):
         po = Path(files[i])
         suffix = po.suffix
-        new_path = J(folder, str(i) + suffix)
+        new_path = J(folder, "Barn_" + str(i) + suffix)
         po.rename(new_path)
     os.rmdir(temp_path)
 
 
 if __name__ == "__main__":
-    folder = "C:\\Users\\user\\Documents\\check later\\Images\\all_images"
+    folder = "C:\\Users\\user\\Videos\\Огонь нарезанный\\Barn"
     Rename(folder)
     #get_range(15, 10000)

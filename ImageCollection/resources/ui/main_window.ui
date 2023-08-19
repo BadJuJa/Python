@@ -26,7 +26,7 @@
    <string>SORTAH</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../resources/resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/icons/icons/window_icon.jpg</normaloff>:/icons/icons/window_icon.jpg</iconset>
   </property>
   <property name="windowOpacity">
@@ -69,531 +69,13 @@ alternate-background-color: rgb(188, 188, 188);</string>
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
-    <widget class="QFrame" name="verticalFrame_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>750</y>
-       <width>1100</width>
-       <height>120</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
-     </property>
-     <widget class="QFrame" name="frame">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>60</y>
-        <width>1100</width>
-        <height>60</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>1100</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="leftMargin">
-        <number>3</number>
-       </property>
-       <property name="topMargin">
-        <number>3</number>
-       </property>
-       <property name="rightMargin">
-        <number>3</number>
-       </property>
-       <property name="bottomMargin">
-        <number>3</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="button_previous_image">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>&lt;-</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_next_image">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>-&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_to_art">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>400</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>To Art</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_to_erotics">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>400</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>To Erotics</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_to_porn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>400</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>To Porn</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QFrame" name="frame_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1101</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="spacing">
-        <number>4</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="frame_3">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>2</number>
-          </property>
-          <property name="topMargin">
-           <number>2</number>
-          </property>
-          <property name="rightMargin">
-           <number>2</number>
-          </property>
-          <property name="bottomMargin">
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_collection_0">
-            <property name="maximumSize">
-             <size>
-              <width>250</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>16</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-    border-top-left-radius: 10%;
-	border-bottom-left-radius: 10%;
-    border: 1px solid rgb(188, 188, 188);
-	border-right: 2px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="text">
-             <string>Current collection</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="margin">
-             <number>6</number>
-            </property>
-            <property name="indent">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_collection_1">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>16</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-    border-top-right-radius: 10%;
-	border-bottom-right-radius: 10%;
-    border: 1px solid rgb(188, 188, 188);
-	border-left: 2px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="margin">
-             <number>6</number>
-            </property>
-            <property name="indent">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_4">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>2</number>
-          </property>
-          <property name="topMargin">
-           <number>2</number>
-          </property>
-          <property name="rightMargin">
-           <number>2</number>
-          </property>
-          <property name="bottomMargin">
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_collection_moveto_0">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>16</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-    border-top-left-radius: 10%;
-	border-bottom-left-radius: 10%;
-    border: 1px solid rgb(188, 188, 188);
-	border-right: 2px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="text">
-             <string>Move to</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="margin">
-             <number>6</number>
-            </property>
-            <property name="indent">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_collection_moveto_1">
-            <property name="font">
-             <font>
-              <family>Century Gothic</family>
-              <pointsize>16</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	background-color: rgb(60, 60, 60);
-    border-top-right-radius: 10%;
-	border-bottom-right-radius: 10%;
-    border: 1px solid rgb(188, 188, 188);
-	border-left: 2px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="margin">
-             <number>6</number>
-            </property>
-            <property name="indent">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
     <widget class="QFrame" name="verticalFrame">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
        <width>1100</width>
-       <height>751</height>
+       <height>801</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -633,7 +115,7 @@ QPushButton:hover{
          <number>2</number>
         </property>
         <property name="text">
-         <string>Image</string>
+         <string/>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -673,10 +155,169 @@ QPushButton:hover{
          <enum>QFrame::Sunken</enum>
         </property>
         <property name="text">
-         <string>Image Name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QFrame" name="frame">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>810</y>
+       <width>1100</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>1100</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="button_to_art">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+        </property>
+        <property name="text">
+         <string>[Q] To Art</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_to_erotics">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+        </property>
+        <property name="text">
+         <string>[W]  To Erotics</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_to_porn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    border: 1px solid rgb(188, 188, 188);
+	font-size: 16pt;
+}
+QPushButton:hover{
+	background-color: rgb(188, 188, 188);
+	color: rgb(0, 0, 0);
+}</string>
+        </property>
+        <property name="text">
+         <string>[E]  To Porn</string>
         </property>
        </widget>
       </item>
@@ -716,105 +357,13 @@ QPushButton:hover{
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
-    <widget class="QFrame" name="gridFrame">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>800</y>
-       <width>320</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="leftMargin">
-       <number>3</number>
-      </property>
-      <property name="topMargin">
-       <number>3</number>
-      </property>
-      <property name="rightMargin">
-       <number>3</number>
-      </property>
-      <property name="bottomMargin">
-       <number>3</number>
-      </property>
-      <property name="spacing">
-       <number>3</number>
-      </property>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="button_rename_image">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>149</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-        </property>
-        <property name="text">
-         <string>Rename</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="button_delete_image">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    border: 1px solid rgb(188, 188, 188);
-	font-size: 16pt;
-}
-QPushButton:hover{
-	background-color: rgb(188, 188, 188);
-	color: rgb(0, 0, 0);
-}</string>
-        </property>
-        <property name="text">
-         <string>Delete</string>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QListWidget" name="listWidget_image_list">
+    <widget class="QTreeView" name="treeView_image_list">
      <property name="geometry">
       <rect>
        <x>5</x>
        <y>5</y>
        <width>320</width>
-       <height>781</height>
+       <height>861</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -846,21 +395,11 @@ QListWidget::item:selected{
      <property name="midLineWidth">
       <number>0</number>
      </property>
-    </widget>
-    <widget class="QLabel" name="label_items_in_list">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>790</y>
-       <width>311</width>
-       <height>21</height>
-      </rect>
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditKeyPressed</set>
      </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="animated">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -891,7 +430,6 @@ QListWidget::item:selected{
      <string>File</string>
     </property>
     <addaction name="actionOpen_Folder"/>
-    <addaction name="actionRefresh_List"/>
     <addaction name="actionSettings"/>
     <addaction name="actionExit"/>
    </widget>
@@ -908,7 +446,6 @@ QListWidget::item:selected{
     <addaction name="actionRecycle_bin"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
-    <addaction name="actionMove_Images"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCollections"/>
@@ -985,7 +522,7 @@ QListWidget::item:selected{
   </action>
  </widget>
  <resources>
-  <include location="../../resources/resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>
